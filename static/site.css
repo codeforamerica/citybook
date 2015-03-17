@@ -1,0 +1,34 @@
+body {
+  margin:0;
+  padding:0;
+  display:block;
+  max-width:850px;
+  margin:auto;
+}
+
+button:focus {
+  outline:none !important;
+}
+
+#search {
+  margin:2em 0 .5em;
+}
+#services-filter {}
+
+#services-list {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+}
+.service {}
+.service div {
+  margin-bottom:.5em;
+}
+.service .youth {}
+.service .housing {}
+.service .education {}
+.service .pregnancy {}
+.service .insurance {}
+.service .health-and-wellness {}
+.service .emergency-housing-and-shelters {}
+.service .families--social-services--seniors {}

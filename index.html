@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <title>RVA Services</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/site.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+  <script src="static/handlebars.js"></script>
+  <script src="static/tabletop.js"></script>
+  <script src="static/site.js"></script>
+</head>
+<body>
+
+  <div id="service-list-wrapper">
+
+    <h1>Richmond, VA - Heatlh Services List</h1>
+    <p>The following list of services is collected in <a href="https://docs.google.com/a/codeforamerica.org/spreadsheets/d/1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ/edit#gid=863180525">this Google spreadsheet</a>. If you see any information that is incorrect, please contact <a href="mailto:richmond@codeforamerica.org">richmond@codeforamerica.org</a>. The services here are only a subset and are graciously provided by the <a href="http://www.societyhealth.vcu.edu/">Center on Society and Health</a> at VCU. The application is a project by the <a href="http://rva.codeforamerica.org">2015 Richmond Fellows</a> at <a href="http://codeforamerica.org">Code for America</a>.
+
+    <!-- search -->
+    <div id="search" class="input-group">
+      <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+      <input type="text" class="form-control search" placeholder="Search" aria-describedby="sizing-addon2">
+    </div>
+
+    <!-- filters -->
+    <div id="services-filter" class="btn-group btn-group-xs" role="group"></div>
+
+    <!-- services -->
+    <ul id="services-list" class="list"></ul>
+
+  </div>
+
+</body>
+</html>
