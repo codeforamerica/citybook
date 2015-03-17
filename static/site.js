@@ -2,30 +2,27 @@ var list, source, template, serviceType;
 
 function init() {
 
-  // init hanlebars
-  var serviceTemplate = '<li class="col-md-12 service {{serviceClass}}">\
-                          <h2 class="col-md-12 title">{{title}}</h2>\
-                          <div class="col-md-10 description"><strong>Description: </strong>{{description}}</div>\
-                          <div class="col-md-10 population"><strong>Population: </strong>{{population}}</div>\
-                          <div class="col-md-10 criteria"><strong>Criteria: </strong>{{criteria}}</div>\
-                          <div class="col-md-4">\
-                          <div class="col-md-12"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><strong>Contact</strong></div>\
-                            <div class="col-md-12 contact">{{contact}}</div>\
-                          </div>\
-                          <div class="col-md-4">\
-                            <div class="col-md-12"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span><strong>Cost</strong></div>\
-                            <div class="col-md-12 cost">{{cost}}</div>\
-                          </div>\
-                          <div class="col-md-4">\
-                          </div>\
-                        </li>';
-  template = Handlebars.compile(serviceTemplate);
+  // init handlebars
+  getTemplateAjax('static/templates/service.handlebars');
   
   // get the list information via tabletop
   getList.tabletop();
 
   // use this if using get.py
   // getList.local();
+}
+
+function getTemplateAjax(path) {
+  var source;
+
+  $.ajax({
+      url: path,
+      cache: true,
+      success: function(data) {
+        source    = data;
+        template  = Handlebars.compile(source);
+      }
+    });
 }
 
 var getList = {
