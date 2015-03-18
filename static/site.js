@@ -147,7 +147,7 @@ function createFilter(type, sanitized) {
   var servicesFilterList = document.getElementById('services-filter');
   var filter = document.createElement('button');
   filter.innerHTML = type;
-  filter.className = 'service-filter btn btn-success';
+  filter.className = 'btn service-filter';
   filter.setAttribute('data', sanitized);
   filter.setAttribute('type', 'button');
   filter.addEventListener('click', filterClick, false);

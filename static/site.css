@@ -27,8 +27,8 @@ SEARCH & FILTERS
 + + + + + + + + + + + */
 #search { margin:2em 0 .5em; }
 #services-filter {}
-.btn.filter {}
-
+.btn.service-filter {}
+.btn.service-filter.active {}
 
 
 /* + + + + + + + + + + +
