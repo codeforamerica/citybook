@@ -1,4 +1,4 @@
-var list, source, template, serviceType, alink;
+var list, source, template, serviceType, alink, search;
 
 function init() {
 
@@ -8,6 +8,8 @@ function init() {
   // get the list information via tabletop
   getList.tabletop();
 
+  // create Autolinker instance for use in filtering
+  // plain text URLs and Emails in the Handlebars helper
   alink = new Autolinker( {
     className: "myLink"
   } );
@@ -17,21 +19,19 @@ function init() {
 }
 
 function getTemplateAjax(path) {
-  var source;
 
   $.ajax({
-      url: path,
-      cache: true,
-      success: function(data) {
-        source    = data;
-        template  = Handlebars.compile(source);
-      }
-    });
+    url: path,
+    cache: true,
+    success: function(data) {
+      source    = data;
+      template  = Handlebars.compile(source);
+    }
+  });
 }
 
 var getList = {
   tabletop: function() {
-    console.log('FUNCTION: getList.tabletop()');
     Tabletop.init({
       key: '1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ',
       callback: success,
@@ -66,12 +66,14 @@ function success(data) {
 }
 
 function initSearch() {
-  console.log('FUNCTION: initSearch()');
+  
+  // set up search fields, based on classes in the static/templates/service.handlebars template
   var options = {
     valueNames: [ 'title', 'description', 'population', 'criteria', 'contact', 'cost' ]
   }
-  var searchList = new List('service-list-wrapper', options);
-  console.log(searchList);
+
+  // generate the searchable list object, send to search for global access
+  search = new List('service-list-wrapper', options);
 }
 
 function listLoop() {
@@ -99,7 +101,6 @@ function listLoop() {
       // now lets get each row as "service" in k
       sheet.elements.forEach(handleService);
       
-
     })(list[key]);
 
   }

@@ -42,3 +42,13 @@ button:focus {
 #loader.loaded {
   display:none;
 }
+#loader i {
+  font-size:4em;
+  color:#e5e5e5;
+  margin-bottom:.25em;
+}
+#loader p {
+  text-transform: uppercase;
+  font-weight:300;
+  letter-spacing:.13em;
+}
