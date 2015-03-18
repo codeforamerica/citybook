@@ -1,4 +1,4 @@
-var list, source, template, serviceType;
+var list, source, template, serviceType, alink;
 
 function init() {
 
@@ -7,6 +7,10 @@ function init() {
   
   // get the list information via tabletop
   getList.tabletop();
+
+  alink = new Autolinker( {
+    className: "myLink"
+  } );
 
   // use this if using get.py
   // getList.local();
@@ -92,7 +96,7 @@ function listLoop() {
 
 
 function handleService(service, index, array) {
-  
+
   // set data for usage in handlebar template
   var data = {
     title: service['Provider/Program'],
@@ -153,5 +157,16 @@ function filterClick() {
   }  
 
 }
+
+/*
+Handlebars helper that filters and adds <a> to any plain text
+URLs within the text. This can be passed in the .handlebars
+templates within any {{ content }} by adding it before the content piece
+{{ add-links content }}
+*/
+Handlebars.registerHelper('add-links', function(context) {
+  var linked = alink.link(context);
+  return new Handlebars.SafeString(linked);
+});
 
 window.onload = init();
