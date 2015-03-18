@@ -51,4 +51,5 @@ button:focus {
   text-transform: uppercase;
   font-weight:300;
   letter-spacing:.13em;
+  color:#c0c0c0;
 }
