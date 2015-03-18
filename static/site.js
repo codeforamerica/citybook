@@ -50,7 +50,14 @@ callback function after the list data has
 been returned successfully. Add it to `list`
 so we have access to the information globally */
 function success(data) {
+
+  // remove loader
+  document.getElementById('loader').className = 'loaded';
+
+  // assign data to list for global access
   list = data;
+
+  // begin looping through the list data
   listLoop();
 }
 
@@ -64,7 +71,14 @@ function initSearch() {
 }
 
 function listLoop() {
+
+  // hide the services list initially so we can fade in
+  $('#services-list').hide();
+
+  // set the 'all' filter up first before the loop
   firstFilter();
+
+  // loop throught the different sheets
   for (var key in list) {
 
     // let's run this IIFE function to keep our 
@@ -86,8 +100,12 @@ function listLoop() {
 
   }
 
+  // fade in the populated list
+  $('#services-list').fadeIn(600);
+
   // initialize the searchable list now that it has content
   initSearch();
+
 }
 
 

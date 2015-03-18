@@ -16,6 +16,7 @@ button:focus {
 #services-filter {}
 
 #services-list {
+  position:relative;
   list-style-type: none;
   margin:0;
   padding:0;
@@ -32,3 +33,12 @@ button:focus {
 .service .health-and-wellness {}
 .service .emergency-housing-and-shelters {}
 .service .families--social-services--seniors {}
+
+#loader {
+  display:block;
+  margin:30px auto;
+  text-align:center;
+}
+#loader.loaded {
+  display:none;
+}
