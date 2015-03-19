@@ -1,29 +1,63 @@
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+/* + + + + + + + + + + +
+
+GLOBALS
+
++ + + + + + + + + + + */
 body {
   margin:0;
   padding:0;
   display:block;
   max-width:850px;
   margin:auto;
+  font-family: 'Source Sans Pro', sans-serif;
 }
+h1, h2, h3, h4 {
+  font-family: 'Bree Serif', serif; 
+}
+.btn {}
 
-button:focus {
-  outline:none !important;
-}
 
-#search {
-  margin:2em 0 .5em;
-}
+/* + + + + + + + + + + +
+
+SEARCH & FILTERS
+
++ + + + + + + + + + + */
+#search { margin:2em 0 .5em; }
 #services-filter {}
+.btn.service-filter {}
+.btn.service-filter.active {}
 
+
+/* + + + + + + + + + + +
+
+SERVICE ITEMS
+
++ + + + + + + + + + + */
 #services-list {
+  position:relative;
   list-style-type: none;
   margin:0;
   padding:0;
 }
-.service {}
-.service div {
-  margin-bottom:.5em;
+
+.service {
+  padding:0 10px;
+  background-color:#f6f6f6;
+  margin-bottom:10px;
 }
+
+/* service data styles */
+.service .title {}
+.service .description {}
+.service .population {}
+.service .criteria {}
+.service .contact {}
+.service .cost {}
+
+/* service categories */
 .service .youth {}
 .service .housing {}
 .service .education {}
@@ -32,3 +66,29 @@ button:focus {
 .service .health-and-wellness {}
 .service .emergency-housing-and-shelters {}
 .service .families--social-services--seniors {}
+
+
+/* + + + + + + + + + + +
+
+LOADING SPINNER
+
++ + + + + + + + + + + */
+#loader {
+  display:block;
+  margin:30px auto;
+  text-align:center;
+}
+#loader.loaded {
+  display:none;
+}
+#loader i {
+  font-size:4em;
+  color:#e5e5e5;
+  margin-bottom:.25em;
+}
+#loader p {
+  text-transform: uppercase;
+  font-weight:300;
+  letter-spacing:.13em;
+  color:#c0c0c0;
+}

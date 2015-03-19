@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
   <title>RVA Service Directory</title>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href="static/site.css" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -15,20 +15,27 @@
 
   <div id="service-list-wrapper">
 
+    <!-- intro -->
     <h1>RVA Service Directory</h1>
-    <p>The following list of services comes from <a href="https://docs.google.com/a/codeforamerica.org/spreadsheets/d/1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ/edit#gid=863180525">this Google spreadsheet</a> maintained by the <a href="http://www.societyhealth.vcu.edu/">Center on Society and Health</a> at VCU. The application is a project by the <a href="http://rva.codeforamerica.org">2015 Richmond Fellows</a> at <a href="http://codeforamerica.org">Code for America</a>. Please send questions, comments, and corrections to <a href="mailto:richmond@codeforamerica.org">richmond@codeforamerica.org</a>. 
+    <p>The following list of services comes from <a href="https://docs.google.com/a/codeforamerica.org/spreadsheets/d/1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ/edit#gid=863180525">this Google spreadsheet</a> maintained by the <a href="http://www.societyhealth.vcu.edu/">Center on Society and Health</a> at VCU. The application is a project by the <a href="http://rva.codeforamerica.org">2015 Richmond Fellows</a> at <a href="http://codeforamerica.org">Code for America</a>. Please send questions, comments, and corrections to <a href="mailto:richmond@codeforamerica.org">richmond@codeforamerica.org</a>.
 
     <!-- search -->
     <div id="search" class="input-group">
-      <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+      <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span></span>
       <input type="text" class="form-control search" placeholder="Search" aria-describedby="sizing-addon2">
     </div>
 
     <!-- filters -->
-    <div id="services-filter" class="btn-group btn-group-xs" role="group"></div>
+    <div id="services-filter" class="btn" role="group"></div>
 
     <!-- services -->
     <ul id="services-list" class="list"></ul>
+
+    <!-- loading spinner -->
+    <div id="loader">
+      <i class="fa fa-refresh fa-spin"></i>
+      <p>Loading</p>
+    </div>
 
   </div>
 
