@@ -76,6 +76,30 @@ function initSearch() {
   search = new List('service-list-wrapper', options);
 }
 
+function initAutocomplete() {
+  var serviceNames = [];
+  $(".title").each(function() {serviceNames.push($(this).text())});
+
+  var serviceNamesBloodhound = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: $.map(serviceNames, function(serviceName) { return { value: serviceName }; })
+  });
+ 
+  serviceNamesBloodhound.initialize();
+ 
+  $('#search .typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },
+  {
+    name: 'serviceNamesBloodhound',
+    displayKey: 'value',
+    source: serviceNamesBloodhound.ttAdapter()
+  });
+}
+
 function listLoop() {
 
   // hide the services list initially so we can fade in
@@ -110,7 +134,7 @@ function listLoop() {
 
   // initialize the searchable list now that it has content
   initSearch();
-
+  initAutocomplete();
 }
 
 

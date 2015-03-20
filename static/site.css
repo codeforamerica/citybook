@@ -25,7 +25,9 @@ h1, h2, h3, h4 {
 SEARCH & FILTERS
 
 + + + + + + + + + + + */
-#search { margin:2em 0 .5em; }
+#search {
+  margin:2em 0 .5em;
+}
 #search input {
   width:100%;
   padding:10px;
@@ -117,4 +119,34 @@ LOADING SPINNER
   font-weight:300;
   letter-spacing:.13em;
   color:#c0c0c0;
+}
+
+/* + + + + + + + + + + +
+
+TYPEAHEAD
+
++ + + + + + + + + + + */
+.twitter-typeahead {
+  width:100%;
+  margin-bottom:1%;
+}
+.tt-dropdown-menu {
+  background-color: white;
+  width: 100%;
+}
+.tt-hint {
+  color: #c0c0c0
+}
+.tt-suggestion {
+  margin:0;
+  padding: 1px 5px;
+  color: black;
+  font-size: 14px;
+  line-height: 0;
+  border: 1px solid #f6f6f6;
+  font-family: 'Bree Serif', serif;
+}
+.tt-suggestion.tt-cursor {
+  background-color:steelblue;
+  color:#fff;
 }
