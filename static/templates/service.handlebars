@@ -1,21 +1,19 @@
-<li class="col-md-12 service {{serviceClass}}">
-  <h2 class="col-md-12 title">{{title}}</h2>                                    
-  <div class="col-md-10 description"><strong>Description: </strong>{{description}}</div>
-  <div class="col-md-10 population"><strong>Population: </strong>{{population}}</div>
-  <div class="col-md-10 criteria"><strong>Criteria: </strong>{{criteria}}</div>
-  <div class="col-md-4">
-    <div class="col-md-12">
-      <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-      <strong>Contact</strong>
-    </div>
-    <div class="col-md-12 contact">{{add-links contact}}</div>
+<li class="service {{serviceClass}}">
+  <h2 class="title">{{title}}</h2>        
+
+  <div class="description"><strong>Description: </strong>{{description}}</div>
+
+  <div class="population"><strong>Population: </strong>{{population}}</div>
+
+  <div class="criteria"><strong>Criteria: </strong>{{criteria}}</div>
+    
+  <div class="contact">
+    <p><i class="fa fa-phone"></i><strong>Contact</strong></p>
+    {{add-links contact}}
   </div>
-  <div class="col-md-4">
-    <div class="col-md-12">
-      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-      <strong>Cost</strong>
-    </div>
-    <div class="col-md-12 cost">{{cost}}</div>
+
+  <div class=" cost">
+    <p><i class="fa fa-usd"></i><strong>Cost</strong></p>
+    {{cost}}    
   </div>
-  <div class="col-md-4"></div>
 </li>

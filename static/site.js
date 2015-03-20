@@ -1,4 +1,4 @@
-var list, source, template, serviceType, alink;
+var list, source, template, serviceType, alink, search;
 
 function init() {
 
@@ -8,6 +8,8 @@ function init() {
   // get the list information via tabletop
   getList.tabletop();
 
+  // create Autolinker instance for use in filtering
+  // plain text URLs and Emails in the Handlebars helper
   alink = new Autolinker( {
     className: "myLink"
   } );
@@ -17,7 +19,6 @@ function init() {
 }
 
 function getTemplateAjax(path) {
-  var source;
 
   $.ajax({
     url: path,
@@ -31,7 +32,6 @@ function getTemplateAjax(path) {
 
 var getList = {
   tabletop: function() {
-    console.log('FUNCTION: getList.tabletop()');
     Tabletop.init({
       key: '1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ',
       callback: success,
@@ -54,17 +54,26 @@ callback function after the list data has
 been returned successfully. Add it to `list`
 so we have access to the information globally */
 function success(data) {
+
+  // remove loader
+  document.getElementById('loader').className = 'loaded';
+
+  // assign data to list for global access
   list = data;
+
+  // begin looping through the list data
   listLoop();
 }
 
 function initSearch() {
-  console.log('FUNCTION: initSearch()');
+  
+  // set up search fields, based on classes in the static/templates/service.handlebars template
   var options = {
     valueNames: [ 'title', 'description', 'population', 'criteria', 'contact', 'cost' ]
   }
-  var searchList = new List('service-list-wrapper', options);
-  console.log(searchList);
+
+  // generate the searchable list object, send to search for global access
+  search = new List('service-list-wrapper', options);
 }
 
 function initAutocomplete() {
@@ -92,8 +101,14 @@ function initAutocomplete() {
 }
 
 function listLoop() {
+
+  // hide the services list initially so we can fade in
+  $('#services-list').hide();
+
+  // set the 'all' filter up first before the loop
   firstFilter();
 
+  // loop throught the different sheets
   for (var key in list) {
 
     // let's run this IIFE function to keep our 
@@ -110,10 +125,12 @@ function listLoop() {
       // now lets get each row as "service" in k
       sheet.elements.forEach(handleService);
       
-
     })(list[key]);
 
   }
+
+  // fade in the populated list
+  $('#services-list').fadeIn(600);
 
   // initialize the searchable list now that it has content
   initSearch();
@@ -154,7 +171,7 @@ function createFilter(type, sanitized) {
   var servicesFilterList = document.getElementById('services-filter');
   var filter = document.createElement('button');
   filter.innerHTML = type;
-  filter.className = 'service-filter btn btn-success';
+  filter.className = 'btn service-filter';
   filter.setAttribute('data', sanitized);
   filter.setAttribute('type', 'button');
   filter.addEventListener('click', filterClick, false);
