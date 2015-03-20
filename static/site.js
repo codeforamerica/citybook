@@ -20,13 +20,13 @@ function getTemplateAjax(path) {
   var source;
 
   $.ajax({
-      url: path,
-      cache: true,
-      success: function(data) {
-        source    = data;
-        template  = Handlebars.compile(source);
-      }
-    });
+    url: path,
+    cache: true,
+    success: function(data) {
+      source    = data;
+      template  = Handlebars.compile(source);
+    }
+  });
 }
 
 var getList = {
@@ -67,8 +67,33 @@ function initSearch() {
   console.log(searchList);
 }
 
+function initAutocomplete() {
+  var serviceNames = [];
+  $(".title").each(function() {serviceNames.push($(this).text())});
+
+  var serviceNamesBloodhound = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: $.map(serviceNames, function(serviceName) { return { value: serviceName }; })
+  });
+ 
+  serviceNamesBloodhound.initialize();
+ 
+  $('#search .typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },
+  {
+    name: 'serviceNamesBloodhound',
+    displayKey: 'value',
+    source: serviceNamesBloodhound.ttAdapter()
+  });
+}
+
 function listLoop() {
   firstFilter();
+
   for (var key in list) {
 
     // let's run this IIFE function to keep our 
@@ -92,6 +117,7 @@ function listLoop() {
 
   // initialize the searchable list now that it has content
   initSearch();
+  initAutocomplete();
 }
 
 
