@@ -25,7 +25,10 @@ h1, h2, h3, h4 {
 SEARCH & FILTERS
 
 + + + + + + + + + + + */
-#search { margin:2em 0 .5em; }
+#search {
+  margin:2em 0 .5em;
+  display: block;
+}
 #search input {
   width:100%;
   padding:10px;
@@ -141,17 +144,10 @@ TYPEAHEAD
   color: black;
   font-size: 14px;
   line-height: 0;
-  border-top:1px solid #f6f6f6;
+  border: 1px solid #f6f6f6;
   font-family: 'Bree Serif', serif;
 }
 .tt-suggestion.tt-cursor {
   background-color:steelblue;
   color:#fff;
-}
-@media (min-width: 690px) {
-  .twitter-typeahead {
-    float: left;
-    width: 80%;
-    margin-right:1%;
-  }
 }
