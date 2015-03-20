@@ -26,9 +26,35 @@ SEARCH & FILTERS
 
 + + + + + + + + + + + */
 #search { margin:2em 0 .5em; }
+#search input {
+  width:100%;
+  padding:10px;
+  border-radius:3px;
+  font-size:1em;
+  border:1px solid #c0c0c0;
+}
 #services-filter {}
-.btn.service-filter {}
-.btn.service-filter.active {}
+.btn.service-filter {
+  text-transform:uppercase;
+  background:transparent;
+  color:steelblue;
+  border:1px solid steelblue;
+  padding:5px;
+  font-size:.7em;
+  letter-spacing:.1em;
+  margin:2px;
+  cursor:pointer;
+}
+.btn.service-filter:hover {
+  background:#e5e5e5;
+}
+.btn.service-filter:focus {
+  outline:none;
+}
+.btn.service-filter.active {
+  background:steelblue;
+  color:#f6f6f6;
+}
 
 
 /* + + + + + + + + + + +
