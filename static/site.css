@@ -18,6 +18,9 @@ h1, h2, h3, h4 {
   font-family: 'Bree Serif', serif; 
 }
 .btn {}
+#service-list-wrapper {
+  margin:1.4em;
+}
 
 
 /* + + + + + + + + + + +
