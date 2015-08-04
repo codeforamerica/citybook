@@ -6,59 +6,95 @@
 GLOBALS
 
 + + + + + + + + + + + */
+* {
+  box-sizing:border-box;  
+  -moz-box-sizing:border-box; 
+  -webkit-box-sizing:border-box;
+}
 body {
   margin:0;
   padding:0;
   display:block;
-  max-width:850px;
   margin:auto;
   font-family: 'Source Sans Pro', sans-serif;
+  background: #1fa67a;
 }
 h1, h2, h3, h4 {
   font-family: 'Bree Serif', serif; 
 }
-.btn {}
-#service-list-wrapper {
-  margin:1.4em;
+a {
+  color: #AAAAAA;
 }
-
 
 /* + + + + + + + + + + +
 
 SEARCH & FILTERS
 
 + + + + + + + + + + + */
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 320px;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  padding: 1px 20px;
+}
+.sidebar .title {
+  margin:-1px -20px 20px;
+  background: #188461;
+  color: #fff;
+  padding: 20px;
+}
 #search {
-  margin:2em 0 .5em;
+  margin:0.5em 0;
 }
 #search input {
   width:100%;
   padding:10px;
-  border-radius:3px;
+  background: #f6f6f6;
+  border: 1px solid #e5e5e5;
+  /*border: 3px solid #1fa67a;*/
+  border-radius: 0px;
   font-size:1em;
-  border:1px solid #c0c0c0;
 }
-#services-filter {}
-.btn.service-filter {
+#services-filter {
+  margin-left: 20px;
+}
+.service-filter {
+  position: relative;
   text-transform:uppercase;
-  background:transparent;
-  color:steelblue;
-  border:1px solid steelblue;
-  padding:5px;
-  font-size:.7em;
-  letter-spacing:.1em;
-  margin:2px;
-  cursor:pointer;
+  background: transparent;
+  border: 0;
+  color: #999;
+  padding: 2px 0;
+  font-size: .7em;
+  letter-spacing: .1em;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
 }
-.btn.service-filter:hover {
-  background:#e5e5e5;
+.service-filter:before {
+  position: absolute;
+  content: "-";
+  top: 1px;
+  left: -12px;
+  color: #e5e5e5;
 }
-.btn.service-filter:focus {
+.service-filter:hover {
+  color:#777;
+}
+.service-filter:focus {
   outline:none;
 }
-.btn.service-filter.active {
-  background:steelblue;
-  color:#f6f6f6;
+.service-filter.active {
+  font-weight: 900;
+  color:#222;
+}
+.service-filter.active:before {
+  content: "\2713";
+  color: #2ECC40;
 }
 
 
@@ -68,20 +104,47 @@ SERVICE ITEMS
 
 + + + + + + + + + + + */
 #services-list {
-  position:relative;
+  position: absolute;
+  left: 320px;
+  padding: 20px;
+  margin: 0;
+  top: 0;
+  right: 0;
+  background: #1fa67a;
   list-style-type: none;
-  margin:0;
-  padding:0;
+  padding: 0;
 }
 
 .service {
-  padding:0 10px;
-  background-color:#f6f6f6;
-  margin-bottom:10px;
+  position: relative;
+  padding:5px 10px 1px;
+  margin: 20px 20px;
+  background-color:#fff;
+  box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+}
+
+.type {
+  font-size: 0.7em;
+  font-weight: 900;
+  color: #999;
 }
 
 /* service data styles */
-.service .title {}
+.service .title {
+  margin: 0;
+  color: #555;
+  width: 70%;
+}
+.service .phone {
+  position: absolute;
+  top:0;
+  right:0;
+  max-width:30%;
+  background: #f6f6f6;
+  padding:10px;
+  margin:0;
+  color: #999;
+}
 .service .description {}
 .service .population {}
 .service .criteria {}
@@ -106,7 +169,7 @@ LOADING SPINNER
 + + + + + + + + + + + */
 #loader {
   display:block;
-  margin:30px auto;
+  margin: 50px 0px 0px 320px;
   text-align:center;
 }
 #loader.loaded {
