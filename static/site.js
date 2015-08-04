@@ -1,41 +1,26 @@
-var list, source, template, serviceType, alink, search;
+var list, source, template, serviceType, alink, search, tt;
 
 function init() {
-
-  // init handlebars
-  getTemplateAjax('static/templates/service.handlebars');
   
   // get the list information via tabletop
   getList.tabletop();
 
-  // create Autolinker instance for use in filtering
-  // plain text URLs and Emails in the Handlebars helper
-  alink = new Autolinker( {
-    className: "myLink"
-  } );
+  // // create Autolinker instance for use in filtering
+  // // plain text URLs and Emails in the Handlebars helper
+  // alink = new Autolinker( {
+  //   className: "myLink"
+  // } );
 
   // use this if using get.py
   // getList.local();
 }
 
-function getTemplateAjax(path) {
-
-  $.ajax({
-    url: path,
-    cache: true,
-    success: function(data) {
-      source    = data;
-      template  = Handlebars.compile(source);
-    }
-  });
-}
-
 var getList = {
   tabletop: function() {
     Tabletop.init({
-      key: '1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ',
-      callback: success,
-    })
+      key: '1JM5btyWIvZdDdWe5n3kxBY2qWLCoBdH37ncmEz0IpFg', // copy of live spreadsheet
+      callback: success
+    });
   },
   local: function() {
     $.ajax({
@@ -53,7 +38,11 @@ var getList = {
 callback function after the list data has
 been returned successfully. Add it to `list`
 so we have access to the information globally */
-function success(data) {
+function success(data, tabletop) {
+
+  // console.log(data, tabletop);
+
+  tt = tabletop;
 
   // remove loader
   document.getElementById('loader').className = 'loaded';
@@ -69,7 +58,8 @@ function initSearch() {
   
   // set up search fields, based on classes in the static/templates/service.handlebars template
   var options = {
-    valueNames: [ 'title', 'description', 'population', 'criteria', 'contact', 'cost' ]
+    valueNames: [ 'title' ],
+    page: 1000
   }
 
   // generate the searchable list object, send to search for global access
@@ -123,6 +113,11 @@ function listLoop() {
       createFilter(serviceType, sanitize(serviceType));
 
       // now lets get each row as "service" in k
+      for (var s = 0; s < sheet.elements.length; s++) {
+        (function(row){
+          handleService(row);
+        })(sheet.elements[s]);
+      }
       sheet.elements.forEach(handleService);
       
     })(list[key]);
@@ -138,22 +133,25 @@ function listLoop() {
 }
 
 
-function handleService(service, index, array) {
+function handleService(service) {
 
-  // set data for usage in handlebar template
-  var data = {
-    title: service['Provider/Program'],
-    description: service['Description'],
-    serviceClass: sanitize(serviceType),
-    cost: service['Cost/Fee'],
-    contact: service['Contact Info'],
-    population: service['Population Served'],
-    criteria: service['Criteria']
+  // remove the row that says "other"
+  if (service.NAME === 'OTHER') {
+    return;
+  } else {
+    var serviceElem = document.createElement('li');
+    serviceElem.className = 'service ' + sanitize(serviceType);
+    serviceElem.innerHTML = '<h1 class="title">' + service.NAME + '</h1>';
+    serviceElem.innerHTML += '<span class="type">' + serviceType + '</span>';
+
+    for (key in service) {
+      if (service[key].length > 0 && key != 'NAME' && service[key] != 'N/A' && service[key] != 'N/a') {
+        serviceElem.innerHTML += '<p class="'+key+'"><strong>' + key + '</strong><br>' + service[key] + '</p>';  
+      }
+    }
+
+    document.getElementById('services-list').appendChild(serviceElem);
   }
-
-  // append handlebar response to service list
-  document.getElementById('services-list').innerHTML += template(data);
-
 }
 
 function firstFilter() {
@@ -200,16 +198,5 @@ function filterClick() {
   }  
 
 }
-
-/*
-Handlebars helper that filters and adds <a> to any plain text
-URLs within the text. This can be passed in the .handlebars
-templates within any {{ content }} by adding it before the content piece
-{{ add-links content }}
-*/
-Handlebars.registerHelper('add-links', function(context) {
-  var linked = alink.link(context);
-  return new Handlebars.SafeString(linked);
-});
 
 window.onload = init();
