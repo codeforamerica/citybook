@@ -7,7 +7,6 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
-  <script src="static/handlebars.js"></script>
   <script src="static/tabletop.js"></script>
   <script src="static/autolinker.js"></script>
   <script src="static/typeahead.bundle.js"></script>
@@ -17,17 +16,22 @@
 
   <div id="service-list-wrapper">
 
-    <!-- intro -->
-    <h1>RVA Service Directory</h1>
-    <p>The following list of services comes from <a href="https://docs.google.com/a/codeforamerica.org/spreadsheets/d/1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ/edit#gid=863180525">this Google spreadsheet</a> maintained by the <a href="http://www.societyhealth.vcu.edu/">Center on Society and Health</a> at VCU. The application is a project by the <a href="http://rva.codeforamerica.org">2015 Richmond Fellows</a> at <a href="http://codeforamerica.org">Code for America</a>. Please send questions, comments, and corrections to <a href="mailto:richmond@codeforamerica.org">richmond@codeforamerica.org</a>.
+    <div class="sidebar">
+      <!-- intro -->
+      <h1 class="title">RVA Service Directory</h1>
 
-    <!-- search -->
-    <div id="search" class="input-group">
-      <input type="text" class="form-control search typeahead" placeholder="Search" aria-describedby="sizing-addon2">
+      <!-- search -->
+      <div id="search" class="input-group">
+        <input type="text" class="form-control search typeahead" placeholder="Search" aria-describedby="sizing-addon2">
+      </div>
+
+      <!-- filters -->
+      <div id="services-filter" class="btn" role="group"></div>
+
+      <p>The following list of services comes from <a href="https://docs.google.com/a/codeforamerica.org/spreadsheets/d/1liPb1u_Z09Du8L--OjNWl_zZi7KE0_-ejIHw5OfkslQ/edit#gid=863180525">this Google spreadsheet</a> maintained by the <a href="http://www.societyhealth.vcu.edu/">Center on Society and Health</a> at VCU. The application is a project by the <a href="http://rva.codeforamerica.org">2015 Richmond Fellows</a> at <a href="http://codeforamerica.org">Code for America</a>.</p>
+
+      <p>Found an error? <a href="https://docs.google.com/forms/d/1RkdzgU7BxubRNe2RJuhQIB3-sTPe-SIeYtbk2pthWOQ/viewform" target="_blank">Please fill out this form.</a></p>
     </div>
-
-    <!-- filters -->
-    <div id="services-filter" class="btn" role="group"></div>
 
     <!-- services -->
     <ul id="services-list" class="list"></ul>
