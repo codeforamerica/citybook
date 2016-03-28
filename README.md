@@ -1,12 +1,9 @@
-# Richmond, VA - Health Services List
+# CityBook
+## Make a searchable address book from a contact spreadsheet
 
-Despite the many existing health and social services in the city of Richmond, organizations have trouble keeping their lists up-to-date. Many people making referrals have their own up-to-date list in a Google spreadsheet or other formats but they are typically not shared with other people and their data are not available to the public.
+CityBook aims to make it easier for administrative staff who maintain contact lists to create a searchable, mobile-responsive web app that uses their spreadsheet as a data source.
 
-This project takes a multi-sheet Google spreadsheet of health and social services in Richmond, VA and turns them into a searchable list. The data are provided by the [Center on Society and Health](http://www.societyhealth.vcu.edu/) at VCU. This is a project by the [2015 Richmond Fellowship team](http://rva.codeforamerica.org).
-
-### Status
-
-This is an ongoing project and is not intended for official use.
+Based on the CfA [2015 Richmond Fellowship team's](http://rva.codeforamerica.org) [Search-RVAHealth project](https://github.com/codeforamerica/search-rvahealth).
 
 ### What is this built with?
 
