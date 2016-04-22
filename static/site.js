@@ -72,6 +72,7 @@ function success(data, tabletop) {
   document.getElementById('loader').className = 'loaded';
 
   $('.sidebar .title').text(params.pageTitle);
+  $('title').text(params.pageTitle);
   // assign data to list for global access
   list = data;
 
