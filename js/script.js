@@ -22,6 +22,7 @@ $(document).ready(function(){
     srcUrl = baseURL + spreadsheetKey + '&title=' + cityBookTitle
     iframeEmbed = '<iframe src="' + srcUrl + '" width="' + cityBookWidth + '%" height="' + cityBookHeight + '" frameboarder="0"></iframe>';
 
+    $('#citybook-test').attr('href', srcUrl);
     $('#output').val(iframeEmbed);
 
     console.log(srcUrl);
