@@ -1,7 +1,16 @@
-var list, source, template, serviceType, alink, search, tt;
+var
+  list,
+  source,
+  template,
+  serviceType,
+  alink,
+  search,
+  tt;
+
+var params = {};
 
 function init() {
-  
+
   // get the list information via tabletop
   getList.tabletop();
 
@@ -15,10 +24,25 @@ function init() {
   // getList.local();
 }
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&").toLowerCase();// This is just to avoid case sensitiveness for query parameter name
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+params.spreadsheetKey = getParameterByName('key');
+params.pageTitle = getParameterByName('title');
+params.primaryColor = getParameterByName('primary-color');
+params.secondaryColor = getParameterByName('secondary-color');
+
 var getList = {
   tabletop: function() {
     Tabletop.init({
-      key: '1JM5btyWIvZdDdWe5n3kxBY2qWLCoBdH37ncmEz0IpFg', // copy of live spreadsheet
+      key: params.spreadsheetKey, // copy of live spreadsheet
       callback: success
     });
   },
@@ -32,21 +56,22 @@ var getList = {
       }
     });
   }
-}
+};
 
-/* 
+/*
 callback function after the list data has
 been returned successfully. Add it to `list`
 so we have access to the information globally */
 function success(data, tabletop) {
 
-  // console.log(data, tabletop);
+  console.log(data);
 
   tt = tabletop;
 
   // remove loader
   document.getElementById('loader').className = 'loaded';
 
+  $('.sidebar .title').text(params.pageTitle);
   // assign data to list for global access
   list = data;
 
@@ -55,12 +80,12 @@ function success(data, tabletop) {
 }
 
 function initSearch() {
-  
+
   // set up search fields, based on classes in the static/templates/service.handlebars template
   var options = {
     valueNames: [ 'title' ],
     page: 1000
-  }
+  };
 
   // generate the searchable list object, send to search for global access
   search = new List('service-list-wrapper', options);
@@ -75,9 +100,9 @@ function initAutocomplete() {
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     local: $.map(serviceNames, function(serviceName) { return { value: serviceName }; })
   });
- 
+
   serviceNamesBloodhound.initialize();
- 
+
   $('#search .typeahead').typeahead({
     hint: true,
     highlight: true,
@@ -101,7 +126,7 @@ function listLoop() {
   // loop throught the different sheets
   for (var key in list) {
 
-    // let's run this IIFE function to keep our 
+    // let's run this IIFE function to keep our
     // for loop scope while we go through it
     // 'sheet' is the spreadsheet's tabulated sheet and represents list[key]
     (function(sheet) {
@@ -119,7 +144,7 @@ function listLoop() {
         })(sheet.elements[s]);
       }
       sheet.elements.forEach(handleService);
-      
+
     })(list[key]);
 
   }
@@ -139,14 +164,27 @@ function handleService(service) {
   if (service.NAME === 'OTHER') {
     return;
   } else {
+
     var serviceElem = document.createElement('li');
+    var requiredInfo = document.createElement('div');
+    var additionalInfo = document.createElement('div');
+
     serviceElem.className = 'service ' + sanitize(serviceType);
-    serviceElem.innerHTML = '<h1 class="title">' + service.NAME + '</h1>';
-    serviceElem.innerHTML += '<span class="type">' + serviceType + '</span>';
+    requiredInfo.className = 'requiredInfo';
+    additionalInfo.className = 'additionalInfo';
+
+    $(serviceElem).append(requiredInfo);
+    $(serviceElem).append(additionalInfo);
+
+    console.log(service['Organization Name']);
+
+    requiredInfo.innerHTML = '<h1 class="title">' + service['Organization Name'] + '</h1>';
+    //requiredInfo.innerHTML += '<span class="type">' + serviceType + '</span>';
+    // requiredInfo.innerHTML += '<p class="type">' + service['Phone'] + '</p>';
 
     for (key in service) {
-      if (service[key].length > 0 && key != 'NAME' && service[key] != 'N/A' && service[key] != 'N/a') {
-        serviceElem.innerHTML += '<p class="'+key+'"><strong>' + key + '</strong><br>' + service[key] + '</p>';  
+      if (service[key].length > 0 && key != 'Organization Name' && service[key] != 'N/A' && service[key] != 'N/a') {
+        serviceElem.innerHTML += '<p class="'+key+'"><strong>' + key + '</strong><br>' + service[key] + '</p>';
       }
     }
 
@@ -190,12 +228,12 @@ function filterClick() {
     $('.service-filter').removeClass('active');
     $(this).addClass('active');
     if(show=='all') {
-      $('.service').show();  
+      $('.service').show();
     } else {
       $('.service').hide();
       $('.'+show).show();
     }
-  }  
+  }
 
 }
 
