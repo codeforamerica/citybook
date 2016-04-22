@@ -7,8 +7,8 @@ var cityBookWidth = '100';
 var cityBookHeight = '600';
 
 $(document).ready(function(){
-  $('#citybook-height').val(cityBookWidth);
-  $('#citybook-width').val(cityBookHeight);
+  $('#citybook-height').val(cityBookHeigh);
+  $('#citybook-width').val(cityBookWidth);
 
   $("input[type='text']" ).on('input',function(e){
     var keyInput = $('#spreadsheet-key').val();
@@ -20,7 +20,7 @@ $(document).ready(function(){
     cityBookWidth = $('#citybook-width').val();
 
     srcUrl = baseURL + spreadsheetKey + '&title=' + cityBookTitle
-    iframeEmbed = '<iframe src="' + srcUrl + '" width="' + cityBookWidth + '%" height="' + cityBookHeight + '" frameboarder="0"></iframe>';
+    iframeEmbed = '<iframe src="' + srcUrl + '" width="' + cityBookWidth + '%" height="' + cityBookHeight + 'px" frameboarder="0"></iframe>';
 
     $('#citybook-test').attr('href', srcUrl);
     $('#output').val(iframeEmbed);
