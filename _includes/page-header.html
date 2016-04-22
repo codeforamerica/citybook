@@ -1,6 +1,17 @@
 <section class="page-header">
   <h1 class="project-name">{{ site.title }}</h1>
   <h2 class="project-tagline">{{ site.tagline }}</h2>
-  <a href="#" class="btn">Get Started</a>
+  <a id="get-started-button" class="btn">Get Started</a>
   <a href="/static?key=1GDr_0B-nXwSU_Kw8Y8vg4nhvYwxrwnzTCNmXFyXrDCQ&title=CityBook" target="_blank" class="btn">Demo</a>
 </section>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#get-started-button').click(function(){
+    $('html, body').animate({
+      scrollTop: $("#get-started").offset().top
+    }, 500);
+  });
+})
+
+</script>

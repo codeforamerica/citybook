@@ -49,6 +49,17 @@ a {
         margin-top: 1rem;
         margin-left: 0; } }
 
+  .btn.blue {
+    background-color: rgba(21,87,153, 0.5);
+    color: white;
+    border-color: rgba(21,87,153, 1)
+  }
+  .btn.blue:hover {
+    background-color: rgba(21,87,153, 0.9);
+    color: white;
+    border-color: rgba(21,87,153, 1)
+  }
+
 .page-header {
   color: #fff;
   text-align: center;
