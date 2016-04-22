@@ -1,6 +1,6 @@
 # Setup
 title:        CityBook
-tagline:      Create a searchable, mobile-responsive contact list<br>from a Google Spreadsheet.
+tagline:      Create a searchable, mobile-friendly contact list<br>from a Google Spreadsheet.
 base_url:      ""
 paginate:     1
 
