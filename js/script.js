@@ -19,7 +19,9 @@ $(document).ready(function(){
     cityBookHeight = $('#citybook-height').val();
     cityBookWidth = $('#citybook-width').val();
 
-    srcUrl = baseURL + spreadsheetKey + '&title=' + cityBookTitle
+    safeTitle = encodeURIComponent(cityBookTitle);
+
+    srcUrl = baseURL + spreadsheetKey + '&title=' + safeTitle;
     iframeEmbed = '<iframe src="' + srcUrl + '" width="' + cityBookWidth + '%" height="' + cityBookHeight + 'px" frameboarder="0"></iframe>';
 
     $('#citybook-test').attr('href', srcUrl);
