@@ -7,7 +7,7 @@ var cityBookWidth = '100';
 var cityBookHeight = '600';
 
 $(document).ready(function(){
-  $('#citybook-height').val(cityBookHeigh);
+  $('#citybook-height').val(cityBookHeight);
   $('#citybook-width').val(cityBookWidth);
 
   $("input[type='text']" ).on('input',function(e){
