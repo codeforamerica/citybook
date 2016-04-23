@@ -15,11 +15,11 @@ $(document).ready(function(){
 
     spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
 
-    if(typeOf(spreadsheetKey) === null){
+    if(spreadsheetKey){
+      $("spreadsheet-key-input-group").addClass('success');
+    } else {
       $("spreadsheet-key-input-group").addClass('has-warning');
       return;
-    } else {
-      $("spreadsheet-key-input-group").addClass('success');
     }
 
     cityBookTitle = $('#citybook-title').val();
