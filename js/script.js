@@ -16,10 +16,10 @@ $(document).ready(function(){
     if(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(keyInput)){
       console.log('got to true!');
       spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
-      $("spreadsheet-key-input-group").addClass('success');
+      $("#spreadsheet-key-input-group").addClass('has-success');
     } else {
       console.log('false');
-      $("spreadsheet-key-input-group").addClass('has-warning');
+      $("#spreadsheet-key-input-group").addClass('has-warning');
       return;
     }
 
