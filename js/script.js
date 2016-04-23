@@ -13,11 +13,12 @@ $(document).ready(function(){
   $("input[type='text']" ).on('input',function(e){
     var keyInput = $('#spreadsheet-key').val();
 
-    spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
-
-    if(spreadsheetKey){
+    if(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(keyInput)){
+      console.log('got to true!');
+      spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
       $("spreadsheet-key-input-group").addClass('success');
     } else {
+      console.log('false');
       $("spreadsheet-key-input-group").addClass('has-warning');
       return;
     }
