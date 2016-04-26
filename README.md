@@ -6,6 +6,11 @@ CityBook aims to make it easier for administrative staff who maintain contact li
 
 Based on the CfA [2015 Richmond Fellowship team's](http://rva.codeforamerica.org) [Search-RVAHealth project](https://github.com/codeforamerica/search-rvahealth).
 
+### Development
+
+Run `jekyll serve -w --config _config.yml,_config-dev.yml` for relative links on your local machine.
+Run `jekyll build` before pushing to a pull request.
+
 ### What is this built with?
 
 This project uses [Tabletop.js](https://github.com/jsoma/tabletop) for the spreadsheet access, [Handlebars](http://handlebarsjs.com/) for some templating, [List.js](http://www.listjs.com/) for the searchable list, and [Bootstrap](http://getbootstrap.com/) for the styles.
