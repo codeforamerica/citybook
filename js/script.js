@@ -13,7 +13,17 @@ $(document).ready(function(){
   $("input[type='text']" ).on('input',function(e){
     var keyInput = $('#spreadsheet-key').val();
 
-    spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+    if(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(keyInput)){
+      console.log('got to true!');
+      spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+      $("#spreadsheet-key-input-group").addClass('has-success');
+      $("#spreadsheet-key-input-group").removeClass('has-error');
+    } else {
+      console.log('false');
+      $("#spreadsheet-key-input-group").addClass('has-error');
+      $("#spreadsheet-key-input-group").removeClass('has-success');
+      return;
+    }
 
     cityBookTitle = $('#citybook-title').val();
     cityBookHeight = $('#citybook-height').val();
