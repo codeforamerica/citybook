@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/codeforamerica/citybook.png)](https://travis-ci.org/codeforamerica/citybook)[![Stories in Ready](https://badge.waffle.io/codeforamerica/citybook.png?label=ready&title=Ready)](https://waffle.io/codeforamerica/citybook)
+[![Build Status](https://travis-ci.org/codeforamerica/citybook.png)](https://travis-ci.org/codeforamerica/citybook)  [![Stories in Ready](https://badge.waffle.io/codeforamerica/citybook.png?label=ready&title=Ready)](https://waffle.io/codeforamerica/citybook)
 # CityBook
 Make a searchable address book from a contact spreadsheet.
 http://codeforamerica.github.io/citybook
