@@ -24,6 +24,7 @@ function init() {
   // getList.local();
 }
 
+//Get Params in URL
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&").toLowerCase();// This is just to avoid case sensitiveness for query parameter name
