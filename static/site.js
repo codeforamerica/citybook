@@ -145,7 +145,6 @@ function listLoop() {
           handleService(row);
         })(sheet.elements[s]);
       }
-      sheet.elements.forEach(handleService);
 
     })(list[key]);
 
