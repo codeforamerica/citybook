@@ -7,8 +7,8 @@ GLOBALS
 
 + + + + + + + + + + + */
 * {
-  box-sizing:border-box;  
-  -moz-box-sizing:border-box; 
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
 }
 body {
@@ -20,7 +20,7 @@ body {
   background: #1fa67a;
 }
 h1, h2, h3, h4 {
-  font-family: 'Bree Serif', serif; 
+  font-family: 'Bree Serif', serif;
 }
 a {
   color: #AAAAAA;
@@ -208,7 +208,6 @@ TYPEAHEAD
   padding: 1px 5px;
   color: black;
   font-size: 14px;
-  line-height: 0;
   border: 1px solid #f6f6f6;
   font-family: 'Bree Serif', serif;
 }
