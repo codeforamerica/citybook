@@ -177,14 +177,12 @@ function handleService(service) {
     $(serviceElem).append(requiredInfo);
     $(serviceElem).append(additionalInfo);
 
-    console.log(service['Organization Name']);
-
     requiredInfo.innerHTML = '<h1 class="title">' + service['Organization Name'] + '</h1>';
-    //requiredInfo.innerHTML += '<span class="type">' + serviceType + '</span>';
+    requiredInfo.innerHTML += '<a href="tel:' + service['Telephone'] + '" class="btn btn-success"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> ' + service['Telephone'] + '</a>';
     // requiredInfo.innerHTML += '<p class="type">' + service['Phone'] + '</p>';
 
     for (key in service) {
-      if (service[key].length > 0 && key != 'Organization Name' && service[key] != 'N/A' && service[key] != 'N/a') {
+      if (service[key].length > 0 && key != 'Organization Name' && key != 'Telephone' && service[key] != 'N/A' && service[key] != 'N/a') {
         serviceElem.innerHTML += '<p class="'+key+'"><strong>' + key + '</strong><br>' + service[key] + '</p>';
       }
     }
@@ -197,7 +195,7 @@ function firstFilter() {
   var servicesFilterList = document.getElementById('services-filter');
   var all = document.createElement('button');
   all.innerHTML = 'All';
-  all.className = 'service-filter btn btn-success active';
+  all.className = 'service-filter btn active';
   all.setAttribute('data', 'all');
   all.setAttribute('type', 'button');
   all.addEventListener('click', filterClick, false);
