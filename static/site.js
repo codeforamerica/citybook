@@ -24,6 +24,24 @@ function init() {
   // getList.local();
 }
 
+//Determine device type for iOS or Android - used for mapping application link.
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+  {
+    return 'iOS';
+  }
+  else if( userAgent.match( /Android/i ) )
+  {
+    return 'Android';
+  }
+  else
+  {
+    return 'unknown';
+  }
+}
+
 //Get Params in URL
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -65,8 +83,6 @@ been returned successfully. Add it to `list`
 so we have access to the information globally */
 function success(data, tabletop) {
 
-  console.log(data);
-
   tt = tabletop;
 
   // remove loader
@@ -95,7 +111,7 @@ function initSearch() {
 
 function initAutocomplete() {
   var serviceNames = [];
-  $(".title").each(function() {serviceNames.push($(this).text())});
+  $(".title h1").each(function() {serviceNames.push($(this).text())});
 
   var serviceNamesBloodhound = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -126,8 +142,8 @@ function listLoop() {
   firstFilter();
 
   // loop throught the different sheets
+  var sheetKey = 0;
   for (var key in list) {
-
     // let's run this IIFE function to keep our
     // for loop scope while we go through it
     // 'sheet' is the spreadsheet's tabulated sheet and represents list[key]
@@ -141,13 +157,16 @@ function listLoop() {
 
       // now lets get each row as "service" in k
       for (var s = 0; s < sheet.elements.length; s++) {
+        // Create an individual key for each service item based on sheetKey-itemNumber
+        itemId = sheetKey + '-' + s;
         (function(row){
-          handleService(row);
+          handleService(row, itemId);
         })(sheet.elements[s]);
       }
 
     })(list[key]);
 
+    sheetKey++;
   }
 
   // fade in the populated list
@@ -159,7 +178,7 @@ function listLoop() {
 }
 
 
-function handleService(service) {
+function handleService(service, counter) {
 
   // remove the row that says "other"
   if (service.NAME === 'OTHER') {
@@ -167,25 +186,45 @@ function handleService(service) {
   } else {
 
     var serviceElem = document.createElement('li');
+    var serviceHeader = document.createElement('div');
     var requiredInfo = document.createElement('div');
     var additionalInfo = document.createElement('div');
+    var showMoreButton = '<a data-toggle="collapse" class="btn btn-default more-info collapsed" data-target="#additional-services-' + counter + '"> Info</a>'
 
     serviceElem.className = 'service ' + sanitize(serviceType);
-    requiredInfo.className = 'requiredInfo';
-    additionalInfo.className = 'additionalInfo';
+    serviceHeader.className = 'title col-md-6';
+    requiredInfo.className = 'requiredInfo clearfix';
+    additionalInfo.className = 'additionalInfo collapse clearfix';
+    additionalInfo.id = 'additional-services-' + counter;
 
     $(serviceElem).append(requiredInfo);
     $(serviceElem).append(additionalInfo);
 
-    console.log(service['Organization Name']);
+    requiredInfoButtons = document.createElement('div');
+    requiredInfoButtons.className = 'btn-group pull-right';
 
-    requiredInfo.innerHTML = '<h1 class="title">' + service['Organization Name'] + '</h1>';
-    //requiredInfo.innerHTML += '<span class="type">' + serviceType + '</span>';
-    // requiredInfo.innerHTML += '<p class="type">' + service['Phone'] + '</p>';
+    if(service['Telephone']){
+      requiredInfoButtons.innerHTML += '<a href="tel:' + service['Telephone'] + '" class="btn btn-default"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> ' + service['Telephone'] + '</a>';
+    } else {
+      requiredInfoButtons.innerHTML += '<a href="#" class="btn btn-default disabled"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> No Phone Listed</a>';
+    }
+
+    if(service['Address']){
+      requiredInfoButtons.innerHTML += '<a href="https://maps.google.com/?q=' + encodeURIComponent(service['Address']) + '" target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Directions</a>';
+    } else {
+      requiredInfoButtons.innerHTML += '<a href="#" class="btn btn-default disabled"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> No Address Listed</a>';
+    }
+
+    requiredInfoButtons.innerHTML += showMoreButton;
+
+    serviceHeader.innerHTML = '<h1>' + service['Organization Name'] + '</h1>';
+    serviceHeader.innerHTML += '<p class="type">' + service['Type of Program'] + '</p>';
+    $(requiredInfo).append(serviceHeader);
+    $(requiredInfo).append(requiredInfoButtons);
 
     for (key in service) {
       if (service[key].length > 0 && key != 'Organization Name' && service[key] != 'N/A' && service[key] != 'N/a') {
-        serviceElem.innerHTML += '<p class="'+key+'"><strong>' + key + '</strong><br>' + service[key] + '</p>';
+        additionalInfo.innerHTML += '<p class="'+key+' col-md-12"><strong>' + key + '</strong><br>' + service[key] + '</p>';
       }
     }
 
@@ -197,7 +236,7 @@ function firstFilter() {
   var servicesFilterList = document.getElementById('services-filter');
   var all = document.createElement('button');
   all.innerHTML = 'All';
-  all.className = 'service-filter btn btn-success active';
+  all.className = 'service-filter btn active';
   all.setAttribute('data', 'all');
   all.setAttribute('type', 'button');
   all.addEventListener('click', filterClick, false);
@@ -238,4 +277,6 @@ function filterClick() {
 
 }
 
-window.onload = init();
+$(document).ready(function(){
+  init();
+});
