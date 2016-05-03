@@ -89,7 +89,6 @@ SEARCH & FILTERS
   font-size: 2em;
   top: 0.25em;
   left: 0.25em;
-  color: #e5e5e5;
 }
 .service-filter:hover {
   color:#777;
@@ -119,35 +118,35 @@ SERVICE ITEMS
 #services-list {
   position: absolute;
   left: 320px;
-  padding: 20px;
   margin: 0;
   top: 0;
   right: 0;
   background: #EEE;
   list-style-type: none;
   padding: 0;
+  padding-top: 15px;
 }
 
 .service {
   position: relative;
-  padding:5px 10px 1px;
-  margin: 20px 20px;
+  padding: 10px 10px 10px 0px;
+  margin: 5px 20px;
   background-color:#fff;
   border-radius: 3px;
   border: 1px solid #DADADA;
 }
 
 .type {
-  font-size: 0.7em;
+  font-size: 1em;
   font-weight: 900;
   color: #999;
 }
 
 /* service data styles */
-.service .title {
+.service .title h1 {
   margin: 0;
   color: #555;
-  width: 70%;
+  font-size: 1.7em;
 }
 .service .phone {
   position: absolute;
@@ -165,6 +164,12 @@ SERVICE ITEMS
 .service .contact {}
 .service .cost {}
 
+a.btn.btn-default.more-info.collapsed:before {
+  content: 'More'
+}
+a.btn.btn-default.more-info:before {
+  content: 'Less'
+}
 
 /* + + + + + + + + + + +
 
