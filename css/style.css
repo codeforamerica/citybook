@@ -237,6 +237,10 @@ a {
     background-color: #eff0f1;
     border: 0; }
 
+.diagram {
+  width: 100%;
+}
+
 .site-footer {
   padding-top: 2rem;
   margin-bottom: 2rem;
