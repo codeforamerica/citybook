@@ -1,12 +1,18 @@
-/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test();
 
-var baseURL = 'http://codeforamerica.github.io/citybook/static/?key='
-var spreadsheetKey = ''
+var baseURL = 'http://codeforamerica.github.io/citybook/static/?key=';
+var spreadsheetKey = '';
 var cityBookTitle = 'Placeholder Title';
 var cityBookWidth = '100';
 var cityBookHeight = '600';
 
 $(document).ready(function(){
+  var clipboard = new Clipboard('.clipboard-btn');
+
+  clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+  });
+
   $('#citybook-height').val(cityBookHeight);
   $('#citybook-width').val(cityBookWidth);
 
@@ -14,14 +20,18 @@ $(document).ready(function(){
     var keyInput = $('#spreadsheet-key').val();
 
     if(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(keyInput)){
-      console.log('got to true!');
       spreadsheetKey = keyInput.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
       $("#spreadsheet-key-input-group").addClass('has-success');
       $("#spreadsheet-key-input-group").removeClass('has-error');
+      $("#spreadsheet-key-error").fadeOut(200, function(){
+        $("#spreadsheet-key-success").fadeIn();
+      });
     } else {
-      console.log('false');
       $("#spreadsheet-key-input-group").addClass('has-error');
       $("#spreadsheet-key-input-group").removeClass('has-success');
+      $("#spreadsheet-key-success").fadeOut(200, function(){
+        $("#spreadsheet-key-error").fadeIn();
+      });
       return;
     }
 
@@ -35,12 +45,11 @@ $(document).ready(function(){
     iframeEmbed = '<iframe src="' + srcUrl + '" width="' + cityBookWidth + '%" height="' + cityBookHeight + 'px" frameboarder="0"></iframe>';
 
     $('#citybook-test').attr('href', srcUrl);
-    $('#output').val(iframeEmbed);
+    $('#link-output').val(srcUrl);
+    $('#embed-output').val(iframeEmbed);
 
     console.log(srcUrl);
 
   });
 
-
-
-})
+});
