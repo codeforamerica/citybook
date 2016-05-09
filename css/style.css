@@ -9,6 +9,11 @@ body {
   line-height: 1.5;
   color: #606c71; }
 
+hr {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
 a {
   color: #1e6bb8;
   text-decoration: none; }
