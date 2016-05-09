@@ -231,9 +231,9 @@ TYPEAHEAD
 
 @media (max-width: 600px) {
     .sidebar {
-        width: 150px;
+        width: 175px;
     }
     #services-list {
-        left: 150px;
+        left: 175px;
     }
 }
