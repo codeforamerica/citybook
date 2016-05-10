@@ -10,8 +10,18 @@ Based on the CfA [2015 Richmond Fellowship team's](http://rva.codeforamerica.org
 
 ### Development
 
+Instructions GitHub pages site:
+
 Run `jekyll serve -w --config _config.yml,_config-dev.yml` for relative links on your local machine.
 Run `jekyll build` before pushing to a pull request.
+
+Server:
+
+```
+$ cd server
+$ npm install
+$ npm start
+```
 
 ### What is this built with?
 

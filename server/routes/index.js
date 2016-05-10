@@ -6,7 +6,7 @@ var connectionString = require(path.join(__dirname, '../', 'config'));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'CityBook' });
 });
 
 router.post('/api/v1/books', function(req, res) {
