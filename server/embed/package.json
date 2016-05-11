@@ -48,6 +48,7 @@
     "react": "^0.14.6",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^0.14.6",
+    "react-router": "^2.4.0",
     "tabletop": "^1.4.3"
   }
 }
