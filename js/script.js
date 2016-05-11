@@ -16,7 +16,7 @@ $(document).ready(function(){
   $('#citybook-height').val(cityBookHeight);
   $('#citybook-width').val(cityBookWidth);
 
-  $("input[type='text']" ).on('input',function(e){
+  $("#citybook-generate" ).on('click',function(e){
     var keyInput = $('#spreadsheet-key').val();
 
     //Test if the user entered a link to a Google spreadsheet
