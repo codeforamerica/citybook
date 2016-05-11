@@ -3,6 +3,11 @@ import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormContr
 
 export default class TopNav extends Component {
   render() {
+    let filterOptions = this.props.filterOptions.map(function(option, i){
+      return <MenuItem key={i} eventKey={i}>{option}</MenuItem>
+    });
+    console.log(filterOptions);
+
     return (
       <Navbar className="citybook-header">
         <Navbar.Header>
@@ -19,11 +24,7 @@ export default class TopNav extends Component {
         <Navbar.Collapse>
         <Nav>
           <NavDropdown eventKey={3} title="All Categories" id="basic-nav-dropdown">
-            <MenuItem eventKey={3.1}>Action</MenuItem>
-            <MenuItem eventKey={3.2}>Another action</MenuItem>
-            <MenuItem eventKey={3.3}>Something else here</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={3.3}>Separated link</MenuItem>
+            {filterOptions}
           </NavDropdown>
         </Nav>
           <Nav pullRight>
