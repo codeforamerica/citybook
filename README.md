@@ -23,6 +23,12 @@ $ npm install
 $ npm start
 ```
 
+Database:
+
+```
+$ heroku pg:psql
+```
+
 ### What is this built with?
 
 This project uses [Tabletop.js](https://github.com/jsoma/tabletop) for the spreadsheet access, [Handlebars](http://handlebarsjs.com/) for some templating, [List.js](http://www.listjs.com/) for the searchable list, and [Bootstrap](http://getbootstrap.com/) for the styles.

@@ -35,7 +35,7 @@ router.post('/api/v1/books', function(req, res) {
     }
 
     // Get a Postgres client from the connection pool
-    pg.defaults.ssl = true;
+    //pg.defaults.ssl = true;
     pg.connect(connectionString, function(err, client, done) {
         // Handle connection errors
         if(err) {
@@ -60,8 +60,6 @@ router.post('/api/v1/books', function(req, res) {
             done();
             return res.status(201).json(results);
         });
-
-
     });
 });
 
