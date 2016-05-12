@@ -7,19 +7,23 @@ export default function(spreadsheetUrl, updateState){
     callback: success
   });
 
-  function success(data, tabletop) {
+  function success(data) {
     formatData(data);
-    updateState(true, output.filters);
-    console.log(output)
+    updateState(true, output.filters, output.contactList);
   }
 
   function formatData(data){
-    let filterNames = [];
-    let contactList = [];
+    let
+      filterNames = [],
+      contactList = [];
     for(var key in data){
-      let sheet = data[key];
+      let
+        sheet = data[key],
+        contacts = sheet.elements;
       filterNames.push(sheet.name);
-      contactList.push(sheet.elements);
+      for(var row in contacts){
+        contactList.push(contacts[row]);
+      }
     }
     output.filters = filterNames;
     output.contactList = contactList;

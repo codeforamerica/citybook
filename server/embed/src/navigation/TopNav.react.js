@@ -6,8 +6,6 @@ export default class TopNav extends Component {
     let filterOptions = this.props.filterOptions.map(function(option, i){
       return <MenuItem key={i} eventKey={i}>{option}</MenuItem>
     });
-    console.log(filterOptions);
-
     return (
       <Navbar className="citybook-header">
         <Navbar.Header>
