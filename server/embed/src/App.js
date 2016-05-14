@@ -11,9 +11,12 @@ export default class App extends Component {
     this.state = {
       initialLoadComplete: false,
       filterOptions: '',
-      results:''
+      results:'',
+      spreadsheetId: ''
     }
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+
     this.updateState = this.updateState.bind(this);
   }
   updateState(loadState, filterOptions, results){
@@ -24,7 +27,12 @@ export default class App extends Component {
     })
   }
   componentWillMount(){
-    getSpreadsheetData('1jaxOSJPy6sg_BTDdo6pKTmPhDeae97TICxTDGblD3hw', this.updateState);
+    this.setState({
+      spreadsheetId: this.props.params.bookId
+    });
+  }
+  componentDidMount(){
+    getSpreadsheetData(this.state.spreadsheetId, this.updateState);
   }
   render() {
     let app;
