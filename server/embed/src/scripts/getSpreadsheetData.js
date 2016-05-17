@@ -2,10 +2,15 @@ import tabletop from 'tabletop';
 
 export default function(spreadsheetUrl, updateState){
   let output = {};
-  tabletop.init({
-    key: spreadsheetUrl, // copy of live spreadsheet
-    callback: success
-  });
+  if(spreadsheetUrl){
+    tabletop.init({
+      key: spreadsheetUrl, // copy of live spreadsheet
+      callback: success
+    });
+  } else {
+    let error = {type: 'danger', message: 'Warning: No spreadsheet link provided. Your CityBook cannot load.'};
+    updateState(false, null, null, error);
+  }
 
   function success(data) {
     formatData(data);

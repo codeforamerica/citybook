@@ -1,0 +1,21 @@
+.loading-spinner-container {
+  text-align: center;
+}
+
+.results-list-enter {
+  opacity: 0.01;
+}
+
+.results-list-enter.results-list-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.results-list-leave {
+  opacity: 1;
+}
+
+.results-list-leave.results-list-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
