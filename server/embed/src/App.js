@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Router, Route, Link, browserHistory } from 'react-router';
 import TopNav from './navigation/topNav.react.js';
+import ErrorBar from './ErrorBar.react.js';
 import getSpreadsheetData from './scripts/getSpreadsheetData.js';
-import ResultList from './results/ResultList.react.js';
+import ResultListWrapper from './results/ResultListWrapper.react.js';
 
 
 export default class App extends Component {
@@ -10,6 +11,7 @@ export default class App extends Component {
     super();
     this.state = {
       initialLoadComplete: false,
+      errors: '',
       filterOptions: '',
       results:'',
       spreadsheetId: ''
@@ -19,11 +21,12 @@ export default class App extends Component {
 
     this.updateState = this.updateState.bind(this);
   }
-  updateState(loadState, filterOptions, results){
+  updateState(loadState, filterOptions, results, error){
     this.setState({
       initialLoadComplete: loadState,
       filterOptions: filterOptions,
-      results: results
+      results: results,
+      errors: error
     })
   }
   componentWillMount(){
@@ -35,20 +38,15 @@ export default class App extends Component {
     getSpreadsheetData(this.state.spreadsheetId, this.updateState);
   }
   render() {
-    let app;
-    if(this.state.initialLoadComplete){
-      app = (
-        <div>
-        <TopNav filterOptions={this.state.filterOptions} />
-        <ResultList results={this.state.results} />
-        </div>
-      )
-    } else {
-      app = <h1>Loading</h1>
+    let errors;
+    if(this.state.errors){
+      errors = <h1>There was an error</h1>
     }
     return (
       <div>
-        {app}
+        <TopNav loaded={this.state.initialLoadComplete} spreadsheetId={this.state.spreadsheetId} filterOptions={this.state.filterOptions} />
+        <ErrorBar errors={this.state.errors} />
+        <ResultListWrapper loaded={this.state.initialLoadComplete} errors={this.state.errors} results={this.state.results} />
       </div>
     );
   }

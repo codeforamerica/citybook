@@ -45,9 +45,11 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "react": "^0.14.6",
+    "react": "^15.0.2",
+    "react-addons-css-transition-group": "^15.0.2",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^0.14.6",
+    "react-fontawesome": "^1.1.0",
     "react-router": "^2.4.0",
     "tabletop": "^1.4.3"
   }
