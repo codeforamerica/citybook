@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl } from 'react-bootstrap';
+import Header from './instructions/Header.react.js';
 
 export default class TopNav extends Component {
   render() {
     return (
-      <h1>Home</h1>
+      <Header />
     );
   }
 }
