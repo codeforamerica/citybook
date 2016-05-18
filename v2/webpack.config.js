@@ -7,11 +7,12 @@ module.exports = {
     'webpack-dev-server/client?http://127.0.0.1:8080/',
     'webpack/hot/only-dev-server',
     './site/',
-    './embed/'
+    './app/'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js',
+    chunkFilename: '[id].bundle.js'
   },
   resolve: {
     modulesDirectories: ['node_modules', 'shared'],
