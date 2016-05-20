@@ -45,7 +45,7 @@ export default class App extends Component {
     }
     return (
       <div>
-        <TopNav loaded={this.state.initialLoadComplete} spreadsheetId={this.props.params.bookId} filterOptions={this.state.filterOptions} />
+        <TopNav loaded={this.state.initialLoadComplete} spreadsheetId={this.props.params.bookId} filterOptions={this.state.filterOptions} results={this.state.results} />
         <ErrorBar errors={this.state.errors} />
         <ResultListWrapper loaded={this.state.initialLoadComplete} errors={this.state.errors} results={this.state.results} />
       </div>

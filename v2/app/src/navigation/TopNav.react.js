@@ -1,20 +1,60 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl, Glyphicon } from 'react-bootstrap';
+import ReactTypeahead from 'react-typeahead';
+import '../../styles/styles.scss';
+
+//const Typeahead = require('react-typeahead').Typeahead;
 
 export default class TopNav extends Component {
   constructor(){
     super();
+    this.state = {
+      searchInput: ''
+    }
   }
   render() {
-    let filterOptions;
+    let
+      filterOptions,
+      typeAhead;
+    console.log(this.props.results)
     if(this.props.loaded){
       filterOptions = this.props.filterOptions.map(function(option, i){
         return <MenuItem key={i} eventKey={i}>{option}</MenuItem>
       });
+
+      typeAhead = (
+        <ReactTypeahead.Typeahead
+          options={ this.props.results }
+          maxVisible={5}
+          placeholder='Search...'
+          filterOption='Organization Name'
+          displayOption='Organization Name'
+          customClasses={{
+            input: 'form-control',
+            typeahead: 'topcoat-list',
+            results: 'list-group',
+            listItem: 'list-group-item',
+          }}
+        />
+      )
     } else {
       filterOptions = <NavItem eventKey={1} href="#">Loading...</NavItem>
+      typeAhead = (
+          <ReactTypeahead.Typeahead
+            options={'none'}
+            maxVisible={3}
+            disabled
+            customClasses={{
+              input: 'form-control',
+              typeahead: 'topcoat-list',
+              results: 'list-group',
+              listItem: 'list-group-item',
+            }}
+          />
+      )
     }
     return (
+      <div>
         <Navbar className="citybook-header">
           <Navbar.Header>
             <Navbar.Brand>
@@ -23,8 +63,8 @@ export default class TopNav extends Component {
           <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Form pullLeft>
-            <FormGroup>
-              <FormControl type="text" placeholder="Search..." />
+            <FormGroup style={{display: 'inline'}}>
+            {typeAhead}
             </FormGroup>
           </Navbar.Form>
           <Navbar.Collapse>
@@ -39,6 +79,7 @@ export default class TopNav extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        </div>
     );
   }
 }
