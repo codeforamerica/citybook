@@ -24,7 +24,6 @@ export default class ResultsList extends Component {
       });
 
       list = resultsList.map(function(result, i){
-        console.log(result);
         let resultName = result['Organization Name']
         return (
           <Result key={i} result={result} />

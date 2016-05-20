@@ -16,13 +16,15 @@ export default class Result extends Component {
     typeOfProgram = resultInfo['Type of Program'];
 
     let moreInfo = Object.keys(resultInfo).map(function(result, i){
-      console.log(resultInfo[result]);
       if(resultInfo.hasOwnProperty(result)){
         return (
-          <li><strong>{result + ': '}</strong>{resultInfo[result]}</li>
+          <li key={i}><strong>{result + ': '}</strong>{resultInfo[result]}</li>
         )
       }
     });
+
+    let panelOpenText = this.state.panelOpen ? 'Hide' : 'Show';
+    let panelOpenIcon = this.state.panelOpen ? 'minus' : 'plus';
 
     return(
       <Panel>
@@ -31,35 +33,29 @@ export default class Result extends Component {
             <h1>{organizationName}</h1>
             <span>{typeOfProgram}</span>
           </Col>
-          <Col sm={2} className='text-center'>
+          <Col xs={4} sm={2} className='text-center'>
             <Button className="result-button" target='_blank' href={'https://maps.google.com/?q=' + address} block>
             <Row>
-              <Col xs={2} sm={12}>
-                <Glyphicon className='result-button-icon' glyph='map-marker' />
-              </Col>
-              <Col xs={10} sm={12}>
-                Directions
-              </Col>
+              <Glyphicon className='result-button-icon' glyph='map-marker' />
+              <br/>
+              Directions
             </Row>
             </Button>
           </Col>
-          <Col sm={2} className='text-center'>
+          <Col xs={4} sm={2} className='text-center'>
             <Button className="result-button" href={'tel:'+telephone} block>
             <Row>
-              <Col xs={2} sm={12}>
-                <Glyphicon className='result-button-icon' glyph='earphone' />
-              </Col>
-              <Col xs={10} sm={12}>
-              {telephone}
-              </Col>
+              <Glyphicon className='result-button-icon' glyph='earphone' />
+              <br/>
+              { telephone }
             </Row>
             </Button>
           </Col>
-          <Col sm={2} className='text-center'>
+          <Col xs={4} sm={2} className='text-center'>
             <Button className="result-button" href="#" block onClick={ ()=> this.setState({ panelOpen: !this.state.panelOpen })}>
-              <Glyphicon className='result-button-icon' glyph='plus-sign' />
+              <Glyphicon className='result-button-icon' glyph={ panelOpenIcon + '-sign'} />
               <br/>
-              More Info
+              { panelOpenText } Details
             </Button>
           </Col>
         </Row>

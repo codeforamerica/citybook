@@ -1,0 +1,134 @@
+$large-break: 64em;
+$medium-break: 42em;
+
+
+.btn + .btn {
+  margin-left: 1rem;
+}
+
+.btn-blue {
+  background-color: #4776E6;
+  color: white;
+  border-color: #4776E6;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,.1);
+  &:hover {
+    background-color: rgba(21,87,153, 0.9);
+    color: white;
+    border-color: rgba(21,87,153, 1);
+  }
+}
+
+.page-header {
+
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  background-color: #4776E6;
+  background-image: linear-gradient(120deg, #4776E6, #8E54E9);
+
+  @media screen and (min-width: 64em) {
+    padding: 8rem 6rem;
+    margin-bottom: 3rem;
+  }
+
+  @media screen and (min-width: $medium-break) and (max-width: $large-break) {
+    padding: 7rem 4rem;
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: $medium-break) {
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-name {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.1rem;
+    @media screen and (min-width: $large-break) {
+      font-size: 4.25rem;
+    }
+    @media screen and (min-width: $medium-break) and (max-width: $large-break) {
+      font-size: 3.25rem;
+    }
+    @media screen and (max-width: $medium-break) {
+      font-size: 4.5rem;
+    }
+  }
+
+  .project-tagline {
+    margin-bottom: 2rem;
+    font-weight: normal;
+    opacity: 0.7;
+      @media screen and (min-width: $large-break) {
+        font-size: 2.75rem;
+      }
+      @media screen and (min-width: $medium-break) and (max-width: $large-break) {
+        font-size: 2.5rem;
+      }
+      @media screen and (max-width: $medium-break) {
+        font-size: 2.5rem;
+      }
+    }
+
+  .btn.btn-header {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.3rem;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  }
+
+  .btn-header:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+}
+
+
+.how-it-works {
+  h2, h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    color: #4776E6;
+  }
+}
+
+.instruction-step {
+
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #efefef;
+  h1 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    color: #4776E6;
+
+    .step-number {
+      color: white;
+      background-color: #4776E6;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 4px;
+    }
+
+  }
+  p {
+    font-size: 2rem
+  }
+
+  .input-group {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+}

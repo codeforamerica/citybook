@@ -30,6 +30,7 @@ export default class App extends Component {
     })
   }
   componentWillMount(){
+    console.log(this.props.params.bookId)
     this.setState({
       spreadsheetId: this.props.params.bookId
     });
@@ -44,7 +45,7 @@ export default class App extends Component {
     }
     return (
       <div>
-        <TopNav loaded={this.state.initialLoadComplete} spreadsheetId={this.state.spreadsheetId} filterOptions={this.state.filterOptions} />
+        <TopNav loaded={this.state.initialLoadComplete} spreadsheetId={this.props.params.bookId} filterOptions={this.state.filterOptions} />
         <ErrorBar errors={this.state.errors} />
         <ResultListWrapper loaded={this.state.initialLoadComplete} errors={this.state.errors} results={this.state.results} />
       </div>
