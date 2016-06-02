@@ -70,6 +70,6 @@ app.post('/api/books', function(req, res) {
 });
 
 //Start Main Server
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('API listening on port 3000');
 });
