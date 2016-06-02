@@ -38,7 +38,7 @@ if(process.argv[2] === '--dev'){
     if (err) {
       return console.log(err);
     }
-    console.log('Webpack Dev Server Listening at http://localhost:2000/');
+    console.log('Webpack Dev Server Listening at http://localhost:3000/');
   });
 
 } else {
@@ -77,5 +77,9 @@ app.post('/api/books', function(req, res) {
 
 //Start Main Server
 app.listen(process.env.PORT || 8080, function () {
-  console.log('API listening on port 3000');
+  if(process.env.PORT){
+    console.log('Listening on port ' + process.env.PORT);
+  } else {
+    console.log('API listening on port 8080');    
+  }
 });
