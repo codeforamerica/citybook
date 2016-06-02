@@ -8,26 +8,32 @@ CityBook aims to make it easier for administrative staff who maintain contact li
 
 Based on the CfA [2015 Richmond Fellowship team's](http://rva.codeforamerica.org) [Search-RVAHealth project](https://github.com/codeforamerica/search-rvahealth).
 
+## Setup
+
+```
+git clone https://github.com/codeforamerica/citybook.git
+npm install
+```
+
+Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database.
+
 ### Development
+Running in development mode enables WebpackDevServer hot-module-reloading.
 
-Instructions GitHub pages site:
+`npm run dev`
 
-Run `jekyll serve -w --config _config.yml,_config-dev.yml` for relative links on your local machine.
-Run `jekyll build` before pushing to a pull request.
+### Bundling for Production
+Bundles everything into bundle.js.
 
-Server:
+`webpack`
+`npm start`
+`git remote add production https://git.heroku.com/citybook.git` (Open an issue to be added as a collaborator on heroku)
 
-```
-$ cd server
-$ npm install
-$ npm start
-```
+### Database Migration
+Make your changes, then run:
 
-Database:
+`node_modules/.bin/sequelize db:migrate`
 
-```
-$ heroku pg:psql
-```
 
 ### What is this built with?
 
