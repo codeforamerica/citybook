@@ -30,7 +30,7 @@ export default class App extends Component {
     })
   }
   componentWillMount(){
-    console.log(this.props.params.bookId)
+    //console.log(this.props.params.bookId)
     this.setState({
       spreadsheetId: this.props.params.bookId
     });

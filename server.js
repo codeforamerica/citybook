@@ -45,13 +45,6 @@ if(process.argv[2] === '--dev'){
 
 app.post('/api/books', function(req, res) {
 
-    // Grab data from http request
-    var data = {
-      title: req.body.title,
-      link: req.body.link,
-      opt_in: req.body.opt_in
-    };
-
     if(req.body.title && req.body.link){
 
       if(req.body.title.length > 160){
