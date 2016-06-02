@@ -25,9 +25,10 @@ Running in development mode enables WebpackDevServer hot-module-reloading.
 ### Bundling for Production
 Bundles everything into bundle.js.
 
-`webpack`
-`npm start`
-`git remote add production https://git.heroku.com/citybook.git` (Open an issue to be added as a collaborator on heroku)
+```
+webpack
+npm start
+git remote add production https://git.heroku.com/citybook.git``` (Open an issue to be added as a collaborator on heroku)
 
 ### Database Migration
 Make your changes, then run:
