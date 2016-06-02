@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl, Glyphicon } from 'react-bootstrap';
 import ReactTypeahead from 'react-typeahead';
+import Dropdown from 'react-dropdown';
 import '../../styles/styles.scss';
 
 //const Typeahead = require('react-typeahead').Typeahead;
@@ -12,15 +13,23 @@ export default class TopNav extends Component {
       searchInput: ''
     }
   }
+  _onSelect(){
+    console.log('New slection!')
+  }
   render() {
     let
       filterOptions,
+      searchFilter,
       typeAhead;
     console.log(this.props.results)
     if(this.props.loaded){
-      filterOptions = this.props.filterOptions.map(function(option, i){
-        return <MenuItem key={i} eventKey={i}>{option}</MenuItem>
-      });
+      searchFilter = (
+        <Dropdown
+          options={this.props.filterOptions}
+          onChange={this._onSelect}
+          placeholder="All Categories"
+        />
+      )
 
       typeAhead = (
         <ReactTypeahead.Typeahead
@@ -29,6 +38,7 @@ export default class TopNav extends Component {
           placeholder='Search...'
           filterOption='Organization Name'
           displayOption='Organization Name'
+          onOptionSelected={ function(e){console.log(e)} }
           customClasses={{
             input: 'form-control',
             typeahead: 'topcoat-list',
@@ -68,11 +78,9 @@ export default class TopNav extends Component {
             </FormGroup>
           </Navbar.Form>
           <Navbar.Collapse>
-          <Nav>
-            <NavDropdown eventKey={3} title="All Categories" id="basic-nav-dropdown">
-              {filterOptions}
-            </NavDropdown>
-          </Nav>
+            <Nav>
+              {searchFilter}
+            </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} href={'https://docs.google.com/spreadsheets/d/'+ this.props.spreadsheetId} target="_blank"><Glyphicon glyph='th-list'/> Data Source</NavItem>
               <NavItem eventKey={2} href="#" onClick={ ()=> window.print()}><Glyphicon glyph='print'/> Print</NavItem>

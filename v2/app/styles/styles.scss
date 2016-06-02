@@ -47,3 +47,49 @@
     background-color: #bbb;
   }
 }
+
+.Dropdown-root {
+    vertical-align: middle;
+    position: relative;
+}
+
+.Dropdown-control {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #333;
+    cursor: default;
+    outline: none;
+    padding: 8px 52px 8px 10px;
+    transition: all 200ms ease;
+}
+
+.Dropdown-option {
+    box-sizing: border-box;
+    color: rgba(51,51,51,0.8);
+    cursor: pointer;
+    display: block;
+    padding: 8px 10px;
+
+    &:hover {
+      background-color: #f2f9fc;
+      color: #333;
+    }
+}
+
+.Dropdown-menu {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    box-sizing: border-box;
+    margin-top: -1px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+}
