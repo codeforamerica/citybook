@@ -27,8 +27,14 @@ if(process.argv[2] === '--dev'){
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
-    historyApiFallback: true
-  }).listen(2000, 'localhost', function (err, result) {
+    historyApiFallback: true,
+    proxy: {
+      '/api*': {
+        target: 'https://other-server.example.com',
+        secure: false
+      }
+    }
+  }).listen(3000, 'localhost', function (err, result) {
     if (err) {
       return console.log(err);
     }
@@ -70,6 +76,6 @@ app.post('/api/books', function(req, res) {
 });
 
 //Start Main Server
-app.listen(process.env.PORT || 3000, function () {
+app.listen(process.env.PORT || 8080, function () {
   console.log('API listening on port 3000');
 });
