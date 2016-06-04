@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2deca3e1555577303dd4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8749bdc73d6b08d210fe"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8177,7 +8177,7 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	__webpack_require__(606);
+	__webpack_require__(596);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -54634,17 +54634,21 @@
 	
 	var _topNavReact2 = _interopRequireDefault(_topNavReact);
 	
-	var _ErrorBarReact = __webpack_require__(608);
+	var _ErrorBarReact = __webpack_require__(598);
 	
 	var _ErrorBarReact2 = _interopRequireDefault(_ErrorBarReact);
 	
-	var _getSpreadsheetData = __webpack_require__(609);
+	var _getSpreadsheetData = __webpack_require__(599);
 	
 	var _getSpreadsheetData2 = _interopRequireDefault(_getSpreadsheetData);
 	
-	var _ResultListWrapperReact = __webpack_require__(613);
+	var _ResultListWrapperReact = __webpack_require__(603);
 	
 	var _ResultListWrapperReact2 = _interopRequireDefault(_ResultListWrapperReact);
+	
+	var _fuzzy = __webpack_require__(617);
+	
+	var _fuzzy2 = _interopRequireDefault(_fuzzy);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -54667,12 +54671,14 @@
 	      errors: '',
 	      filterOptions: '',
 	      results: '',
-	      spreadsheetId: ''
+	      filteredResults: '',
+	      searchInput: ''
 	    };
-	    _this.componentWillMount = _this.componentWillMount.bind(_this);
-	    _this.componentDidMount = _this.componentDidMount.bind(_this);
 	
 	    _this.updateState = _this.updateState.bind(_this);
+	    _this.setSearchInput = _this.setSearchInput.bind(_this);
+	
+	    _this.componentWillMount = _this.componentWillMount.bind(_this);
 	    return _this;
 	  }
 	
@@ -54683,21 +54689,41 @@
 	        initialLoadComplete: loadState,
 	        filterOptions: filterOptions,
 	        results: results,
+	        filteredResults: results,
 	        errors: error
 	      });
 	    }
 	  }, {
+	    key: 'setSearchInput',
+	    value: function setSearchInput(event) {
+	      var list = this.state.results,
+	          options = {
+	        extract: function extract(obj) {
+	          return obj['Organization Name'] + ' ' + obj['Address'];
+	        }
+	      },
+	          results = _fuzzy2.default.filter(event.target.value, list, options),
+	          matches = results.map(function (el) {
+	        return el.index;
+	      }),
+	          arrayLength = matches.length,
+	          filteredResults = [];
+	
+	      for (var i = 0; i < arrayLength; i++) {
+	        filteredResults.push(this.state.results[matches[i]]);
+	      }
+	      this.setState({ filteredResults: filteredResults, searchInput: event.target.value });
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate() {}
+	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      console.log(this.props.params.bookId);
+	      (0, _getSpreadsheetData2.default)(this.props.params.bookId, this.updateState);
 	      this.setState({
 	        spreadsheetId: this.props.params.bookId
 	      });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      (0, _getSpreadsheetData2.default)(this.state.spreadsheetId, this.updateState);
 	    }
 	  }, {
 	    key: 'render',
@@ -54713,9 +54739,17 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_topNavReact2.default, { loaded: this.state.initialLoadComplete, spreadsheetId: this.props.params.bookId, filterOptions: this.state.filterOptions, results: this.state.results }),
+	        _react2.default.createElement(_topNavReact2.default, {
+	          loaded: this.state.initialLoadComplete,
+	          spreadsheetId: this.props.params.bookId,
+	          filterOptions: this.state.filterOptions,
+	          results: this.state.filteredResults,
+	          setSearchInput: this.setSearchInput }),
 	        _react2.default.createElement(_ErrorBarReact2.default, { errors: this.state.errors }),
-	        _react2.default.createElement(_ResultListWrapperReact2.default, { loaded: this.state.initialLoadComplete, errors: this.state.errors, results: this.state.results })
+	        _react2.default.createElement(_ResultListWrapperReact2.default, {
+	          loaded: this.state.initialLoadComplete,
+	          errors: this.state.errors,
+	          results: this.state.filteredResults })
 	      );
 	    }
 	  }]);
@@ -54748,15 +54782,11 @@
 	
 	var _reactBootstrap = __webpack_require__(315);
 	
-	var _reactTypeahead = __webpack_require__(595);
-	
-	var _reactTypeahead2 = _interopRequireDefault(_reactTypeahead);
-	
-	var _reactDropdown = __webpack_require__(605);
+	var _reactDropdown = __webpack_require__(595);
 	
 	var _reactDropdown2 = _interopRequireDefault(_reactDropdown);
 	
-	__webpack_require__(606);
+	__webpack_require__(596);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -54765,8 +54795,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	//const Typeahead = require('react-typeahead').Typeahead;
 	
 	var TopNav = function (_Component) {
 	  _inherits(TopNav, _Component);
@@ -54791,31 +54819,12 @@
 	    key: 'render',
 	    value: function render() {
 	      var filterOptions = void 0,
-	          searchFilter = void 0,
-	          typeAhead = void 0;
-	      console.log(this.props.results);
+	          searchFilter = void 0;
 	      if (this.props.loaded) {
 	        searchFilter = _react2.default.createElement(_reactDropdown2.default, {
 	          options: this.props.filterOptions,
 	          onChange: this._onSelect,
 	          placeholder: 'All Categories'
-	        });
-	
-	        typeAhead = _react2.default.createElement(_reactTypeahead2.default.Typeahead, {
-	          options: this.props.results,
-	          maxVisible: 5,
-	          placeholder: 'Search...',
-	          filterOption: 'Organization Name',
-	          displayOption: 'Organization Name',
-	          onOptionSelected: function onOptionSelected(e) {
-	            console.log(e);
-	          },
-	          customClasses: {
-	            input: 'form-control',
-	            typeahead: 'topcoat-list',
-	            results: 'list-group',
-	            listItem: 'list-group-item'
-	          }
 	        });
 	      } else {
 	        filterOptions = _react2.default.createElement(
@@ -54823,17 +54832,6 @@
 	          { eventKey: 1, href: '#' },
 	          'Loading...'
 	        );
-	        typeAhead = _react2.default.createElement(_reactTypeahead2.default.Typeahead, {
-	          options: 'none',
-	          maxVisible: 3,
-	          disabled: true,
-	          customClasses: {
-	            input: 'form-control',
-	            typeahead: 'topcoat-list',
-	            results: 'list-group',
-	            listItem: 'list-group-item'
-	          }
-	        });
 	      }
 	      return _react2.default.createElement(
 	        'div',
@@ -54861,7 +54859,7 @@
 	            _react2.default.createElement(
 	              _reactBootstrap.FormGroup,
 	              { style: { display: 'inline' } },
-	              typeAhead
+	              _react2.default.createElement(_reactBootstrap.FormControl, { onChange: this.props.setSearchInput, type: 'text', placeholder: 'Enter text' })
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -54906,1068 +54904,6 @@
 
 /***/ },
 /* 595 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Typeahead = __webpack_require__(596);
-	var Tokenizer = __webpack_require__(603);
-	
-	module.exports = {
-	  Typeahead: Typeahead,
-	  Tokenizer: Tokenizer
-	};
-
-/***/ },
-/* 596 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var Accessor = __webpack_require__(597);
-	var React = __webpack_require__(146);
-	var TypeaheadSelector = __webpack_require__(598);
-	var KeyEvent = __webpack_require__(601);
-	var fuzzy = __webpack_require__(602);
-	var classNames = __webpack_require__(600);
-	
-	/**
-	 * A "typeahead", an auto-completing text input
-	 *
-	 * Renders an text input that shows options nearby that you can use the
-	 * keyboard or mouse to select.  Requires CSS for MASSIVE DAMAGE.
-	 */
-	var Typeahead = React.createClass({
-	  displayName: 'Typeahead',
-	
-	  propTypes: {
-	    name: React.PropTypes.string,
-	    customClasses: React.PropTypes.object,
-	    maxVisible: React.PropTypes.number,
-	    options: React.PropTypes.array,
-	    allowCustomValues: React.PropTypes.number,
-	    initialValue: React.PropTypes.string,
-	    value: React.PropTypes.string,
-	    placeholder: React.PropTypes.string,
-	    disabled: React.PropTypes.bool,
-	    textarea: React.PropTypes.bool,
-	    inputProps: React.PropTypes.object,
-	    onOptionSelected: React.PropTypes.func,
-	    onChange: React.PropTypes.func,
-	    onKeyDown: React.PropTypes.func,
-	    onKeyPress: React.PropTypes.func,
-	    onKeyUp: React.PropTypes.func,
-	    onFocus: React.PropTypes.func,
-	    onBlur: React.PropTypes.func,
-	    filterOption: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-	    displayOption: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-	    formInputOption: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-	    defaultClassNames: React.PropTypes.bool,
-	    customListComponent: React.PropTypes.oneOfType([React.PropTypes.element, React.PropTypes.func]),
-	    showOptionsWhenEmpty: React.PropTypes.bool
-	  },
-	
-	  getDefaultProps: function () {
-	    return {
-	      options: [],
-	      customClasses: {},
-	      allowCustomValues: 0,
-	      initialValue: "",
-	      value: "",
-	      placeholder: "",
-	      disabled: false,
-	      textarea: false,
-	      inputProps: {},
-	      onOptionSelected: function (option) {},
-	      onChange: function (event) {},
-	      onKeyDown: function (event) {},
-	      onKeyPress: function (event) {},
-	      onKeyUp: function (event) {},
-	      onFocus: function (event) {},
-	      onBlur: function (event) {},
-	      filterOption: null,
-	      defaultClassNames: true,
-	      customListComponent: TypeaheadSelector,
-	      showOptionsWhenEmpty: false
-	    };
-	  },
-	
-	  getInitialState: function () {
-	    return {
-	      // The currently visible set of options
-	      visible: this.getOptionsForValue(this.props.initialValue, this.props.options),
-	
-	      // This should be called something else, "entryValue"
-	      entryValue: this.props.value || this.props.initialValue,
-	
-	      // A valid typeahead value
-	      selection: this.props.value,
-	
-	      // Index of the selection
-	      selectionIndex: null
-	    };
-	  },
-	
-	  _shouldSkipSearch: function (input) {
-	    var emptyValue = !input || input.trim().length == 0;
-	    return !this.props.showOptionsWhenEmpty && emptyValue;
-	  },
-	
-	  getOptionsForValue: function (value, options) {
-	    if (this._shouldSkipSearch(value)) {
-	      return [];
-	    }
-	
-	    var filterOptions = this._generateFilterFunction();
-	    var result = filterOptions(value, options);
-	    if (this.props.maxVisible) {
-	      result = result.slice(0, this.props.maxVisible);
-	    }
-	    return result;
-	  },
-	
-	  setEntryText: function (value) {
-	    this.refs.entry.value = value;
-	    this._onTextEntryUpdated();
-	  },
-	
-	  focus: function () {
-	    this.refs.entry.focus();
-	  },
-	
-	  _hasCustomValue: function () {
-	    if (this.props.allowCustomValues > 0 && this.state.entryValue.length >= this.props.allowCustomValues && this.state.visible.indexOf(this.state.entryValue) < 0) {
-	      return true;
-	    }
-	    return false;
-	  },
-	
-	  _getCustomValue: function () {
-	    if (this._hasCustomValue()) {
-	      return this.state.entryValue;
-	    }
-	    return null;
-	  },
-	
-	  _renderIncrementalSearchResults: function () {
-	    // Nothing has been entered into the textbox
-	    if (this._shouldSkipSearch(this.state.entryValue)) {
-	      return "";
-	    }
-	
-	    // Something was just selected
-	    if (this.state.selection) {
-	      return "";
-	    }
-	
-	    return React.createElement(this.props.customListComponent, {
-	      ref: 'sel', options: this.state.visible,
-	      onOptionSelected: this._onOptionSelected,
-	      allowCustomValues: this.props.allowCustomValues,
-	      customValue: this._getCustomValue(),
-	      customClasses: this.props.customClasses,
-	      selectionIndex: this.state.selectionIndex,
-	      defaultClassNames: this.props.defaultClassNames,
-	      displayOption: Accessor.generateOptionToStringFor(this.props.displayOption) });
-	  },
-	
-	  getSelection: function () {
-	    var index = this.state.selectionIndex;
-	    if (this._hasCustomValue()) {
-	      if (index === 0) {
-	        return this.state.entryValue;
-	      } else {
-	        index--;
-	      }
-	    }
-	    return this.state.visible[index];
-	  },
-	
-	  _onOptionSelected: function (option, event) {
-	    var nEntry = this.refs.entry;
-	    nEntry.focus();
-	
-	    var displayOption = Accessor.generateOptionToStringFor(this.props.displayOption);
-	    var optionString = displayOption(option, 0);
-	
-	    var formInputOption = Accessor.generateOptionToStringFor(this.props.formInputOption || displayOption);
-	    var formInputOptionString = formInputOption(option);
-	
-	    nEntry.value = optionString;
-	    this.setState({ visible: this.getOptionsForValue(optionString, this.props.options),
-	      selection: formInputOptionString,
-	      entryValue: optionString });
-	    return this.props.onOptionSelected(option, event);
-	  },
-	
-	  _onTextEntryUpdated: function () {
-	    var value = this.refs.entry.value;
-	    this.setState({ visible: this.getOptionsForValue(value, this.props.options),
-	      selection: '',
-	      entryValue: value });
-	  },
-	
-	  _onEnter: function (event) {
-	    var selection = this.getSelection();
-	    if (!selection) {
-	      return this.props.onKeyDown(event);
-	    }
-	    return this._onOptionSelected(selection, event);
-	  },
-	
-	  _onEscape: function () {
-	    this.setState({
-	      selectionIndex: null
-	    });
-	  },
-	
-	  _onTab: function (event) {
-	    var selection = this.getSelection();
-	    var option = selection ? selection : this.state.visible.length > 0 ? this.state.visible[0] : null;
-	
-	    if (option === null && this._hasCustomValue()) {
-	      option = this._getCustomValue();
-	    }
-	
-	    if (option !== null) {
-	      return this._onOptionSelected(option, event);
-	    }
-	  },
-	
-	  eventMap: function (event) {
-	    var events = {};
-	
-	    events[KeyEvent.DOM_VK_UP] = this.navUp;
-	    events[KeyEvent.DOM_VK_DOWN] = this.navDown;
-	    events[KeyEvent.DOM_VK_RETURN] = events[KeyEvent.DOM_VK_ENTER] = this._onEnter;
-	    events[KeyEvent.DOM_VK_ESCAPE] = this._onEscape;
-	    events[KeyEvent.DOM_VK_TAB] = this._onTab;
-	
-	    return events;
-	  },
-	
-	  _nav: function (delta) {
-	    if (!this._hasHint()) {
-	      return;
-	    }
-	    var newIndex = this.state.selectionIndex === null ? delta == 1 ? 0 : delta : this.state.selectionIndex + delta;
-	    var length = this.state.visible.length;
-	    if (this._hasCustomValue()) {
-	      length += 1;
-	    }
-	
-	    if (newIndex < 0) {
-	      newIndex += length;
-	    } else if (newIndex >= length) {
-	      newIndex -= length;
-	    }
-	
-	    this.setState({ selectionIndex: newIndex });
-	  },
-	
-	  navDown: function () {
-	    this._nav(1);
-	  },
-	
-	  navUp: function () {
-	    this._nav(-1);
-	  },
-	
-	  _onChange: function (event) {
-	    if (this.props.onChange) {
-	      this.props.onChange(event);
-	    }
-	
-	    this._onTextEntryUpdated();
-	  },
-	
-	  _onKeyDown: function (event) {
-	    // If there are no visible elements, don't perform selector navigation.
-	    // Just pass this up to the upstream onKeydown handler.
-	    // Also skip if the user is pressing the shift key, since none of our handlers are looking for shift
-	    if (!this._hasHint() || event.shiftKey) {
-	      return this.props.onKeyDown(event);
-	    }
-	
-	    var handler = this.eventMap()[event.keyCode];
-	
-	    if (handler) {
-	      handler(event);
-	    } else {
-	      return this.props.onKeyDown(event);
-	    }
-	    // Don't propagate the keystroke back to the DOM/browser
-	    event.preventDefault();
-	  },
-	
-	  componentWillReceiveProps: function (nextProps) {
-	    this.setState({
-	      visible: this.getOptionsForValue(this.state.entryValue, nextProps.options)
-	    });
-	  },
-	
-	  render: function () {
-	    var inputClasses = {};
-	    inputClasses[this.props.customClasses.input] = !!this.props.customClasses.input;
-	    var inputClassList = classNames(inputClasses);
-	
-	    var classes = {
-	      typeahead: this.props.defaultClassNames
-	    };
-	    classes[this.props.className] = !!this.props.className;
-	    var classList = classNames(classes);
-	
-	    var InputElement = this.props.textarea ? 'textarea' : 'input';
-	    return React.createElement(
-	      'div',
-	      { className: classList },
-	      this._renderHiddenInput(),
-	      React.createElement(InputElement, _extends({ ref: 'entry', type: 'text',
-	        disabled: this.props.disabled
-	      }, this.props.inputProps, {
-	        placeholder: this.props.placeholder,
-	        className: inputClassList,
-	        value: this.state.entryValue,
-	        onChange: this._onChange,
-	        onKeyDown: this._onKeyDown,
-	        onKeyPress: this.props.onKeyPress,
-	        onKeyUp: this.props.onKeyUp,
-	        onFocus: this.props.onFocus,
-	        onBlur: this.props.onBlur
-	      })),
-	      this._renderIncrementalSearchResults()
-	    );
-	  },
-	
-	  _renderHiddenInput: function () {
-	    if (!this.props.name) {
-	      return null;
-	    }
-	
-	    return React.createElement('input', {
-	      type: 'hidden',
-	      name: this.props.name,
-	      value: this.state.selection
-	    });
-	  },
-	
-	  _generateFilterFunction: function () {
-	    var filterOptionProp = this.props.filterOption;
-	    if (typeof filterOptionProp === 'function') {
-	      return function (value, options) {
-	        return options.filter(function (o) {
-	          return filterOptionProp(value, o);
-	        });
-	      };
-	    } else {
-	      var mapper;
-	      if (typeof filterOptionProp === 'string') {
-	        mapper = Accessor.generateAccessor(filterOptionProp);
-	      } else {
-	        mapper = Accessor.IDENTITY_FN;
-	      }
-	      return function (value, options) {
-	        return fuzzy.filter(value, options, { extract: mapper }).map(function (res) {
-	          return options[res.index];
-	        });
-	      };
-	    }
-	  },
-	
-	  _hasHint: function () {
-	    return this.state.visible.length > 0 || this._hasCustomValue();
-	  }
-	});
-	
-	module.exports = Typeahead;
-
-/***/ },
-/* 597 */
-/***/ function(module, exports) {
-
-	var Accessor = {
-	  IDENTITY_FN: function (input) {
-	    return input;
-	  },
-	
-	  generateAccessor: function (field) {
-	    return function (object) {
-	      return object[field];
-	    };
-	  },
-	
-	  generateOptionToStringFor: function (prop) {
-	    if (typeof prop === 'string') {
-	      return this.generateAccessor(prop);
-	    } else if (typeof prop === 'function') {
-	      return prop;
-	    } else {
-	      return this.IDENTITY_FN;
-	    }
-	  },
-	
-	  valueForOption: function (option, object) {
-	    if (typeof option === 'string') {
-	      return object[option];
-	    } else if (typeof option === 'function') {
-	      return option(object);
-	    } else {
-	      return object;
-	    }
-	  }
-	};
-	
-	module.exports = Accessor;
-
-/***/ },
-/* 598 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(146);
-	var TypeaheadOption = __webpack_require__(599);
-	var classNames = __webpack_require__(600);
-	
-	/**
-	 * Container for the options rendered as part of the autocompletion process
-	 * of the typeahead
-	 */
-	var TypeaheadSelector = React.createClass({
-	  displayName: 'TypeaheadSelector',
-	
-	  propTypes: {
-	    options: React.PropTypes.array,
-	    allowCustomValues: React.PropTypes.number,
-	    customClasses: React.PropTypes.object,
-	    customValue: React.PropTypes.string,
-	    selectionIndex: React.PropTypes.number,
-	    onOptionSelected: React.PropTypes.func,
-	    displayOption: React.PropTypes.func.isRequired,
-	    defaultClassNames: React.PropTypes.bool
-	  },
-	
-	  getDefaultProps: function () {
-	    return {
-	      selectionIndex: null,
-	      customClasses: {},
-	      allowCustomValues: 0,
-	      customValue: null,
-	      onOptionSelected: function (option) {},
-	      defaultClassNames: true
-	    };
-	  },
-	
-	  render: function () {
-	    // Don't render if there are no options to display
-	    if (!this.props.options.length && this.props.allowCustomValues <= 0) {
-	      return false;
-	    }
-	
-	    var classes = {
-	      "typeahead-selector": this.props.defaultClassNames
-	    };
-	    classes[this.props.customClasses.results] = this.props.customClasses.results;
-	    var classList = classNames(classes);
-	
-	    // CustomValue should be added to top of results list with different class name
-	    var customValue = null;
-	    var customValueOffset = 0;
-	    if (this.props.customValue !== null) {
-	      customValueOffset++;
-	      customValue = React.createElement(
-	        TypeaheadOption,
-	        { ref: this.props.customValue, key: this.props.customValue,
-	          hover: this.props.selectionIndex === 0,
-	          customClasses: this.props.customClasses,
-	          customValue: this.props.customValue,
-	          onClick: this._onClick.bind(this, this.props.customValue) },
-	        this.props.customValue
-	      );
-	    }
-	
-	    var results = this.props.options.map(function (result, i) {
-	      var displayString = this.props.displayOption(result, i);
-	      var uniqueKey = displayString + '_' + i;
-	      return React.createElement(
-	        TypeaheadOption,
-	        { ref: uniqueKey, key: uniqueKey,
-	          hover: this.props.selectionIndex === i + customValueOffset,
-	          customClasses: this.props.customClasses,
-	          onClick: this._onClick.bind(this, result) },
-	        displayString
-	      );
-	    }, this);
-	
-	    return React.createElement(
-	      'ul',
-	      { className: classList },
-	      customValue,
-	      results
-	    );
-	  },
-	
-	  _onClick: function (result, event) {
-	    return this.props.onOptionSelected(result, event);
-	  }
-	
-	});
-	
-	module.exports = TypeaheadSelector;
-
-/***/ },
-/* 599 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(146);
-	var classNames = __webpack_require__(600);
-	
-	/**
-	 * A single option within the TypeaheadSelector
-	 */
-	var TypeaheadOption = React.createClass({
-	  displayName: 'TypeaheadOption',
-	
-	  propTypes: {
-	    customClasses: React.PropTypes.object,
-	    customValue: React.PropTypes.string,
-	    onClick: React.PropTypes.func,
-	    children: React.PropTypes.string,
-	    hover: React.PropTypes.bool
-	  },
-	
-	  getDefaultProps: function () {
-	    return {
-	      customClasses: {},
-	      onClick: function (event) {
-	        event.preventDefault();
-	      }
-	    };
-	  },
-	
-	  render: function () {
-	    var classes = {};
-	    classes[this.props.customClasses.hover || "hover"] = !!this.props.hover;
-	    classes[this.props.customClasses.listItem] = !!this.props.customClasses.listItem;
-	
-	    if (this.props.customValue) {
-	      classes[this.props.customClasses.customAdd] = !!this.props.customClasses.customAdd;
-	    }
-	
-	    var classList = classNames(classes);
-	
-	    return React.createElement(
-	      'li',
-	      { className: classList, onClick: this._onClick },
-	      React.createElement(
-	        'a',
-	        { href: 'javascript: void 0;', className: this._getClasses(), ref: 'anchor' },
-	        this.props.children
-	      )
-	    );
-	  },
-	
-	  _getClasses: function () {
-	    var classes = {
-	      "typeahead-option": true
-	    };
-	    classes[this.props.customClasses.listAnchor] = !!this.props.customClasses.listAnchor;
-	
-	    return classNames(classes);
-	  },
-	
-	  _onClick: function (event) {
-	    event.preventDefault();
-	    return this.props.onClick(event);
-	  }
-	});
-	
-	module.exports = TypeaheadOption;
-
-/***/ },
-/* 600 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	
-	function classNames() {
-		var classes = '';
-		var arg;
-	
-		for (var i = 0; i < arguments.length; i++) {
-			arg = arguments[i];
-			if (!arg) {
-				continue;
-			}
-	
-			if ('string' === typeof arg || 'number' === typeof arg) {
-				classes += ' ' + arg;
-			} else if (Object.prototype.toString.call(arg) === '[object Array]') {
-				classes += ' ' + classNames.apply(null, arg);
-			} else if ('object' === typeof arg) {
-				for (var key in arg) {
-					if (!arg.hasOwnProperty(key) || !arg[key]) {
-						continue;
-					}
-					classes += ' ' + key;
-				}
-			}
-		}
-		return classes.substr(1);
-	}
-	
-	// safely export classNames for node / browserify
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = classNames;
-	}
-	
-	// safely export classNames for RequireJS
-	if (true) {
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
-			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}
-
-
-/***/ },
-/* 601 */
-/***/ function(module, exports) {
-
-	/**
-	 * PolyFills make me sad
-	 */
-	var KeyEvent = KeyEvent || {};
-	KeyEvent.DOM_VK_UP = KeyEvent.DOM_VK_UP || 38;
-	KeyEvent.DOM_VK_DOWN = KeyEvent.DOM_VK_DOWN || 40;
-	KeyEvent.DOM_VK_BACK_SPACE = KeyEvent.DOM_VK_BACK_SPACE || 8;
-	KeyEvent.DOM_VK_RETURN = KeyEvent.DOM_VK_RETURN || 13;
-	KeyEvent.DOM_VK_ENTER = KeyEvent.DOM_VK_ENTER || 14;
-	KeyEvent.DOM_VK_ESCAPE = KeyEvent.DOM_VK_ESCAPE || 27;
-	KeyEvent.DOM_VK_TAB = KeyEvent.DOM_VK_TAB || 9;
-	
-	module.exports = KeyEvent;
-
-/***/ },
-/* 602 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	 * Fuzzy
-	 * https://github.com/myork/fuzzy
-	 *
-	 * Copyright (c) 2012 Matt York
-	 * Licensed under the MIT license.
-	 */
-	
-	(function() {
-	
-	var root = this;
-	
-	var fuzzy = {};
-	
-	// Use in node or in browser
-	if (true) {
-	  module.exports = fuzzy;
-	} else {
-	  root.fuzzy = fuzzy;
-	}
-	
-	// Return all elements of `array` that have a fuzzy
-	// match against `pattern`.
-	fuzzy.simpleFilter = function(pattern, array) {
-	  return array.filter(function(string) {
-	    return fuzzy.test(pattern, string);
-	  });
-	};
-	
-	// Does `pattern` fuzzy match `string`?
-	fuzzy.test = function(pattern, string) {
-	  return fuzzy.match(pattern, string) !== null;
-	};
-	
-	// If `pattern` matches `string`, wrap each matching character
-	// in `opts.pre` and `opts.post`. If no match, return null
-	fuzzy.match = function(pattern, string, opts) {
-	  opts = opts || {};
-	  var patternIdx = 0
-	    , result = []
-	    , len = string.length
-	    , totalScore = 0
-	    , currScore = 0
-	    // prefix
-	    , pre = opts.pre || ''
-	    // suffix
-	    , post = opts.post || ''
-	    // String to compare against. This might be a lowercase version of the
-	    // raw string
-	    , compareString =  opts.caseSensitive && string || string.toLowerCase()
-	    , ch, compareChar;
-	
-	  pattern = opts.caseSensitive && pattern || pattern.toLowerCase();
-	
-	  // For each character in the string, either add it to the result
-	  // or wrap in template if it's the next string in the pattern
-	  for(var idx = 0; idx < len; idx++) {
-	    ch = string[idx];
-	    if(compareString[idx] === pattern[patternIdx]) {
-	      ch = pre + ch + post;
-	      patternIdx += 1;
-	
-	      // consecutive characters should increase the score more than linearly
-	      currScore += 1 + currScore;
-	    } else {
-	      currScore = 0;
-	    }
-	    totalScore += currScore;
-	    result[result.length] = ch;
-	  }
-	
-	  // return rendered string if we have a match for every char
-	  if(patternIdx === pattern.length) {
-	    return {rendered: result.join(''), score: totalScore};
-	  }
-	
-	  return null;
-	};
-	
-	// The normal entry point. Filters `arr` for matches against `pattern`.
-	// It returns an array with matching values of the type:
-	//
-	//     [{
-	//         string:   '<b>lah' // The rendered string
-	//       , index:    2        // The index of the element in `arr`
-	//       , original: 'blah'   // The original element in `arr`
-	//     }]
-	//
-	// `opts` is an optional argument bag. Details:
-	//
-	//    opts = {
-	//        // string to put before a matching character
-	//        pre:     '<b>'
-	//
-	//        // string to put after matching character
-	//      , post:    '</b>'
-	//
-	//        // Optional function. Input is an entry in the given arr`,
-	//        // output should be the string to test `pattern` against.
-	//        // In this example, if `arr = [{crying: 'koala'}]` we would return
-	//        // 'koala'.
-	//      , extract: function(arg) { return arg.crying; }
-	//    }
-	fuzzy.filter = function(pattern, arr, opts) {
-	  opts = opts || {};
-	  return arr
-	    .reduce(function(prev, element, idx, arr) {
-	      var str = element;
-	      if(opts.extract) {
-	        str = opts.extract(element);
-	      }
-	      var rendered = fuzzy.match(pattern, str, opts);
-	      if(rendered != null) {
-	        prev[prev.length] = {
-	            string: rendered.rendered
-	          , score: rendered.score
-	          , index: idx
-	          , original: element
-	        };
-	      }
-	      return prev;
-	    }, [])
-	
-	    // Sort by score. Browsers are inconsistent wrt stable/unstable
-	    // sorting, so force stable by using the index in the case of tie.
-	    // See http://ofb.net/~sethml/is-sort-stable.html
-	    .sort(function(a,b) {
-	      var compare = b.score - a.score;
-	      if(compare) return compare;
-	      return a.index - b.index;
-	    });
-	};
-	
-	
-	}());
-	
-
-
-/***/ },
-/* 603 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Accessor = __webpack_require__(597);
-	var React = __webpack_require__(146);
-	var Token = __webpack_require__(604);
-	var KeyEvent = __webpack_require__(601);
-	var Typeahead = __webpack_require__(596);
-	var classNames = __webpack_require__(600);
-	
-	function _arraysAreDifferent(array1, array2) {
-	  if (array1.length != array2.length) {
-	    return true;
-	  }
-	  for (var i = array2.length - 1; i >= 0; i--) {
-	    if (array2[i] !== array1[i]) {
-	      return true;
-	    }
-	  }
-	}
-	
-	/**
-	 * A typeahead that, when an option is selected, instead of simply filling
-	 * the text entry widget, prepends a renderable "token", that may be deleted
-	 * by pressing backspace on the beginning of the line with the keyboard.
-	 */
-	var TypeaheadTokenizer = React.createClass({
-	  displayName: 'TypeaheadTokenizer',
-	
-	  propTypes: {
-	    name: React.PropTypes.string,
-	    options: React.PropTypes.array,
-	    customClasses: React.PropTypes.object,
-	    allowCustomValues: React.PropTypes.number,
-	    defaultSelected: React.PropTypes.array,
-	    initialValue: React.PropTypes.string,
-	    placeholder: React.PropTypes.string,
-	    disabled: React.PropTypes.bool,
-	    inputProps: React.PropTypes.object,
-	    onTokenRemove: React.PropTypes.func,
-	    onKeyDown: React.PropTypes.func,
-	    onKeyPress: React.PropTypes.func,
-	    onKeyUp: React.PropTypes.func,
-	    onTokenAdd: React.PropTypes.func,
-	    onFocus: React.PropTypes.func,
-	    onBlur: React.PropTypes.func,
-	    filterOption: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-	    displayOption: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-	    formInputOption: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-	    maxVisible: React.PropTypes.number,
-	    defaultClassNames: React.PropTypes.bool
-	  },
-	
-	  getInitialState: function () {
-	    return {
-	      // We need to copy this to avoid incorrect sharing
-	      // of state across instances (e.g., via getDefaultProps())
-	      selected: this.props.defaultSelected.slice(0)
-	    };
-	  },
-	
-	  getDefaultProps: function () {
-	    return {
-	      options: [],
-	      defaultSelected: [],
-	      customClasses: {},
-	      allowCustomValues: 0,
-	      initialValue: "",
-	      placeholder: "",
-	      disabled: false,
-	      inputProps: {},
-	      defaultClassNames: true,
-	      filterOption: null,
-	      displayOption: function (token) {
-	        return token;
-	      },
-	      formInputOption: null,
-	      onKeyDown: function (event) {},
-	      onKeyPress: function (event) {},
-	      onKeyUp: function (event) {},
-	      onFocus: function (event) {},
-	      onBlur: function (event) {},
-	      onTokenAdd: function () {},
-	      onTokenRemove: function () {}
-	    };
-	  },
-	
-	  componentWillReceiveProps: function (nextProps) {
-	    // if we get new defaultProps, update selected
-	    if (_arraysAreDifferent(this.props.defaultSelected, nextProps.defaultSelected)) {
-	      this.setState({ selected: nextProps.defaultSelected.slice(0) });
-	    }
-	  },
-	
-	  focus: function () {
-	    this.refs.typeahead.focus();
-	  },
-	
-	  getSelectedTokens: function () {
-	    return this.state.selected;
-	  },
-	
-	  // TODO: Support initialized tokens
-	  //
-	  _renderTokens: function () {
-	    var tokenClasses = {};
-	    tokenClasses[this.props.customClasses.token] = !!this.props.customClasses.token;
-	    var classList = classNames(tokenClasses);
-	    var result = this.state.selected.map(function (selected) {
-	      var displayString = Accessor.valueForOption(this.props.displayOption, selected);
-	      var value = Accessor.valueForOption(this.props.formInputOption || this.props.displayOption, selected);
-	      return React.createElement(
-	        Token,
-	        { key: displayString, className: classList,
-	          onRemove: this._removeTokenForValue,
-	          object: selected,
-	          value: value,
-	          name: this.props.name },
-	        displayString
-	      );
-	    }, this);
-	    return result;
-	  },
-	
-	  _getOptionsForTypeahead: function () {
-	    // return this.props.options without this.selected
-	    return this.props.options;
-	  },
-	
-	  _onKeyDown: function (event) {
-	    // We only care about intercepting backspaces
-	    if (event.keyCode === KeyEvent.DOM_VK_BACK_SPACE) {
-	      return this._handleBackspace(event);
-	    }
-	    this.props.onKeyDown(event);
-	  },
-	
-	  _handleBackspace: function (event) {
-	    // No tokens
-	    if (!this.state.selected.length) {
-	      return;
-	    }
-	
-	    // Remove token ONLY when bksp pressed at beginning of line
-	    // without a selection
-	    var entry = this.refs.typeahead.refs.entry;
-	    if (entry.selectionStart == entry.selectionEnd && entry.selectionStart == 0) {
-	      this._removeTokenForValue(this.state.selected[this.state.selected.length - 1]);
-	      event.preventDefault();
-	    }
-	  },
-	
-	  _removeTokenForValue: function (value) {
-	    var index = this.state.selected.indexOf(value);
-	    if (index == -1) {
-	      return;
-	    }
-	
-	    this.state.selected.splice(index, 1);
-	    this.setState({ selected: this.state.selected });
-	    this.props.onTokenRemove(value);
-	    return;
-	  },
-	
-	  _addTokenForValue: function (value) {
-	    if (this.state.selected.indexOf(value) != -1) {
-	      return;
-	    }
-	    this.state.selected.push(value);
-	    this.setState({ selected: this.state.selected });
-	    this.refs.typeahead.setEntryText("");
-	    this.props.onTokenAdd(value);
-	  },
-	
-	  render: function () {
-	    var classes = {};
-	    classes[this.props.customClasses.typeahead] = !!this.props.customClasses.typeahead;
-	    var classList = classNames(classes);
-	    var tokenizerClasses = [this.props.defaultClassNames && "typeahead-tokenizer"];
-	    tokenizerClasses[this.props.className] = !!this.props.className;
-	    var tokenizerClassList = classNames(tokenizerClasses);
-	
-	    return React.createElement(
-	      'div',
-	      { className: tokenizerClassList },
-	      this._renderTokens(),
-	      React.createElement(Typeahead, { ref: 'typeahead',
-	        className: classList,
-	        placeholder: this.props.placeholder,
-	        disabled: this.props.disabled,
-	        inputProps: this.props.inputProps,
-	        allowCustomValues: this.props.allowCustomValues,
-	        customClasses: this.props.customClasses,
-	        options: this._getOptionsForTypeahead(),
-	        initialValue: this.props.initialValue,
-	        maxVisible: this.props.maxVisible,
-	        onOptionSelected: this._addTokenForValue,
-	        onKeyDown: this._onKeyDown,
-	        onKeyPress: this.props.onKeyPress,
-	        onKeyUp: this.props.onKeyUp,
-	        onFocus: this.props.onFocus,
-	        onBlur: this.props.onBlur,
-	        displayOption: this.props.displayOption,
-	        defaultClassNames: this.props.defaultClassNames,
-	        filterOption: this.props.filterOption })
-	    );
-	  }
-	});
-	
-	module.exports = TypeaheadTokenizer;
-
-/***/ },
-/* 604 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(146);
-	var classNames = __webpack_require__(600);
-	
-	/**
-	 * Encapsulates the rendering of an option that has been "selected" in a
-	 * TypeaheadTokenizer
-	 */
-	var Token = React.createClass({
-	  displayName: 'Token',
-	
-	  propTypes: {
-	    className: React.PropTypes.string,
-	    name: React.PropTypes.string,
-	    children: React.PropTypes.string,
-	    object: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-	    onRemove: React.PropTypes.func,
-	    value: React.PropTypes.string
-	  },
-	
-	  render: function () {
-	    var className = classNames(["typeahead-token", this.props.className]);
-	
-	    return React.createElement(
-	      'div',
-	      { className: className },
-	      this._renderHiddenInput(),
-	      this.props.children,
-	      this._renderCloseButton()
-	    );
-	  },
-	
-	  _renderHiddenInput: function () {
-	    // If no name was set, don't create a hidden input
-	    if (!this.props.name) {
-	      return null;
-	    }
-	
-	    return React.createElement('input', {
-	      type: 'hidden',
-	      name: this.props.name + '[]',
-	      value: this.props.value || this.props.object
-	    });
-	  },
-	
-	  _renderCloseButton: function () {
-	    if (!this.props.onRemove) {
-	      return "";
-	    }
-	    return React.createElement(
-	      'a',
-	      { className: 'typeahead-token-close', href: '#', onClick: function (event) {
-	          this.props.onRemove(this.props.object);
-	          event.preventDefault();
-	        }.bind(this) },
-	      '×'
-	    );
-	  }
-	});
-	
-	module.exports = Token;
-
-/***/ },
-/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56182,13 +55118,13 @@
 	exports.default = Dropdown;
 
 /***/ },
-/* 606 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(607);
+	var content = __webpack_require__(597);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(582)(content, {});
@@ -56197,8 +55133,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(607, function() {
-				var newContent = __webpack_require__(607);
+			module.hot.accept(597, function() {
+				var newContent = __webpack_require__(597);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -56208,7 +55144,7 @@
 	}
 
 /***/ },
-/* 607 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(581)();
@@ -56222,7 +55158,7 @@
 
 
 /***/ },
-/* 608 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -56286,7 +55222,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 609 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -56330,7 +55266,7 @@
 	  }
 	};
 	
-	var _tabletop = __webpack_require__(610);
+	var _tabletop = __webpack_require__(600);
 	
 	var _tabletop2 = _interopRequireDefault(_tabletop);
 
@@ -56340,7 +55276,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 610 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process) {(function() {
@@ -56349,7 +55285,7 @@
 	  var inNodeJS = false;
 	  if (typeof process !== 'undefined' && !process.browser) {
 	    inNodeJS = true;
-	    var request = __webpack_require__(611)('request'.trim()); //prevents browserify from bundling the module
+	    var request = __webpack_require__(601)('request'.trim()); //prevents browserify from bundling the module
 	  }
 	
 	  var supportsCORS = false;
@@ -56915,14 +55851,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 611 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./backbone.tabletopSync": 612,
-		"./backbone.tabletopSync.js": 612,
-		"./tabletop": 610,
-		"./tabletop.js": 610
+		"./backbone.tabletopSync": 602,
+		"./backbone.tabletopSync.js": 602,
+		"./tabletop": 600,
+		"./tabletop.js": 600
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -56935,11 +55871,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 611;
+	webpackContext.id = 601;
 
 
 /***/ },
-/* 612 */
+/* 602 */
 /***/ function(module, exports) {
 
 	/* 
@@ -57018,7 +55954,7 @@
 	};
 
 /***/ },
-/* 613 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -57035,23 +55971,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _LoadingSpinnerReact = __webpack_require__(614);
+	var _LoadingSpinnerReact = __webpack_require__(604);
 	
 	var _LoadingSpinnerReact2 = _interopRequireDefault(_LoadingSpinnerReact);
 	
 	var _reactBootstrap = __webpack_require__(315);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(616);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(606);
 	
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 	
-	var _ResultsListReact = __webpack_require__(625);
+	var _ResultsListReact = __webpack_require__(615);
 	
 	var _ResultsListReact2 = _interopRequireDefault(_ResultsListReact);
 	
-	__webpack_require__(623);
+	__webpack_require__(613);
 	
-	__webpack_require__(606);
+	__webpack_require__(596);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -57097,7 +56033,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 614 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -57116,15 +56052,15 @@
 	
 	var _reactBootstrap = __webpack_require__(315);
 	
-	var _reactFontawesome = __webpack_require__(615);
+	var _reactFontawesome = __webpack_require__(605);
 	
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(616);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(606);
 	
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 	
-	__webpack_require__(623);
+	__webpack_require__(613);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -57163,7 +56099,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 615 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57283,13 +56219,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 616 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(617);
+	module.exports = __webpack_require__(607);
 
 /***/ },
-/* 617 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57309,8 +56245,8 @@
 	
 	var React = __webpack_require__(147);
 	
-	var ReactTransitionGroup = __webpack_require__(618);
-	var ReactCSSTransitionGroupChild = __webpack_require__(620);
+	var ReactTransitionGroup = __webpack_require__(608);
+	var ReactCSSTransitionGroupChild = __webpack_require__(610);
 	
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -57376,7 +56312,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 618 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57395,7 +56331,7 @@
 	var _assign = __webpack_require__(97);
 	
 	var React = __webpack_require__(147);
-	var ReactTransitionChildMapping = __webpack_require__(619);
+	var ReactTransitionChildMapping = __webpack_require__(609);
 	
 	var emptyFunction = __webpack_require__(106);
 	
@@ -57587,7 +56523,7 @@
 	module.exports = ReactTransitionGroup;
 
 /***/ },
-/* 619 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57689,7 +56625,7 @@
 	module.exports = ReactTransitionChildMapping;
 
 /***/ },
-/* 620 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57708,8 +56644,8 @@
 	var React = __webpack_require__(147);
 	var ReactDOM = __webpack_require__(163);
 	
-	var CSSCore = __webpack_require__(621);
-	var ReactTransitionEvents = __webpack_require__(622);
+	var CSSCore = __webpack_require__(611);
+	var ReactTransitionEvents = __webpack_require__(612);
 	
 	var onlyChild = __webpack_require__(161);
 	
@@ -57854,7 +56790,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 621 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -57981,7 +56917,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 622 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -58059,13 +56995,13 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 623 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(624);
+	var content = __webpack_require__(614);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(582)(content, {});
@@ -58074,8 +57010,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(624, function() {
-				var newContent = __webpack_require__(624);
+			module.hot.accept(614, function() {
+				var newContent = __webpack_require__(614);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -58085,7 +57021,7 @@
 	}
 
 /***/ },
-/* 624 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(581)();
@@ -58099,7 +57035,7 @@
 
 
 /***/ },
-/* 625 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -58118,15 +57054,15 @@
 	
 	var _reactBootstrap = __webpack_require__(315);
 	
-	var _LoadingSpinnerReact = __webpack_require__(614);
+	var _LoadingSpinnerReact = __webpack_require__(604);
 	
 	var _LoadingSpinnerReact2 = _interopRequireDefault(_LoadingSpinnerReact);
 	
-	var _ResultReact = __webpack_require__(626);
+	var _ResultReact = __webpack_require__(616);
 	
 	var _ResultReact2 = _interopRequireDefault(_ResultReact);
 	
-	__webpack_require__(623);
+	__webpack_require__(613);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -58186,7 +57122,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 626 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -58337,6 +57273,148 @@
 	
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(583); if (makeExportsHot(module, __webpack_require__(146))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Result.react.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 617 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	 * Fuzzy
+	 * https://github.com/myork/fuzzy
+	 *
+	 * Copyright (c) 2012 Matt York
+	 * Licensed under the MIT license.
+	 */
+	
+	(function() {
+	
+	var root = this;
+	
+	var fuzzy = {};
+	
+	// Use in node or in browser
+	if (true) {
+	  module.exports = fuzzy;
+	} else {
+	  root.fuzzy = fuzzy;
+	}
+	
+	// Return all elements of `array` that have a fuzzy
+	// match against `pattern`.
+	fuzzy.simpleFilter = function(pattern, array) {
+	  return array.filter(function(string) {
+	    return fuzzy.test(pattern, string);
+	  });
+	};
+	
+	// Does `pattern` fuzzy match `string`?
+	fuzzy.test = function(pattern, string) {
+	  return fuzzy.match(pattern, string) !== null;
+	};
+	
+	// If `pattern` matches `string`, wrap each matching character
+	// in `opts.pre` and `opts.post`. If no match, return null
+	fuzzy.match = function(pattern, string, opts) {
+	  opts = opts || {};
+	  var patternIdx = 0
+	    , result = []
+	    , len = string.length
+	    , totalScore = 0
+	    , currScore = 0
+	    // prefix
+	    , pre = opts.pre || ''
+	    // suffix
+	    , post = opts.post || ''
+	    // String to compare against. This might be a lowercase version of the
+	    // raw string
+	    , compareString =  opts.caseSensitive && string || string.toLowerCase()
+	    , ch, compareChar;
+	
+	  pattern = opts.caseSensitive && pattern || pattern.toLowerCase();
+	
+	  // For each character in the string, either add it to the result
+	  // or wrap in template if it's the next string in the pattern
+	  for(var idx = 0; idx < len; idx++) {
+	    ch = string[idx];
+	    if(compareString[idx] === pattern[patternIdx]) {
+	      ch = pre + ch + post;
+	      patternIdx += 1;
+	
+	      // consecutive characters should increase the score more than linearly
+	      currScore += 1 + currScore;
+	    } else {
+	      currScore = 0;
+	    }
+	    totalScore += currScore;
+	    result[result.length] = ch;
+	  }
+	
+	  // return rendered string if we have a match for every char
+	  if(patternIdx === pattern.length) {
+	    return {rendered: result.join(''), score: totalScore};
+	  }
+	
+	  return null;
+	};
+	
+	// The normal entry point. Filters `arr` for matches against `pattern`.
+	// It returns an array with matching values of the type:
+	//
+	//     [{
+	//         string:   '<b>lah' // The rendered string
+	//       , index:    2        // The index of the element in `arr`
+	//       , original: 'blah'   // The original element in `arr`
+	//     }]
+	//
+	// `opts` is an optional argument bag. Details:
+	//
+	//    opts = {
+	//        // string to put before a matching character
+	//        pre:     '<b>'
+	//
+	//        // string to put after matching character
+	//      , post:    '</b>'
+	//
+	//        // Optional function. Input is an entry in the given arr`,
+	//        // output should be the string to test `pattern` against.
+	//        // In this example, if `arr = [{crying: 'koala'}]` we would return
+	//        // 'koala'.
+	//      , extract: function(arg) { return arg.crying; }
+	//    }
+	fuzzy.filter = function(pattern, arr, opts) {
+	  opts = opts || {};
+	  return arr
+	    .reduce(function(prev, element, idx, arr) {
+	      var str = element;
+	      if(opts.extract) {
+	        str = opts.extract(element);
+	      }
+	      var rendered = fuzzy.match(pattern, str, opts);
+	      if(rendered != null) {
+	        prev[prev.length] = {
+	            string: rendered.rendered
+	          , score: rendered.score
+	          , index: idx
+	          , original: element
+	        };
+	      }
+	      return prev;
+	    }, [])
+	
+	    // Sort by score. Browsers are inconsistent wrt stable/unstable
+	    // sorting, so force stable by using the index in the case of tie.
+	    // See http://ofb.net/~sethml/is-sort-stable.html
+	    .sort(function(a,b) {
+	      var compare = b.score - a.score;
+	      if(compare) return compare;
+	      return a.index - b.index;
+	    });
+	};
+	
+	
+	}());
+	
+
 
 /***/ }
 /******/ ]);
