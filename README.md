@@ -8,6 +8,22 @@ CityBook aims to make it easier for administrative staff who maintain contact li
 
 Based on the CfA [2015 Richmond Fellowship team's](http://rva.codeforamerica.org) [Search-RVAHealth project](https://github.com/codeforamerica/search-rvahealth).
 
+## Data Types
+
+CityBook emphasizes simplicity and flexibility over adherence to a data standard. You can add any columns with any title to your CityBook spreadsheet and they will displayed. However, some column names are required or receive special treatment:
+
+### Organization Name (Required)
+Displayed as an `<h1>` element. It corresponds to the main title of your entry.
+
+### Telephone
+Displayed as a button that users can click or tap to launch a call. Cells should contain a single telephone number. Most mobile telephone applications are flexible in how they parse a phone number, so these may use any common telephone format (e.g. 123-456-7890, (123)456-7890, 1234567890, etc.).
+
+### Address
+Displayed as a button that launches Google Maps directions to the location in the cell. It's a good idea to test the addresses you enter by searching for them in Google Maps. If your address is incomplete or does not return a result, the user may have difficulty finding the right location.
+
+### Other Data Types
+All other data types are displayed in the "Show Details" section. The column header will appear as bold text with a colon (i.e. a Key-Value format).
+
 ## Setup
 
 ```
