@@ -41,13 +41,11 @@ if(process.argv[2] === '--dev'){
     console.log('Webpack Dev Server Listening at http://localhost:3000/');
   });
 
-} else {
-  //Serve static HTML in production
-  app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname+'/index.html'));
-  });
-
 }
+//Serve static HTML in production
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname+'/index.html'));
+});
 
 app.post('/api/books', function(req, res) {
 
@@ -80,6 +78,6 @@ app.listen(process.env.PORT || 8080, function () {
   if(process.env.PORT){
     console.log('Listening on port ' + process.env.PORT);
   } else {
-    console.log('API listening on port 8080');    
+    console.log('API listening on port 8080');
   }
 });

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl, Glyphicon } from 'react-bootstrap';
-import ReactTypeahead from 'react-typeahead';
 import Dropdown from 'react-dropdown';
 import '../../styles/styles.scss';
-
-//const Typeahead = require('react-typeahead').Typeahead;
 
 export default class TopNav extends Component {
   constructor(){
@@ -13,15 +10,15 @@ export default class TopNav extends Component {
       searchInput: ''
     }
   }
+
   _onSelect(){
     console.log('New slection!')
   }
+
   render() {
     let
       filterOptions,
-      searchFilter,
-      typeAhead;
-    console.log(this.props.results)
+      searchFilter;
     if(this.props.loaded){
       searchFilter = (
         <Dropdown
@@ -31,37 +28,8 @@ export default class TopNav extends Component {
         />
       )
 
-      typeAhead = (
-        <ReactTypeahead.Typeahead
-          options={ this.props.results }
-          maxVisible={5}
-          placeholder='Search...'
-          filterOption='Organization Name'
-          displayOption='Organization Name'
-          onOptionSelected={ function(e){console.log(e)} }
-          customClasses={{
-            input: 'form-control',
-            typeahead: 'topcoat-list',
-            results: 'list-group',
-            listItem: 'list-group-item',
-          }}
-        />
-      )
     } else {
       filterOptions = <NavItem eventKey={1} href="#">Loading...</NavItem>
-      typeAhead = (
-          <ReactTypeahead.Typeahead
-            options={'none'}
-            maxVisible={3}
-            disabled
-            customClasses={{
-              input: 'form-control',
-              typeahead: 'topcoat-list',
-              results: 'list-group',
-              listItem: 'list-group-item',
-            }}
-          />
-      )
     }
     return (
       <div>
@@ -74,7 +42,7 @@ export default class TopNav extends Component {
           </Navbar.Header>
           <Navbar.Form pullLeft>
             <FormGroup style={{display: 'inline'}}>
-            {typeAhead}
+              <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Enter text" />
             </FormGroup>
           </Navbar.Form>
           <Navbar.Collapse>
