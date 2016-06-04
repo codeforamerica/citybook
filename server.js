@@ -4,6 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
+var port = process.env.PORT || 8080;
 
 //Database
 var pg = require('pg');
@@ -16,38 +17,38 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Development Server
-if(process.argv[2] === '--dev'){
+if(process.env.NODE_ENV !== 'production'){
 
   //Development Dependencies
   var webpack = require('webpack');
-  var WebpackDevServer = require('webpack-dev-server');
-  var config = require('./webpack.config');
+  var webpackDevMiddleware = require('webpack-dev-middleware')
+  var webpackHotMiddleware = require('webpack-hot-middleware')
+  var config = require('./webpack.dev.config.js')
+  var compiler = webpack(config);
 
-  console.log('dev!');
-  new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
+  app.use(webpackDevMiddleware(compiler, {
     hot: true,
+    log: console.log,
+    filename: 'bundle.js',
+    stats: {
+      colors: true,
+    },
     historyApiFallback: true,
-    proxy: {
-      '/api*': {
-        target: 'https://other-server.example.com',
-        secure: false
-      }
-    }
-  }).listen(3000, 'localhost', function (err, result) {
-    if (err) {
-      return console.log(err);
-    }
-    console.log('Webpack Dev Server Listening at http://localhost:3000/');
-  });
+    noInfo: false,
+    publicPath: config.output.publicPath
+  }));
 
-} else {
-  //Serve static HTML in production
-  app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname+'/index.html'));
-  });
-
+  app.use(webpackHotMiddleware(compiler, {
+    log: console.log,
+    path: '/__webpack_hmr',
+    historyApiFallback: true,
+    publicPath: config.output.publicPath
+  }));
 }
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname+'/index.html'));
+});
 
 app.post('/api/books', function(req, res) {
 
@@ -76,10 +77,10 @@ app.post('/api/books', function(req, res) {
 });
 
 //Start Main Server
-app.listen(process.env.PORT || 8080, function () {
+app.listen(port, function () {
   if(process.env.PORT){
     console.log('Listening on port ' + process.env.PORT);
   } else {
-    console.log('API listening on port 8080');    
+    console.log('API listening on port 8080');
   }
 });

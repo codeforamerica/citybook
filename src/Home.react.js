@@ -17,7 +17,7 @@ export default class TopNav extends Component {
       <Header />
       <Grid>
         <HowItWorks />
-        <Instruction number='1' title='Get the Template'>
+        <Instruction number='0' title='Get the Template'>
           <Step1 />
         </Instruction>
         <Instruction number='2' title='Publish to the Web'>

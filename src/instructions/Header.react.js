@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import '../../styles/instructions.scss';
 import { Link } from 'react-router';
+if (module.hot) {
+  module.hot.accept();
+}
 export default class Header extends Component {
+
+
   render() {
     return (
       <section className="page-header">

@@ -5,7 +5,6 @@ import ErrorBar from './ErrorBar.react.js';
 import getSpreadsheetData from './scripts/getSpreadsheetData.js';
 import ResultListWrapper from './results/ResultListWrapper.react.js';
 
-
 export default class App extends Component {
   constructor(){
     super();
