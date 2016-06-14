@@ -1,9 +1,10 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var BookReferences = sequelize.define('BookReferences', {
-    title: DataTypes.STRING,
-    link: DataTypes.STRING,
-    opt_in: DataTypes.BOOLEAN
+    google_spreadsheet_link: DataTypes.STRING,
+    uuid: DataTypes.STRING,
+    number_entries: DataTypes.INTEGER,
+    view_count: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

@@ -29,33 +29,27 @@ export default class Result extends Component {
     return(
       <Panel>
         <Row>
-          <Col sm={6}>
+          <Col xs={9}>
             <h1>{organizationName}</h1>
-            <span>{typeOfProgram}</span>
+            <blockquote> <p> {typeOfProgram} </p> </blockquote>
           </Col>
-          <Col xs={4} sm={2} className='text-center'>
-            <Button className="result-button" target='_blank' href={'https://maps.google.com/?q=' + address} block>
-            <Row>
-              <Glyphicon className='result-button-icon' glyph='map-marker' />
-              <br/>
-              Directions
-            </Row>
-            </Button>
-          </Col>
-          <Col xs={4} sm={2} className='text-center'>
-            <Button className="result-button" href={'tel:'+telephone} block>
-            <Row>
-              <Glyphicon className='result-button-icon' glyph='earphone' />
-              <br/>
-              { telephone }
-            </Row>
-            </Button>
-          </Col>
-          <Col xs={4} sm={2} className='text-center'>
+          <Col xs={3} className='text-center'>
             <Button className="result-button" href="#" block onClick={ ()=> this.setState({ panelOpen: !this.state.panelOpen })}>
               <Glyphicon className='result-button-icon' glyph={ panelOpenIcon + '-sign'} />
               <br/>
               { panelOpenText } Details
+            </Button>
+          </Col>
+          <Col xs={12}>
+            <Button className="result-button" target='_blank' href={'https://maps.google.com/?q=' + address} >
+              <Glyphicon className='result-button-icon' glyph='map-marker' />
+              { address }
+            </Button>
+          </Col>
+          <Col xs={12}>
+            <Button className="result-button" href={'tel:'+telephone} >
+              <Glyphicon className='result-button-icon' glyph='earphone' />
+              { telephone }
             </Button>
           </Col>
         </Row>
