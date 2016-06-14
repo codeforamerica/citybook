@@ -30,7 +30,7 @@ if(process.argv[2] === '--dev'){
     historyApiFallback: true,
     proxy: {
       '/api*': {
-        target: 'https://other-server.example.com',
+        target: 'http://localhost:8080/',
         secure: false
       }
     }
