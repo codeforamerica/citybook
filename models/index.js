@@ -11,13 +11,9 @@ console.log(process.env.DATABASE_URL);
 console.log('a')
 if (process.env.DATABASE_URL) {
   console.log('b')
-
+  console.log(process.env.DATABASE_URL);
     // the application is executed on Heroku ... use the postgres database
-    sequelize = new Sequelize(process.env.DATABASE_URL, {
-      dialect:  'postgres',
-      protocol: 'postgres',
-      logging:  true //false
-    });
+    sequelize = new Sequelize(process.env.DATABASE_URL);
 } else {
   console.log('c')
   sequelize = new Sequelize(config.database, config.username, config.password, config);
