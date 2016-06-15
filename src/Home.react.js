@@ -26,9 +26,6 @@ export default class TopNav extends Component {
         <Instruction number='3' title="Paste Your Spreadsheet's Public Link">
           <Step3 />
         </Instruction>
-        <Instruction number='4' title="Grab the Embed Code">
-          <Step4 />
-        </Instruction>
         <Footer />
       </Grid>
       </div>

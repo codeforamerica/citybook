@@ -16,7 +16,7 @@ export default class Step4 extends Component {
                 <Glyphicon glyph="copy" aria-hidden="true"></Glyphicon> Copy Embed:
               </Button>
             </InputGroup.Button>
-            <FormControl id="embed-output" type="text" placeholder="Your embed will appear here..."/>
+            <FormControl id="embed-output" type="text" value={this.props.embed} placeholder="Your embed will appear here..."/>
           </InputGroup>
         </Col>
         <Col md={12}>
@@ -26,9 +26,9 @@ export default class Step4 extends Component {
                 <Glyphicon glyph="copy" aria-hidden="true"></Glyphicon> Copy Link:
               </Button>
             </InputGroup.Button>
-            <FormControl id="link-output" type="text" placeholder="Your link will appear here..."/>
+            <FormControl id="link-output" type="text" value={this.props.link} placeholder="Your link will appear here..."/>
           </InputGroup>
-          <Button href="" bsSize="large" id="citybook-test" target="_blank" className="btn-blue">Test your CityBook</Button>
+          <Button href={this.props.link} bsSize="large" id="citybook-test" target="_blank" className="btn-blue">Test your CityBook</Button>
         </Col>
         <br/>
       </Row>

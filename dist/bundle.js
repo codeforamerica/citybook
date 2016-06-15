@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "afd2e551cb9e49826417"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2c621506ec52ae9a058a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -34199,11 +34199,6 @@
 	            { number: '3', title: 'Paste Your Spreadsheet\'s Public Link' },
 	            _react2.default.createElement(_Step3React2.default, null)
 	          ),
-	          _react2.default.createElement(
-	            _InstructionReact2.default,
-	            { number: '4', title: 'Grab the Embed Code' },
-	            _react2.default.createElement(_Step4React2.default, null)
-	          ),
 	          _react2.default.createElement(_FooterReact2.default, null)
 	        )
 	      );
@@ -54328,6 +54323,14 @@
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
+	var _InstructionReact = __webpack_require__(588);
+	
+	var _InstructionReact2 = _interopRequireDefault(_InstructionReact);
+	
+	var _Step4React = __webpack_require__(594);
+	
+	var _Step4React2 = _interopRequireDefault(_Step4React);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54347,7 +54350,9 @@
 	    _this.state = {
 	      spreadSheetLink: '',
 	      linkStatus: '',
-	      createButtonDisabled: true
+	      createButtonDisabled: true,
+	      citybookLink: '',
+	      citybookEmbed: ''
 	    };
 	    _this.onChange = _this.onChange.bind(_this);
 	    _this.createBook = _this.createBook.bind(_this);
@@ -54357,7 +54362,7 @@
 	  _createClass(Step3, [{
 	    key: 'onChange',
 	    value: function onChange(event) {
-	      var spreadSheetKey = void 0,
+	      var spreadSheetKey,
 	          spreadSheetLink = event.target.value;
 	
 	      if (!event.target.value) {
@@ -54372,6 +54377,30 @@
 	      if (/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(spreadSheetLink)) {
 	        console.log('link matches regex');
 	        spreadSheetKey = spreadSheetLink.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+	
+	        this.connectionSuccess = function (data) {
+	          console.log(spreadSheetKey);
+	          this.setState({
+	            linkStatus: 'success',
+	            createButtonDisabled: false,
+	            spreadSheetLink: spreadSheetKey
+	          });
+	        }.bind(this);
+	
+	        this.connectionError = function (err) {
+	          console.error('no connection!');
+	          this.setState({
+	            linkStatus: 'bad-connection',
+	            createButtonDisabled: true
+	          });
+	        }.bind(this);
+	
+	        _jquery2.default.get({
+	          url: 'https://spreadsheets.google.com/feeds/list/' + spreadSheetKey + '/1/public/full?alt=json',
+	          dataType: 'jsonp',
+	          success: this.connectionSuccess,
+	          error: this.connectionError
+	        });
 	      } else {
 	        console.log('bad-format');
 	        this.setState({
@@ -54379,39 +54408,24 @@
 	          createButtonDisabled: true
 	        });
 	      }
-	
-	      _jquery2.default.get({
-	        url: 'https://spreadsheets.google.com/feeds/list/' + spreadSheetKey + '/1/public/full?alt=json',
-	        dataType: 'json',
-	        success: this.connectionSuccess,
-	        error: this.connectionError
-	      });
-	
-	      this.connectionSuccess = function (data) {
-	        console.log('success!');
-	        this.setState({
-	          linkStatus: 'success',
-	          createButtonDisabled: false,
-	          spreadSheetLink: spreadSheetKey
-	        });
-	      }.bind(this);
-	
-	      this.connectionError = function (err) {
-	        console.error('no connection!');
-	        this.setState({
-	          linkStatus: 'bad-connection',
-	          createButtonDisabled: true
-	        });
-	      }.bind(this);
 	    }
 	  }, {
 	    key: 'createBook',
 	    value: function createBook() {
+	      var citybookLink = 'https://http://www.citybook.io/#/books/key=' + this.state.spreadSheetLink;
+	      var citybookEmbed = '<iframe src=' + citybookLink + 'width="100%" height="600px" frameboarder="0"></iframe>';
+	      console.log(citybookLink);
 	      var book_reference = {
 	        title: 'test title',
 	        link: this.state.spreadSheetLink,
 	        opt_in: 'true'
 	      };
+	
+	      this.setState({
+	        citybookLink: citybookLink,
+	        citybookEmbed: citybookEmbed
+	      });
+	
 	      _jquery2.default.ajax({
 	        url: '/api/books',
 	        dataType: 'json',
@@ -54424,12 +54438,11 @@
 	          console.error(this.props.url, status, err.toString());
 	        }.bind(this)
 	      });
-	      console.log('user wants to create a new book');
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var linkStatus = void 0;
+	      var linkStatus;
 	      if (this.state.linkStatus === 'empty') {
 	        linkStatus = '';
 	      }
@@ -54514,63 +54527,16 @@
 	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 12 },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Adjust other settings here:'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 4, md: 3 },
-	            _react2.default.createElement(
-	              _reactBootstrap.InputGroup,
-	              { 'class': 'input-group' },
-	              _react2.default.createElement(
-	                _reactBootstrap.InputGroup.Addon,
-	                { 'class': 'input-group-addon' },
-	                'Width:'
-	              ),
-	              _react2.default.createElement(_reactBootstrap.FormControl, { 'class': 'form-control text-right', id: 'citybook-width', label: 'Height', placeholder: 'Height', type: 'text' }),
-	              _react2.default.createElement(
-	                _reactBootstrap.InputGroup.Addon,
-	                { 'class': 'input-group-addon' },
-	                '%'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 4, md: 3 },
-	            _react2.default.createElement(
-	              _reactBootstrap.InputGroup,
-	              { 'class': 'input-group' },
-	              _react2.default.createElement(
-	                _reactBootstrap.InputGroup.Addon,
-	                { 'class': 'input-group-addon' },
-	                'Height:'
-	              ),
-	              _react2.default.createElement(_reactBootstrap.FormControl, { 'class': 'form-control text-right', id: 'citybook-height', label: 'Width', placeholder: 'Width', type: 'text' }),
-	              _react2.default.createElement(
-	                _reactBootstrap.InputGroup.Addon,
-	                { 'class': 'input-group-addon' },
-	                'px'
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
 	          'p',
 	          null,
 	          'By creating a CityBook, you agree to our ',
 	          _react2.default.createElement(_TosModalReact2.default, null),
 	          '.'
+	        ),
+	        _react2.default.createElement(
+	          _InstructionReact2.default,
+	          { number: '4', title: 'Grab the Embed Code' },
+	          _react2.default.createElement(_Step4React2.default, { embed: this.state.citybookEmbed, link: this.state.citybookLink })
 	        )
 	      );
 	    }
@@ -64697,7 +64663,7 @@
 	                ' Copy Embed:'
 	              )
 	            ),
-	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'embed-output', type: 'text', placeholder: 'Your embed will appear here...' })
+	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your embed will appear here...' })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -64716,11 +64682,11 @@
 	                ' Copy Link:'
 	              )
 	            ),
-	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'link-output', type: 'text', placeholder: 'Your link will appear here...' })
+	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'link-output', type: 'text', value: this.props.link, placeholder: 'Your link will appear here...' })
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Button,
-	            { href: '', bsSize: 'large', id: 'citybook-test', target: '_blank', className: 'btn-blue' },
+	            { href: this.props.link, bsSize: 'large', id: 'citybook-test', target: '_blank', className: 'btn-blue' },
 	            'Test your CityBook'
 	          )
 	        ),
@@ -65274,7 +65240,7 @@
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n.results-list {\n  padding: 0; }\n  .results-list h1 {\n    margin-top: 10px; }\n  .results-list h4 {\n    font-weight: normal;\n    margin-bottom: 20px; }\n  .results-list blockquote {\n    border-left: 5px solid #ccc;\n    padding: 0.5em 10px;\n    quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n  .results-list blockquote:before {\n    color: #ccc;\n    font-size: 4em;\n    line-height: 0.1em;\n    margin-right: 0.25em;\n    vertical-align: -0.4em; }\n  .results-list blockquote p {\n    display: inline; }\n  .results-list .panel {\n    border-radius: 0px;\n    box-shadow: none;\n    border-top: 0px;\n    border-left: 0px;\n    border-right: 0px;\n    border-bottom: 1px solid #ddd; }\n    .results-list .panel .result-button {\n      padding: 10px;\n      font-size: 2rem;\n      margin: 5px 0px;\n      background-color: #eee; }\n      .results-list .panel .result-button .result-button-icon {\n        font-size: 2rem;\n        padding-right: 10px; }\n    .results-list .panel .more-info {\n      border: none; }\n\n.typeahead-selector {\n  position: absolute;\n  opacity: 0.98;\n  z-index: 9000;\n  min-width: 300px;\n  width: 100%; }\n\n.typeahead {\n  position: relative; }\n\n.typeahead-selector .list-group-item.hover, .typeahead-selector .list-group-item:hover {\n  background-color: #bbb; }\n\n.Dropdown-root {\n  vertical-align: middle;\n  position: relative; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option:hover {\n    background-color: #f2f9fc;\n    color: #333; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.citybook-header {\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  .citybook-header a {\n    color: white !important;\n    font-weight: bold; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n.results-list {\n  padding: 0; }\n  .results-list h1 {\n    margin-top: 10px; }\n  .results-list h4 {\n    font-weight: normal;\n    margin-bottom: 20px; }\n  .results-list blockquote {\n    border-left: 5px solid #ccc;\n    padding: 0.5em 10px;\n    quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n  .results-list blockquote:before {\n    color: #ccc;\n    font-size: 4em;\n    line-height: 0.1em;\n    margin-right: 0.25em;\n    vertical-align: -0.4em; }\n  .results-list blockquote p {\n    display: inline; }\n  .results-list .panel {\n    border-radius: 0px;\n    box-shadow: none;\n    border-top: 0px;\n    border-left: 0px;\n    border-right: 0px;\n    border-bottom: 1px solid #ddd; }\n    .results-list .panel .result-button {\n      padding: 10px;\n      font-size: 2rem;\n      margin: 5px 0px;\n      background-color: #eee; }\n      .results-list .panel .result-button .result-button-icon {\n        font-size: 2rem;\n        padding-right: 10px; }\n    .results-list .panel .more-info {\n      border: none; }\n\n.typeahead-selector {\n  position: absolute;\n  opacity: 0.98;\n  z-index: 9000;\n  min-width: 300px;\n  width: 100%; }\n\n.typeahead {\n  position: relative; }\n\n.typeahead-selector .list-group-item.hover, .typeahead-selector .list-group-item:hover {\n  background-color: #bbb; }\n\n.Dropdown-root {\n  vertical-align: middle;\n  position: relative; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option:hover {\n    background-color: #f2f9fc;\n    color: #333; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.citybook-header {\n  background-image: linear-gradient(120deg, #4776E6, #823bf3); }\n  .citybook-header a {\n    color: white !important;\n    font-weight: bold; }\n", ""]);
 	
 	// exports
 

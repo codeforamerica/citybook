@@ -3,6 +3,9 @@ import { Row, Col, Button, InputGroup, FormControl, Alert } from 'react-bootstra
 import TosModal from '../TosModal.react.js';
 import '../../../styles/instructions.scss';
 import $ from 'jquery';
+import Instruction from '../Instruction.react.js';
+import Step4 from './Step4.react.js';
+
 
 export default class Step3 extends Component {
   constructor(){
@@ -10,13 +13,15 @@ export default class Step3 extends Component {
     this.state = {
       spreadSheetLink: '',
       linkStatus: '',
-      createButtonDisabled: true
+      createButtonDisabled: true,
+      citybookLink: '',
+      citybookEmbed: ''
     }
     this.onChange = this.onChange.bind(this);
     this.createBook = this.createBook.bind(this);
   }
   onChange(event) {
-    let
+    var
       spreadSheetKey,
       spreadSheetLink = event.target.value;
 
@@ -32,6 +37,31 @@ export default class Step3 extends Component {
       if(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(spreadSheetLink)){
         console.log('link matches regex');
         spreadSheetKey = spreadSheetLink.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+
+        this.connectionSuccess = function(data){
+          console.log(spreadSheetKey)
+          this.setState({
+            linkStatus: 'success',
+            createButtonDisabled: false,
+            spreadSheetLink: spreadSheetKey
+          })
+        }.bind(this)
+
+        this.connectionError = function(err){
+          console.error('no connection!');
+          this.setState({
+            linkStatus: 'bad-connection',
+            createButtonDisabled: true
+          })
+        }.bind(this)
+
+        $.get({
+          url: 'https://spreadsheets.google.com/feeds/list/' + spreadSheetKey + '/1/public/full?alt=json',
+          dataType: 'jsonp',
+          success: this.connectionSuccess,
+          error: this.connectionError
+        });
+
       } else {
         console.log('bad-format');
         this.setState({
@@ -40,37 +70,24 @@ export default class Step3 extends Component {
         })
       }
 
-      $.get({
-        url: 'https://spreadsheets.google.com/feeds/list/' + spreadSheetKey + '/1/public/full?alt=json',
-        dataType: 'json',
-        success: this.connectionSuccess,
-        error: this.connectionError
-      });
 
-      this.connectionSuccess = function(data){
-        console.log('success!')
-        this.setState({
-          linkStatus: 'success',
-          createButtonDisabled: false,
-          spreadSheetLink: spreadSheetKey
-        })
-      }.bind(this)
-
-      this.connectionError = function(err){
-        console.error('no connection!');
-        this.setState({
-          linkStatus: 'bad-connection',
-          createButtonDisabled: true
-        })
-      }.bind(this)
   }
 
   createBook(){
-    let book_reference = {
+    var citybookLink = 'https://http://www.citybook.io/#/books/key=' + this.state.spreadSheetLink
+    var citybookEmbed = '<iframe src=' + citybookLink + 'width="100%" height="600px" frameboarder="0"></iframe>'
+    console.log(citybookLink);
+    var book_reference = {
       title: 'test title',
       link: this.state.spreadSheetLink,
       opt_in: 'true'
     }
+
+    this.setState({
+      citybookLink: citybookLink,
+      citybookEmbed: citybookEmbed
+    })
+
     $.ajax({
       url: '/api/books',
       dataType: 'json',
@@ -83,11 +100,10 @@ export default class Step3 extends Component {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-    console.log('user wants to create a new book')
   }
 
   render(){
-    let linkStatus;
+    var linkStatus;
     if(this.state.linkStatus === 'empty'){
       linkStatus = ''
     }
@@ -136,27 +152,10 @@ export default class Step3 extends Component {
         </Row>
         <Button href="#" onClick={this.createBook} bsSize="large" id="citybook-test" className="btn-blue" disabled={this.state.createButtonDisabled}>Create your CityBook</Button>
         <br/>
-        <Row>
-          <Col sm={12}>
-            <p>Adjust other settings here:</p>
-          </Col>
-          <Col sm={4} md={3}>
-            <InputGroup class="input-group">
-              <InputGroup.Addon class="input-group-addon">Width:</InputGroup.Addon>
-              <FormControl class="form-control text-right" id="citybook-width" label="Height" placeholder="Height" type="text"></FormControl>
-              <InputGroup.Addon class="input-group-addon">%</InputGroup.Addon>
-            </InputGroup>
-          </Col>
-          <Col sm={4} md={3}>
-            <InputGroup class="input-group">
-              <InputGroup.Addon class="input-group-addon">Height:</InputGroup.Addon>
-              <FormControl class="form-control text-right" id="citybook-height" label="Width" placeholder="Width" type="text"></FormControl>
-              <InputGroup.Addon class="input-group-addon">px</InputGroup.Addon>
-            </InputGroup>
-          </Col>
-        </Row>
-        <br/>
         <p>By creating a CityBook, you agree to our <TosModal />.</p>
+        <Instruction number='4' title="Grab the Embed Code">
+          <Step4 embed={this.state.citybookEmbed} link={this.state.citybookLink} />
+        </Instruction>
       </div>
     )
   }
