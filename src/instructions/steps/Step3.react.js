@@ -14,6 +14,7 @@ export default class Step3 extends Component {
       spreadSheetLink: '',
       linkStatus: '',
       createButtonDisabled: true,
+      uuid: '',
       citybookLink: '',
       citybookEmbed: ''
     }
@@ -74,19 +75,9 @@ export default class Step3 extends Component {
   }
 
   createBook(){
-    var citybookLink = 'https://http://www.citybook.io/#/books/key=' + this.state.spreadSheetLink
-    var citybookEmbed = '<iframe src=' + citybookLink + 'width="100%" height="600px" frameboarder="0"></iframe>'
-    console.log(citybookLink);
     var book_reference = {
-      title: 'test title',
       link: this.state.spreadSheetLink,
-      opt_in: 'true'
     }
-
-    this.setState({
-      citybookLink: citybookLink,
-      citybookEmbed: citybookEmbed
-    })
 
     $.ajax({
       url: '/api/books',
@@ -94,6 +85,9 @@ export default class Step3 extends Component {
       type: 'POST',
       data: book_reference,
       success: function(data) {
+        this.setState({
+          uuid: data
+        })
         console.log(data);
       }.bind(this),
       error: function(xhr, status, err) {
@@ -103,6 +97,8 @@ export default class Step3 extends Component {
   }
 
   render(){
+    var citybookLink = 'http://www.citybook.io/#/books/' + this.state.uuid;
+    var citybookEmbed = '<iframe src="' + citybookLink + '" width="100%" height="800px" frameboarder="0"></iframe>'
     var linkStatus;
     if(this.state.linkStatus === 'empty'){
       linkStatus = ''
@@ -154,7 +150,7 @@ export default class Step3 extends Component {
         <br/>
         <p>By creating a CityBook, you agree to our <TosModal />.</p>
         <Instruction number='4' title="Grab the Embed Code">
-          <Step4 embed={this.state.citybookEmbed} link={this.state.citybookLink} />
+          <Step4 embed={citybookEmbed} link={citybookLink} />
         </Instruction>
       </div>
     )

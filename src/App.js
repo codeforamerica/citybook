@@ -4,6 +4,7 @@ import TopNav from './navigation/topNav.react.js';
 import ErrorBar from './ErrorBar.react.js';
 import getSpreadsheetData from './scripts/getSpreadsheetData.js';
 import ResultListWrapper from './results/ResultListWrapper.react.js';
+import $ from 'jquery';
 import fuzzy from 'fuzzy';
 
 
@@ -21,7 +22,6 @@ export default class App extends Component {
 
     this.updateState = this.updateState.bind(this);
     this.setSearchInput = this.setSearchInput.bind(this);
-
     this.componentWillMount = this.componentWillMount.bind(this);
   }
   updateState(loadState, filterOptions, results, error){
@@ -44,20 +44,21 @@ export default class App extends Component {
       matches = results.map(function(el){ return el.index; }),
       arrayLength = matches.length,
       filteredResults = [];
-      
+
     for (var i = 0; i < arrayLength; i++) {
       filteredResults.push(this.state.results[matches[i]])
     }
     this.setState({filteredResults: filteredResults, searchInput: event.target.value});
   }
-  componentWillUpdate(){
 
-  }
   componentWillMount(){
-    getSpreadsheetData(this.props.params.bookId, this.updateState);
-    this.setState({
-      spreadsheetId: this.props.params.bookId
-    });
+    $.get('/api/books/' + this.props.params.bookId, function(book_reference){
+      var spreadsheetLink = book_reference.google_spreadsheet_link;
+      getSpreadsheetData(spreadsheetLink, this.updateState);
+      this.setState({
+        spreadsheetId: spreadsheetLink
+      });
+    }.bind(this))
   }
 
   render() {
