@@ -16,7 +16,6 @@ if (process.env.DATABASE_URL) {
     sequelize = new Sequelize(process.env.DATABASE_URL, {
       dialect:  'postgres',
       protocol: 'postgres',
-      host:     process.env.DATABASE_URL,
       logging:  true //false
     });
 } else {
