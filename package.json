@@ -62,6 +62,7 @@
     "sequelize": "^3.23.3",
     "sequelize-cli": "^2.4.0",
     "tabletop": "^1.4.3",
+    "uuid": "^2.0.2",
     "webpack": "^1.13.1"
   }
 }
