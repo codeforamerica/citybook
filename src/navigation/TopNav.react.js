@@ -42,7 +42,7 @@ export default class TopNav extends Component {
           </Navbar.Header>
           <Navbar.Form pullLeft>
             <FormGroup style={{display: 'inline'}}>
-              <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Enter text" />
+              <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Search..." />
             </FormGroup>
           </Navbar.Form>
           <Navbar.Collapse>
