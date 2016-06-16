@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b5f35cdabdc36cb1ec95"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fbda32d93887e6463d90"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -54532,7 +54532,7 @@
 	        _react2.default.createElement(
 	          _InstructionReact2.default,
 	          { number: '4', title: 'Grab the Embed Code' },
-	          _react2.default.createElement(_Step4React2.default, { embed: citybookEmbed, link: citybookLink })
+	          _react2.default.createElement(_Step4React2.default, { embed: citybookEmbed, link: citybookLink, sskey: this.state.uuid })
 	        )
 	      );
 	    }
@@ -64682,7 +64682,7 @@
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Button,
-	            { href: this.props.link, bsSize: 'large', id: 'citybook-test', target: '_blank', className: 'btn-blue' },
+	            { href: '/#/books/' + this.props.sskey, bsSize: 'large', id: 'citybook-test', target: '_blank', className: 'btn-blue' },
 	            'Test your CityBook'
 	          )
 	        ),
@@ -65320,9 +65320,8 @@
 	  value: true
 	});
 	
-	exports.default = function (spreadsheetUrl, updateState) {
-	  var output = {},
-	      spreadSheetKey = spreadsheetUrl.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+	exports.default = function (spreadSheetKey, updateState) {
+	  var output = {};
 	  if (spreadSheetKey) {
 	    _tabletop2.default.init({
 	      key: spreadSheetKey, // copy of live spreadsheet
