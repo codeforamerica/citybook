@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4899099cc634e5217847"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7310a2d9a2351e7e3ed6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -34186,7 +34186,7 @@
 	          _react2.default.createElement(_HowItWorksReact2.default, null),
 	          _react2.default.createElement(
 	            _InstructionReact2.default,
-	            { number: '1', title: 'Get the Template' },
+	            { id: 'instructions-start', number: '1', title: 'Get the Template' },
 	            _react2.default.createElement(_Step1React2.default, null)
 	          ),
 	          _react2.default.createElement(
@@ -53380,33 +53380,42 @@
 	          null,
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
-	            { xs: 4, xsOffset: 4, sm: 2, smOffset: 5 },
+	            { xs: 12, sm: 3 },
 	            _react2.default.createElement(
 	              'object',
-	              { type: 'image/svg+xml', className: 'img-responsive diagram', data: '../../img/CityBookLogo.svg' },
+	              { type: 'image/svg+xml', className: 'img-responsive main-logo', data: '../../img/CityBookLogo.svg' },
 	              _react2.default.createElement('img', { src: '../../img/CityBookLogo.png', alt: 'No SVG support' })
+	            ),
+	            _react2.default.createElement(
+	              'h1',
+	              { className: 'project-name' },
+	              'CityBook'
+	            ),
+	            _react2.default.createElement(
+	              'h2',
+	              { className: 'project-tagline' },
+	              'Create a contact list from a Google Spreadsheet.'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { id: 'get-started-button', href: '#instructions-start', className: 'btn btn-header btn-lg', block: true },
+	              'Make a CityBook'
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { id: 'get-started-button', href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', className: 'btn btn-header btn-lg', block: true },
+	              'Demo'
 	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { xs: 12, sm: 8, smOffset: 1 },
+	            _react2.default.createElement('span', { className: 'demo-iframe-button red' }),
+	            _react2.default.createElement('span', { className: 'demo-iframe-button yellow' }),
+	            _react2.default.createElement('span', { className: 'demo-iframe-button green' }),
+	            _react2.default.createElement('iframe', { className: 'demo-iframe', src: 'http://www.citybook.io/#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', width: '100%', height: '500px', frameBorder: '0' }),
+	            _react2.default.createElement('span', { className: 'demo-iframe-bottom-line' })
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'h1',
-	          { className: 'project-name' },
-	          'CityBook'
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'project-tagline' },
-	          'Create a searchable, mobile-friendly contact list from a Google Spreadsheet.'
-	        ),
-	        _react2.default.createElement(
-	          'a',
-	          { id: 'get-started-button', className: 'btn btn-header btn-lg' },
-	          'Get Started'
-	        ),
-	        _react2.default.createElement(
-	          'a',
-	          { href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', target: '_blank', className: 'btn btn-header btn-lg' },
-	          'Demo'
 	        )
 	      );
 	    }
@@ -53455,7 +53464,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".btn + .btn {\n  margin-left: 1rem; }\n\n.btn-blue {\n  background-color: #4776E6;\n  color: white;\n  border-color: #4776E6;\n  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1); }\n  .btn-blue:hover {\n    background-color: rgba(21, 87, 153, 0.9);\n    color: white;\n    border-color: #155799; }\n\n.page-header {\n  color: #fff;\n  text-align: center;\n  margin: 0;\n  background-color: #4776E6;\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  @media screen and (min-width: 64em) {\n    .page-header {\n      padding: 8rem 6rem;\n      margin-bottom: 3rem; } }\n  @media screen and (min-width: 42em) and (max-width: 64em) {\n    .page-header {\n      padding: 7rem 4rem;\n      margin-bottom: 2rem; } }\n  @media screen and (max-width: 42em) {\n    .page-header {\n      padding: 2rem 1rem;\n      margin-bottom: 1rem; } }\n  .page-header .project-name {\n    font-weight: 600;\n    margin-top: 0;\n    margin-bottom: 0.1rem; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-name {\n        font-size: 4.25rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-name {\n        font-size: 3.25rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-name {\n        font-size: 4.5rem; } }\n  .page-header .project-tagline {\n    margin-bottom: 2rem;\n    font-weight: normal;\n    opacity: 0.7; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.75rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n  .page-header .btn.btn-header {\n    display: inline-block;\n    margin-bottom: 1rem;\n    color: rgba(255, 255, 255, 0.7);\n    background-color: rgba(255, 255, 255, 0.08);\n    border-color: rgba(255, 255, 255, 0.2);\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 0.3rem;\n    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }\n  .page-header .btn-header:hover {\n    color: rgba(255, 255, 255, 0.8);\n    text-decoration: none;\n    background-color: rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.3); }\n\n.how-it-works h2, .how-it-works h3 {\n  margin-top: 2rem;\n  margin-bottom: 1rem;\n  font-weight: normal;\n  color: #4776E6; }\n\n.instruction-step {\n  margin-top: 8rem;\n  margin-bottom: 4rem;\n  padding-bottom: 4rem;\n  border-bottom: 1px solid #efefef; }\n  .instruction-step h1 {\n    margin-top: 2rem;\n    margin-bottom: 1rem;\n    font-weight: normal;\n    color: #4776E6; }\n    .instruction-step h1 .step-number {\n      color: white;\n      background-color: #4776E6;\n      padding-left: 10px;\n      padding-right: 10px;\n      border-radius: 4px; }\n  .instruction-step p {\n    font-size: 2rem; }\n  .instruction-step .input-group {\n    margin-top: 2em;\n    margin-bottom: 2em; }\n", ""]);
+	exports.push([module.id, ".btn + .btn {\n  margin-left: 1rem; }\n\n.btn-blue {\n  background-color: #4776E6;\n  color: white;\n  border-color: #4776E6;\n  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1); }\n  .btn-blue:hover {\n    background-color: rgba(21, 87, 153, 0.9);\n    color: white;\n    border-color: #155799; }\n\n.page-header {\n  color: #fff;\n  margin: 0;\n  background-color: #4776E6;\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  .page-header .main-logo {\n    max-width: 180px; }\n  @media screen and (min-width: 64em) {\n    .page-header {\n      padding: 8rem 6rem;\n      margin-bottom: 3rem; } }\n  @media screen and (min-width: 42em) and (max-width: 64em) {\n    .page-header {\n      padding: 7rem 4rem;\n      margin-bottom: 2rem; } }\n  @media screen and (max-width: 42em) {\n    .page-header {\n      padding: 2rem 1rem;\n      margin-bottom: 1rem; } }\n  .page-header .project-name {\n    font-weight: 600;\n    margin-top: 0;\n    margin-bottom: 0.1rem; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-name {\n        font-size: 4.25rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-name {\n        font-size: 3.25rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-name {\n        font-size: 4.5rem; } }\n  .page-header .project-tagline {\n    margin-bottom: 2rem;\n    font-weight: normal;\n    opacity: 0.7; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.75rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n  .page-header .btn.btn-header {\n    display: inline-block;\n    margin-bottom: 1rem;\n    color: rgba(255, 255, 255, 0.7);\n    background-color: rgba(255, 255, 255, 0.08);\n    border-color: rgba(255, 255, 255, 0.2);\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 0.3rem;\n    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }\n  .page-header .btn-header:hover {\n    color: rgba(255, 255, 255, 0.8);\n    text-decoration: none;\n    background-color: rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.3); }\n  .page-header .demo-iframe-button {\n    margin-right: 5px;\n    height: 15px;\n    width: 15px;\n    display: inline-block;\n    position: absolute;\n    top: 6px;\n    border-radius: 50%; }\n    .page-header .demo-iframe-button.red {\n      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);\n      left: 30px; }\n    .page-header .demo-iframe-button.yellow {\n      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);\n      left: 55px; }\n    .page-header .demo-iframe-button.green {\n      background-image: linear-gradient(120deg, #87FC70, #0BD318);\n      left: 80px; }\n  .page-header .demo-iframe {\n    border-top: 25px solid #eee;\n    border-radius: 5px; }\n\n.how-it-works h2, .how-it-works h3 {\n  margin-top: 2rem;\n  margin-bottom: 1rem;\n  font-weight: normal;\n  color: #4776E6; }\n\n.instruction-step {\n  margin-top: 8rem;\n  margin-bottom: 4rem;\n  padding-bottom: 4rem;\n  border-bottom: 1px solid #efefef; }\n  .instruction-step h1 {\n    margin-top: 2rem;\n    margin-bottom: 1rem;\n    font-weight: normal;\n    color: #4776E6; }\n    .instruction-step h1 .step-number {\n      color: white;\n      background-color: #4776E6;\n      padding-left: 10px;\n      padding-right: 10px;\n      border-radius: 4px; }\n  .instruction-step p {\n    font-size: 2rem; }\n  .instruction-step .input-group {\n    margin-top: 2em;\n    margin-bottom: 2em; }\n", ""]);
 	
 	// exports
 
@@ -64930,7 +64939,7 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactBootstrap.Navbar,
-	          { className: 'citybook-header' },
+	          { className: 'citybook-header affix' },
 	          _react2.default.createElement(
 	            _reactBootstrap.Navbar.Header,
 	            null,
@@ -64951,7 +64960,7 @@
 	            _react2.default.createElement(
 	              _reactBootstrap.FormGroup,
 	              { style: { display: 'inline' } },
-	              _react2.default.createElement(_reactBootstrap.FormControl, { onChange: this.props.setSearchInput, type: 'text', placeholder: 'Enter text' })
+	              _react2.default.createElement(_reactBootstrap.FormControl, { onChange: this.props.setSearchInput, type: 'text', placeholder: 'Search...' })
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -65239,7 +65248,7 @@
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n.results-list {\n  padding: 0; }\n  .results-list h1 {\n    margin-top: 10px; }\n  .results-list h4 {\n    font-weight: normal;\n    margin-bottom: 20px; }\n  .results-list blockquote {\n    border-left: 5px solid #ccc;\n    padding: 0.5em 10px;\n    quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n  .results-list blockquote:before {\n    color: #ccc;\n    font-size: 4em;\n    line-height: 0.1em;\n    margin-right: 0.25em;\n    vertical-align: -0.4em; }\n  .results-list blockquote p {\n    display: inline; }\n  .results-list .panel {\n    border-radius: 0px;\n    box-shadow: none;\n    border-top: 0px;\n    border-left: 0px;\n    border-right: 0px;\n    border-bottom: 1px solid #ddd; }\n    .results-list .panel .result-button {\n      padding: 10px;\n      font-size: 2rem;\n      margin: 5px 0px;\n      background-color: #eee; }\n      .results-list .panel .result-button .result-button-icon {\n        font-size: 2rem;\n        padding-right: 10px; }\n    .results-list .panel .more-info {\n      border: none; }\n\n.typeahead-selector {\n  position: absolute;\n  opacity: 0.98;\n  z-index: 9000;\n  min-width: 300px;\n  width: 100%; }\n\n.typeahead {\n  position: relative; }\n\n.typeahead-selector .list-group-item.hover, .typeahead-selector .list-group-item:hover {\n  background-color: #bbb; }\n\n.Dropdown-root {\n  vertical-align: middle;\n  position: relative; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option:hover {\n    background-color: #f2f9fc;\n    color: #333; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.citybook-header {\n  background-image: linear-gradient(120deg, #4776E6, #823bf3); }\n  .citybook-header a {\n    color: white !important;\n    font-weight: bold; }\n\n.main-search {\n  width: 50%; }\n  .main-search .form-group {\n    width: 100%; }\n    .main-search .form-group input {\n      width: 100%; }\n  @media (max-width: 768px) {\n    .main-search {\n      width: inherit; } }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n.results-list {\n  margin-top: 75px;\n  padding: 0; }\n  @media (max-width: 768px) {\n    .results-list {\n      margin-top: 150px; } }\n  .results-list h1 {\n    margin-top: 10px; }\n  .results-list h4 {\n    font-weight: normal;\n    margin-bottom: 20px; }\n  .results-list blockquote {\n    border-left: 5px solid #ccc;\n    padding: 0.5em 10px;\n    quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n  .results-list blockquote:before {\n    color: #ccc;\n    font-size: 4em;\n    line-height: 0.1em;\n    margin-right: 0.25em;\n    vertical-align: -0.4em; }\n  .results-list blockquote p {\n    display: inline; }\n  .results-list .panel {\n    border-radius: 0px;\n    box-shadow: none;\n    border-top: 0px;\n    border-left: 0px;\n    border-right: 0px;\n    border-bottom: 1px solid #ddd; }\n    .results-list .panel .result-button {\n      padding: 10px;\n      font-size: 2rem;\n      margin: 5px 0px;\n      background-color: #eee; }\n      .results-list .panel .result-button .result-button-icon {\n        font-size: 2rem;\n        padding-right: 10px; }\n    .results-list .panel .more-info {\n      border: none; }\n\n.typeahead-selector {\n  position: absolute;\n  opacity: 0.98;\n  z-index: 9000;\n  min-width: 300px;\n  width: 100%; }\n\n.typeahead {\n  position: relative; }\n\n.typeahead-selector .list-group-item.hover, .typeahead-selector .list-group-item:hover {\n  background-color: #bbb; }\n\n.Dropdown-root {\n  vertical-align: middle;\n  position: relative; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option:hover {\n    background-color: #f2f9fc;\n    color: #333; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.citybook-header {\n  background-image: linear-gradient(120deg, #4776E6, #823bf3);\n  width: 100%;\n  z-index: 1000; }\n  .citybook-header a {\n    color: white !important;\n    font-weight: bold; }\n\n.main-search {\n  width: 50%; }\n  .main-search .form-group {\n    width: 100%; }\n    .main-search .form-group input {\n      width: 100%; }\n  @media (max-width: 768px) {\n    .main-search {\n      width: inherit; } }\n", ""]);
 	
 	// exports
 
