@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2c621506ec52ae9a058a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fceee18162dfd2157dc9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -53405,7 +53405,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'a',
-	          { href: '#/books/key=18YIZlfxxlffHVytbR8zY1cvmKShGOK3z_Cf9JYow4pg&title=CityBook', target: '_blank', className: 'btn btn-header btn-lg' },
+	          { href: '#/books/', target: '_blank', className: 'btn btn-header btn-lg' },
 	          'Demo'
 	        )
 	      );
@@ -54351,6 +54351,7 @@
 	      spreadSheetLink: '',
 	      linkStatus: '',
 	      createButtonDisabled: true,
+	      uuid: '',
 	      citybookLink: '',
 	      citybookEmbed: ''
 	    };
@@ -54412,19 +54413,9 @@
 	  }, {
 	    key: 'createBook',
 	    value: function createBook() {
-	      var citybookLink = 'https://http://www.citybook.io/#/books/key=' + this.state.spreadSheetLink;
-	      var citybookEmbed = '<iframe src=' + citybookLink + 'width="100%" height="600px" frameboarder="0"></iframe>';
-	      console.log(citybookLink);
 	      var book_reference = {
-	        title: 'test title',
-	        link: this.state.spreadSheetLink,
-	        opt_in: 'true'
+	        link: this.state.spreadSheetLink
 	      };
-	
-	      this.setState({
-	        citybookLink: citybookLink,
-	        citybookEmbed: citybookEmbed
-	      });
 	
 	      _jquery2.default.ajax({
 	        url: '/api/books',
@@ -54432,6 +54423,9 @@
 	        type: 'POST',
 	        data: book_reference,
 	        success: function (data) {
+	          this.setState({
+	            uuid: data
+	          });
 	          console.log(data);
 	        }.bind(this),
 	        error: function (xhr, status, err) {
@@ -54442,6 +54436,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var citybookLink = 'http://www.citybook.io/#/books/' + this.state.uuid;
+	      var citybookEmbed = '<iframe src="' + citybookLink + '" width="100%" height="800px" frameboarder="0"></iframe>';
 	      var linkStatus;
 	      if (this.state.linkStatus === 'empty') {
 	        linkStatus = '';
@@ -54536,7 +54532,7 @@
 	        _react2.default.createElement(
 	          _InstructionReact2.default,
 	          { number: '4', title: 'Grab the Embed Code' },
-	          _react2.default.createElement(_Step4React2.default, { embed: this.state.citybookEmbed, link: this.state.citybookLink })
+	          _react2.default.createElement(_Step4React2.default, { embed: citybookEmbed, link: citybookLink })
 	        )
 	      );
 	    }
@@ -64739,6 +64735,10 @@
 	
 	var _ResultListWrapperReact2 = _interopRequireDefault(_ResultListWrapperReact);
 	
+	var _jquery = __webpack_require__(593);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
 	var _fuzzy = __webpack_require__(619);
 	
 	var _fuzzy2 = _interopRequireDefault(_fuzzy);
@@ -64770,7 +64770,6 @@
 	
 	    _this.updateState = _this.updateState.bind(_this);
 	    _this.setSearchInput = _this.setSearchInput.bind(_this);
-	
 	    _this.componentWillMount = _this.componentWillMount.bind(_this);
 	    return _this;
 	  }
@@ -64808,15 +64807,15 @@
 	      this.setState({ filteredResults: filteredResults, searchInput: event.target.value });
 	    }
 	  }, {
-	    key: 'componentWillUpdate',
-	    value: function componentWillUpdate() {}
-	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      (0, _getSpreadsheetData2.default)(this.props.params.bookId, this.updateState);
-	      this.setState({
-	        spreadsheetId: this.props.params.bookId
-	      });
+	      _jquery2.default.get('/api/books/' + this.props.params.bookId, function (book_reference) {
+	        var spreadsheetLink = book_reference.google_spreadsheet_link;
+	        (0, _getSpreadsheetData2.default)(spreadsheetLink, this.updateState);
+	        this.setState({
+	          spreadsheetId: spreadsheetLink
+	        });
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'render',
@@ -64940,7 +64939,7 @@
 	              null,
 	              _react2.default.createElement(
 	                'a',
-	                { href: 'https://citybook.io' },
+	                { href: 'http://www.citybook.io' },
 	                'CityBook'
 	              )
 	            ),

@@ -7,20 +7,14 @@ var env       = process.env.DATABASE_URL || 'development';
 var config    = require(__dirname + '/../config/config.js')[env];
 var db        = {};
 
-console.log(process.env.DATABASE_URL);
-console.log('a')
 if (process.env.DATABASE_URL) {
-  console.log('b')
-  console.log(process.env.DATABASE_URL);
     // the application is executed on Heroku ... use the postgres database
     sequelize = new Sequelize(process.env.DATABASE_URL, {
       dialectOptions: {
         ssl: true
       }
     });
-    console.log(sequelize);
 } else {
-  console.log('c')
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
