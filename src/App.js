@@ -70,7 +70,7 @@ export default class App extends Component {
       <div>
         <TopNav
           loaded={this.state.initialLoadComplete}
-          spreadsheetId={this.props.params.bookId}
+          spreadsheetId={this.state.spreadsheetId}
           filterOptions={this.state.filterOptions}
           results={this.state.filteredResults}
           setSearchInput={this.setSearchInput}/>

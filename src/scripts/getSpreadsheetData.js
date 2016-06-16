@@ -1,10 +1,12 @@
 import tabletop from 'tabletop';
 
 export default function(spreadsheetUrl, updateState){
-  let output = {};
-  if(spreadsheetUrl){
+  let
+    output = {},
+    spreadSheetKey = spreadsheetUrl.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+  if(spreadSheetKey){
     tabletop.init({
-      key: spreadsheetUrl, // copy of live spreadsheet
+      key: spreadSheetKey, // copy of live spreadsheet
       callback: success
     });
   } else {
