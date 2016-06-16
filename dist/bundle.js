@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fceee18162dfd2157dc9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b5f35cdabdc36cb1ec95"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -53405,7 +53405,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'a',
-	          { href: '#/books/', target: '_blank', className: 'btn btn-header btn-lg' },
+	          { href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', target: '_blank', className: 'btn btn-header btn-lg' },
 	          'Demo'
 	        )
 	      );
@@ -64833,7 +64833,7 @@
 	        null,
 	        _react2.default.createElement(_topNavReact2.default, {
 	          loaded: this.state.initialLoadComplete,
-	          spreadsheetId: this.props.params.bookId,
+	          spreadsheetId: this.state.spreadsheetId,
 	          filterOptions: this.state.filterOptions,
 	          results: this.state.filteredResults,
 	          setSearchInput: this.setSearchInput }),
@@ -64962,7 +64962,7 @@
 	              { pullRight: true },
 	              _react2.default.createElement(
 	                _reactBootstrap.NavItem,
-	                { eventKey: 1, href: 'https://docs.google.com/spreadsheets/d/' + this.props.spreadsheetId, target: '_blank' },
+	                { eventKey: 1, href: this.props.spreadsheetId, target: '_blank' },
 	                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'th-list' }),
 	                ' Data Source'
 	              ),
@@ -65321,10 +65321,11 @@
 	});
 	
 	exports.default = function (spreadsheetUrl, updateState) {
-	  var output = {};
-	  if (spreadsheetUrl) {
+	  var output = {},
+	      spreadSheetKey = spreadsheetUrl.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+	  if (spreadSheetKey) {
 	    _tabletop2.default.init({
-	      key: spreadsheetUrl, // copy of live spreadsheet
+	      key: spreadSheetKey, // copy of live spreadsheet
 	      callback: success
 	    });
 	  } else {
