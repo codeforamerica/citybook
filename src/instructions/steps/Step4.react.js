@@ -28,7 +28,7 @@ export default class Step4 extends Component {
             </InputGroup.Button>
             <FormControl id="link-output" type="text" value={this.props.link} placeholder="Your link will appear here..."/>
           </InputGroup>
-          <Button href={this.props.link} bsSize="large" id="citybook-test" target="_blank" className="btn-blue">Test your CityBook</Button>
+          <Button href={'/#/books/' + this.props.sskey} bsSize="large" id="citybook-test" target="_blank" className="btn-blue">Test your CityBook</Button>
         </Col>
         <br/>
       </Row>
