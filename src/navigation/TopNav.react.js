@@ -33,7 +33,7 @@ export default class TopNav extends Component {
     }
     return (
       <div>
-        <Navbar className="citybook-header">
+        <Navbar className="citybook-header affix">
           <Navbar.Header>
             <Navbar.Brand>
               <a href="http://www.citybook.io">CityBook</a>
@@ -42,7 +42,7 @@ export default class TopNav extends Component {
           </Navbar.Header>
           <Navbar.Form className='main-search' pullLeft>
             <FormGroup style={{display: 'inline'}}>
-              <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Enter text" />
+              <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Search..." />
             </FormGroup>
           </Navbar.Form>
           <Navbar.Collapse>
