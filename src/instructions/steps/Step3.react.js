@@ -150,7 +150,7 @@ export default class Step3 extends Component {
         <br/>
         <p>By creating a CityBook, you agree to our <TosModal />.</p>
         <Instruction number='4' title="Grab the Embed Code">
-          <Step4 embed={citybookEmbed} link={citybookLink} />
+          <Step4 embed={citybookEmbed} link={citybookLink} sskey={this.state.uuid} />
         </Instruction>
       </div>
     )

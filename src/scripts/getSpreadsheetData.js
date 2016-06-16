@@ -1,9 +1,7 @@
 import tabletop from 'tabletop';
 
-export default function(spreadsheetUrl, updateState){
-  let
-    output = {},
-    spreadSheetKey = spreadsheetUrl.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
+export default function(spreadSheetKey, updateState){
+  let output = {};
   if(spreadSheetKey){
     tabletop.init({
       key: spreadSheetKey, // copy of live spreadsheet
