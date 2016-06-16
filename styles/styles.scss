@@ -1,6 +1,10 @@
 //Main Styles
 
 .results-list {
+  margin-top: 75px;
+  @media (max-width: 768px) {
+    margin-top: 150px;
+  }
   padding: 0;
 
   h1 {
@@ -119,6 +123,8 @@
 
 .citybook-header {
   background-image: linear-gradient(120deg, #4776E6, rgb(130, 59, 243));
+  width: 100%;
+  z-index: 1000;
   a {
     color: white !important;
     font-weight: bold;

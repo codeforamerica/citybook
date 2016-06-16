@@ -25,6 +25,10 @@ $medium-break: 42em;
   background-color: #4776E6;
   background-image: linear-gradient(120deg, #4776E6, #8E54E9);
 
+  .main-logo {
+    max-width: 180px;
+  }
+
   @media screen and (min-width: 64em) {
     padding: 8rem 6rem;
     margin-bottom: 3rem;
@@ -89,6 +93,34 @@ $medium-break: 42em;
     border-color: rgba(255, 255, 255, 0.3);
   }
 
+  .demo-iframe-button {
+    margin-right: 5px;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    border-radius: 50%;
+
+    &.red {
+      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);
+      left: 30px;
+    }
+
+    &.yellow {
+      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);
+      left: 55px;
+    }
+
+    &.green {
+      background-image: linear-gradient(120deg, #87FC70, #0BD318);
+      left: 80px;
+    }
+  }
+  .demo-iframe {
+    border-top: 25px solid #eee;
+    border-radius: 5px;
+  }
 }
 
 

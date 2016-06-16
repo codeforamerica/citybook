@@ -33,7 +33,7 @@ export default class TopNav extends Component {
     }
     return (
       <div>
-        <Navbar className="citybook-header">
+        <Navbar className="citybook-header affix">
           <Navbar.Header>
             <Navbar.Brand>
               <a href="http://www.citybook.io">CityBook</a>
