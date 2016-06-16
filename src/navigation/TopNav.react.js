@@ -36,7 +36,7 @@ export default class TopNav extends Component {
         <Navbar className="citybook-header">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="https://citybook.io">CityBook</a>
+              <a href="http://www.citybook.io">CityBook</a>
             </Navbar.Brand>
           <Navbar.Toggle />
           </Navbar.Header>

@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 var sequelize = null;
 var basename  = path.basename(module.filename);
 var env       = process.env.DATABASE_URL || 'development';
-//var config    = require(__dirname + '/../config/config.json')[env];
+var config    = require(__dirname + '/../config/config.js')[env];
 var db        = {};
 
 console.log(process.env.DATABASE_URL);
@@ -13,7 +13,11 @@ if (process.env.DATABASE_URL) {
   console.log('b')
   console.log(process.env.DATABASE_URL);
     // the application is executed on Heroku ... use the postgres database
-    sequelize = new Sequelize(process.env.DATABASE_URL);
+    sequelize = new Sequelize(process.env.DATABASE_URL, {
+      dialectOptions: {
+        ssl: true
+      }
+    });
     console.log(sequelize);
 } else {
   console.log('c')
