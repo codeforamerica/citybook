@@ -16,7 +16,7 @@ export default class Header extends Component {
         <h1 className="project-name">CityBook</h1>
         <h2 className="project-tagline">Create a searchable, mobile-friendly contact list from a Google Spreadsheet.</h2>
         <a id="get-started-button" className="btn btn-header btn-lg">Get Started</a>
-        <a href="#/books/" target="_blank" className="btn btn-header btn-lg">Demo</a>
+        <a href="#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2" target="_blank" className="btn btn-header btn-lg">Demo</a>
       </section>
     );
   }

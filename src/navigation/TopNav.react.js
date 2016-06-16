@@ -48,7 +48,7 @@ export default class TopNav extends Component {
           <Navbar.Collapse>
 
             <Nav pullRight>
-              <NavItem eventKey={1} href={'https://docs.google.com/spreadsheets/d/'+ this.props.spreadsheetId} target="_blank"><Glyphicon glyph='th-list'/> Data Source</NavItem>
+              <NavItem eventKey={1} href={this.props.spreadsheetId} target="_blank"><Glyphicon glyph='th-list'/> Data Source</NavItem>
               <NavItem eventKey={2} href="#" onClick={ ()=> window.print()}><Glyphicon glyph='print'/> Print</NavItem>
             </Nav>
           </Navbar.Collapse>
