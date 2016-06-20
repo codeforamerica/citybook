@@ -6,6 +6,28 @@
   }
 }
 
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
 
 .results-list {
   margin-top: 75px;
@@ -70,7 +92,14 @@
 
       .result-button-icon {
         font-size: 2rem;
-        padding-right: 10px;
+        padding: 3px;
+      }
+
+      .result-button-label {
+        display: none;
+        @include respond-to('large') {
+          display: block;
+        }
       }
 
     }
