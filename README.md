@@ -34,7 +34,7 @@ npm install
 Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database.
 
 ### Development
-Running in development mode enables WebpackDevServer hot-module-reloading.
+Running in development mode enables WebpackDevServer hot-module-reloading on port 3000. Use port 8080 for testing back-end functionality.
 
 `npm run dev`
 
