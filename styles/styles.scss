@@ -7,6 +7,7 @@
 }
 
 $breakpoints: (
+  'mobile':  320px,
   'small':  767px,
   'medium': 992px,
   'large':  1200px
@@ -81,7 +82,11 @@ $breakpoints: (
     }
 
     .button-container {
-      text-align: right;
+      text-align: left;
+      padding-top: 10px;
+      @include respond-to('small') {
+        text-align: right;
+      }
     }
 
     .result-button {
@@ -97,7 +102,7 @@ $breakpoints: (
 
       .result-button-label {
         display: none;
-        @include respond-to('large') {
+        @include respond-to('small') {
           display: block;
         }
       }
