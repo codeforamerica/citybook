@@ -1,4 +1,6 @@
 # CityBook
+
+[![Join the chat at https://gitter.im/codeforamerica/citybook](https://badges.gitter.im/codeforamerica/citybook.svg)](https://gitter.im/codeforamerica/citybook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/codeforamerica/citybook.png)](https://travis-ci.org/codeforamerica/citybook)  [![Stories in Ready](https://badge.waffle.io/codeforamerica/citybook.png?label=ready&title=Ready)](https://waffle.io/codeforamerica/citybook)
 
 Make a searchable address book from a contact spreadsheet.
