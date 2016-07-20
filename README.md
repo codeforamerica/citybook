@@ -33,7 +33,7 @@ git clone https://github.com/codeforamerica/citybook.git
 npm install
 ```
 
-Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database.
+Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database. Run the database migrations to set it up: `node_modules/.bin/sequelize db:migrate`
 
 ### Development
 Running in development mode enables WebpackDevServer hot-module-reloading on port 3000. Use port 8080 for testing back-end functionality.
