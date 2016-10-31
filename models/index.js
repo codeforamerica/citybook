@@ -9,12 +9,14 @@ var db        = {};
 
 if (process.env.DATABASE_URL) {
     // the application is executed on Heroku ... use the postgres database
+    console.log('in production config')
     sequelize = new Sequelize(process.env.DATABASE_URL, {
       dialectOptions: {
         ssl: true
       }
     });
 } else {
+  console.log(config.database, config.username, config.password, config);
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 

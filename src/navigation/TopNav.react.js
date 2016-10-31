@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl, Glyphicon } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl, Glyphicon, Row } from 'react-bootstrap';
 import Dropdown from 'react-dropdown';
 import '../../styles/styles.scss';
 
@@ -40,11 +40,12 @@ export default class TopNav extends Component {
             </Navbar.Brand>
           <Navbar.Toggle />
           </Navbar.Header>
-          <Navbar.Form className='main-search' pullLeft>
-            <FormGroup style={{display: 'inline'}}>
-              <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Search..." />
-            </FormGroup>
-          </Navbar.Form>
+          <Row>
+            <Navbar.Form className='main-search' pullLeft>
+                <FormGroup style={{display: 'inline'}}>
+                  <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Search..." />
+                </FormGroup>
+            </Navbar.Form>
           <Navbar.Collapse>
 
             <Nav pullRight>
@@ -52,6 +53,7 @@ export default class TopNav extends Component {
               <NavItem eventKey={2} href="#" onClick={ ()=> window.print()}><Glyphicon glyph='print'/> Print</NavItem>
             </Nav>
           </Navbar.Collapse>
+          </Row>
         </Navbar>
         </div>
     );
