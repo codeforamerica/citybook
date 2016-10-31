@@ -30,10 +30,18 @@ All other data types are displayed in the "Show Details" section. The column hea
 
 ```
 git clone https://github.com/codeforamerica/citybook.git
+cd citybook
 npm install
 ```
 
 Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database.
+```
+psql
+CREATE DATABASE citybook;
+\q
+
+node_modules/.bin/sequelize db:migrate
+```
 
 ### Development
 Running in development mode enables WebpackDevServer hot-module-reloading on port 3000. Use port 8080 for testing back-end functionality.
@@ -47,7 +55,7 @@ Bundles everything into bundle.js.
 webpack
 npm start
 git remote add production https://git.heroku.com/citybook.git
-``` 
+```
 (Open an issue to be added as a collaborator on heroku)
 
 ### Database Migration
