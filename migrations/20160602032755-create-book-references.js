@@ -8,14 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING
+      uuid: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      link: {
-        type: Sequelize.STRING
+      google_spreadsheet_link: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      opt_in: {
-        type: Sequelize.BOOLEAN
+      number_entries: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -24,6 +27,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      view_count: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       }
     });
   },
