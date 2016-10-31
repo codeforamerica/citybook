@@ -34,7 +34,7 @@ cd citybook
 npm install
 ```
 
-Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database.
+Create a PostgreSQL databse named citybook, or edit the development block of `config/config.js` to the name of your database. Consider using http://postgresapp.com/.
 ```
 psql
 CREATE DATABASE citybook;
