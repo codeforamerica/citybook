@@ -13,8 +13,8 @@ export default class Header extends Component {
             </object>
             <h1 className="project-name">CityBook</h1>
             <h2 className="project-tagline">Create a contact list from a Google Spreadsheet.</h2>
-            <a id="get-started-button" href="#instructions-start" className="btn btn-header btn-lg" block>Make a CityBook</a>
-            <a id="get-started-button" href="#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2" className="btn btn-header btn-lg" block>Demo</a>
+            <a id="get-started-button" href="#instructions-start" className="btn btn-header btn-lg btn-block" block>Make a CityBook</a>
+            <a id="get-started-button" href="#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2" className="btn btn-header btn-lg btn-block" block>Demo</a>
           </Col>
           <Col xs={12} sm={8} smOffset={1}>
             <span className='demo-iframe-button red'></span>
