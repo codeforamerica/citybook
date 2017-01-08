@@ -2,3 +2,5 @@
 node_modules/
 _site
 npm-debug.log
+*.pem
+*.key

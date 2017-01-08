@@ -34,9 +34,8 @@ export default class Step3 extends Component {
         })
         return;
       }
-
+      // Test if link matches regex
       if(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(spreadSheetLink)){
-        console.log('link matches regex');
         spreadSheetKey = spreadSheetLink.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
 
         this.connectionSuccess = function(data){
@@ -56,6 +55,7 @@ export default class Step3 extends Component {
           })
         }.bind(this)
 
+        // Test if we can get data from the spreadsheet
         $.get({
           url: 'https://spreadsheets.google.com/feeds/list/' + spreadSheetKey + '/1/public/full?alt=json',
           dataType: 'jsonp',
@@ -97,8 +97,15 @@ export default class Step3 extends Component {
   }
 
   render(){
-    var citybookLink = 'http://www.citybook.io/#/books/' + this.state.uuid;
-    var citybookEmbed = '<iframe src="' + citybookLink + '" width="100%" height="800px" frameboarder="0"></iframe>'
+    if (this.state.createButtonDisabled == true){
+      var
+        citybookLink,
+        citybookEmbed;
+    } else {
+      var
+        citybookLink = 'https://www.citybook.io/#/books/' + this.state.uuid,
+        citybookEmbed = '<iframe src="' + citybookLink + '" width="100%" height="800px" frameboarder="0"></iframe>'
+    }
     var linkStatus;
     if(this.state.linkStatus === 'empty'){
       linkStatus = ''

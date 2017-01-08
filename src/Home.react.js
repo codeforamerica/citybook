@@ -16,10 +16,10 @@ export default class TopNav extends Component {
       <Header />
       <Grid>
         <HowItWorks />
-        <Instruction id='instructions-start' number='1' title='Get the Template'>
+        <Instruction id='instructions-start' number='1' title='Get the Spreadsheet Template'>
           <Step1 />
         </Instruction>
-        <Instruction number='2' title='Publish to the Web'>
+        <Instruction number='2' title='Publish Your Spreadsheet to the Web'>
           <Step2 />
         </Instruction>
         <Steps3and4 />
