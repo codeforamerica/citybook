@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4623efe06e88559d3cf5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "71fd9fe2f3acd08974fe"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -35749,10 +35749,6 @@
 	
 	var _Step3React2 = _interopRequireDefault(_Step3React);
 	
-	var _Step4React = __webpack_require__(601);
-	
-	var _Step4React2 = _interopRequireDefault(_Step4React);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35791,11 +35787,7 @@
 	            { number: '2', title: 'Publish to the Web' },
 	            _react2.default.createElement(_Step2React2.default, null)
 	          ),
-	          _react2.default.createElement(
-	            _InstructionReact2.default,
-	            { number: '3', title: 'Paste Your Spreadsheet\'s Public Link' },
-	            _react2.default.createElement(_Step3React2.default, null)
-	          ),
+	          _react2.default.createElement(_Step3React2.default, null),
 	          _react2.default.createElement(_FooterReact2.default, null)
 	        )
 	      );
@@ -55149,18 +55141,20 @@
 	            ),
 	            _react2.default.createElement(
 	              'a',
-	              { id: 'get-started-button', href: '#instructions-start', className: 'btn btn-header btn-lg btn-block', block: true },
-	              'Make a CityBook'
+	              { id: 'get-started-button', href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', target: '_blank', className: 'btn btn-header btn-lg btn-block', block: true },
+	              'Demo ',
+	              _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'new-window' })
 	            ),
 	            _react2.default.createElement(
 	              'a',
-	              { id: 'get-started-button', href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', className: 'btn btn-header btn-lg btn-block', block: true },
-	              'Demo'
+	              { id: 'get-started-button', href: '/#instructions-start', className: 'btn btn-header btn-lg btn-block', block: true },
+	              'Make a CityBook ',
+	              _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'flash' })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
-	            { xs: 12, sm: 8, smOffset: 1 },
+	            { xsHidden: true, smHidden: true, xs: 12, sm: 8, smOffset: 1 },
 	            _react2.default.createElement('span', { className: 'demo-iframe-button red' }),
 	            _react2.default.createElement('span', { className: 'demo-iframe-button yellow' }),
 	            _react2.default.createElement('span', { className: 'demo-iframe-button green' }),
@@ -55215,7 +55209,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".btn-blue {\n  background-color: #4776E6;\n  color: white;\n  border-color: #4776E6;\n  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1); }\n  .btn-blue:hover {\n    background-color: rgba(21, 87, 153, 0.9);\n    color: white;\n    border-color: #155799; }\n\n.page-header {\n  color: #fff;\n  margin: 0;\n  background-color: #4776E6;\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  .page-header .main-logo {\n    max-width: 180px; }\n  @media screen and (min-width: 64em) {\n    .page-header {\n      padding: 8rem 6rem;\n      margin-bottom: 3rem; } }\n  @media screen and (min-width: 42em) and (max-width: 64em) {\n    .page-header {\n      padding: 7rem 4rem;\n      margin-bottom: 2rem; } }\n  @media screen and (max-width: 42em) {\n    .page-header {\n      padding: 2rem 1rem;\n      margin-bottom: 1rem; } }\n  .page-header .project-name {\n    font-weight: 600;\n    margin-top: 0;\n    margin-bottom: 0.1rem; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-name {\n        font-size: 4.25rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-name {\n        font-size: 3.25rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-name {\n        font-size: 4.5rem; } }\n  .page-header .project-tagline {\n    margin-bottom: 2rem;\n    font-weight: normal;\n    opacity: 0.7; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.75rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n  .page-header .btn.btn-header {\n    display: inline-block;\n    margin-bottom: 1rem;\n    color: rgba(255, 255, 255, 0.7);\n    background-color: rgba(255, 255, 255, 0.08);\n    border-color: rgba(255, 255, 255, 0.2);\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 0.3rem;\n    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }\n  .page-header .btn-header:hover {\n    color: rgba(255, 255, 255, 0.8);\n    text-decoration: none;\n    background-color: rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.3); }\n  .page-header .demo-iframe-button {\n    margin-right: 5px;\n    height: 15px;\n    width: 15px;\n    display: inline-block;\n    position: absolute;\n    top: 6px;\n    border-radius: 50%; }\n    .page-header .demo-iframe-button.red {\n      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);\n      left: 30px; }\n    .page-header .demo-iframe-button.yellow {\n      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);\n      left: 55px; }\n    .page-header .demo-iframe-button.green {\n      background-image: linear-gradient(120deg, #87FC70, #0BD318);\n      left: 80px; }\n  .page-header .demo-iframe {\n    border-top: 25px solid #eee;\n    border-radius: 5px; }\n\n.how-it-works h2, .how-it-works h3 {\n  margin-top: 2rem;\n  margin-bottom: 1rem;\n  font-weight: normal;\n  color: #4776E6; }\n\n.instruction-step {\n  margin-top: 8rem;\n  margin-bottom: 4rem;\n  padding-bottom: 4rem;\n  border-bottom: 1px solid #efefef; }\n  .instruction-step h1 {\n    margin-top: 2rem;\n    margin-bottom: 1rem;\n    font-weight: normal;\n    color: #4776E6; }\n    .instruction-step h1 .step-number {\n      color: white;\n      background-color: #4776E6;\n      padding-left: 10px;\n      padding-right: 10px;\n      border-radius: 4px; }\n  .instruction-step p {\n    font-size: 2rem; }\n  .instruction-step .input-group {\n    margin-top: 2em;\n    margin-bottom: 2em; }\n", ""]);
+	exports.push([module.id, ".btn-blue {\n  background-color: #4776E6;\n  color: white;\n  border-color: #4776E6;\n  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1); }\n  .btn-blue:hover {\n    background-color: rgba(21, 87, 153, 0.9);\n    color: white;\n    border-color: #155799; }\n\n.page-header {\n  color: #fff;\n  margin: 0;\n  background-color: #4776E6;\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  .page-header .main-logo {\n    max-width: 180px; }\n  @media screen and (min-width: 64em) {\n    .page-header {\n      padding: 8rem 6rem;\n      margin-bottom: 3rem; } }\n  @media screen and (min-width: 42em) and (max-width: 64em) {\n    .page-header {\n      padding: 7rem 4rem;\n      margin-bottom: 2rem; } }\n  @media screen and (max-width: 42em) {\n    .page-header {\n      padding: 2rem 1rem;\n      margin-bottom: 1rem; } }\n  .page-header .project-name {\n    font-weight: 600;\n    margin-top: 0;\n    margin-bottom: 0.1rem; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-name {\n        font-size: 4.25rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-name {\n        font-size: 3.25rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-name {\n        font-size: 4.5rem; } }\n  .page-header .project-tagline {\n    margin-bottom: 2rem;\n    font-weight: normal;\n    opacity: 0.7; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.75rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n  .page-header .btn.btn-header {\n    display: inline-block;\n    margin-bottom: 1rem;\n    color: rgba(255, 255, 255, 0.7);\n    background-color: rgba(255, 255, 255, 0.08);\n    border-color: rgba(255, 255, 255, 0.2);\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 0.3rem;\n    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }\n  .page-header .btn-header:hover {\n    color: rgba(255, 255, 255, 0.8);\n    text-decoration: none;\n    background-color: rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.3); }\n  .page-header .demo-iframe-button {\n    margin-right: 5px;\n    height: 15px;\n    width: 15px;\n    display: inline-block;\n    position: absolute;\n    top: 6px;\n    border-radius: 50%; }\n    .page-header .demo-iframe-button.red {\n      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);\n      left: 30px; }\n    .page-header .demo-iframe-button.yellow {\n      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);\n      left: 55px; }\n    .page-header .demo-iframe-button.green {\n      background-image: linear-gradient(120deg, #87FC70, #0BD318);\n      left: 80px; }\n  .page-header .demo-iframe {\n    border-top: 25px solid #eee;\n    border-radius: 5px; }\n\n.how-it-works h2, .how-it-works h3 {\n  margin-top: 2rem;\n  margin-bottom: 1rem;\n  font-weight: normal;\n  color: #4776E6; }\n\n.instruction-step {\n  margin-top: 8rem;\n  margin-bottom: 4rem;\n  padding-bottom: 4rem;\n  border-bottom: 1px solid #efefef; }\n  .instruction-step h1 {\n    margin-top: 2rem;\n    margin-bottom: 1rem;\n    font-weight: normal;\n    color: #4776E6; }\n    .instruction-step h1.step-number {\n      color: white;\n      background-color: #4776E6;\n      width: 75px;\n      height: 75px;\n      padding-top: 18px;\n      padding-left: 27px;\n      border-radius: 50%; }\n  .instruction-step p {\n    font-size: 2rem; }\n  .instruction-step .input-group {\n    margin-top: 2em;\n    margin-bottom: 2em; }\n", ""]);
 	
 	// exports
 
@@ -55829,6 +55823,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactBootstrap = __webpack_require__(322);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55852,9 +55848,8 @@
 	      var stepNumber = void 0;
 	      if (this.props.number) {
 	        stepNumber = _react2.default.createElement(
-	          'span',
+	          'h1',
 	          { className: 'step-number' },
-	          'Step: ',
 	          this.props.number
 	        );
 	      } else {
@@ -55864,20 +55859,32 @@
 	        'section',
 	        { className: 'instruction-step' },
 	        _react2.default.createElement(
-	          'h1',
+	          _reactBootstrap.Row,
 	          null,
-	          stepNumber,
 	          _react2.default.createElement(
-	            'span',
-	            null,
-	            ' ',
-	            this.props.title
+	            _reactBootstrap.Col,
+	            { sm: 2 },
+	            stepNumber
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 10 },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                ' ',
+	                this.props.title
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              this.props.children
+	            )
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this.props.children
 	        )
 	      );
 	    }
@@ -55938,20 +55945,17 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactBootstrap.Col,
-	          { md: 8 },
+	          { md: 12 },
 	          _react2.default.createElement(
 	            'p',
 	            null,
 	            'Build a new Google Spreadsheet using the CityBook template. You\'ll need to copy the template to your own Google Drive account by clicking the "Use this template" button.'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Col,
-	          { md: 4 },
+	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Button,
 	            { className: 'btn-blue', bsSize: 'large', href: 'https://drive.google.com/previewtemplate?id=18YIZlfxxlffHVytbR8zY1cvmKShGOK3z_Cf9JYow4pg&mode=public', target: '_blank' },
-	            'Get the Template'
+	            'Get the Template ',
+	            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'new-window' })
 	          )
 	        )
 	      );
@@ -56019,7 +56023,7 @@
 	            null,
 	            'Under the File menu in your spreadsheet, select \u201CPublish to the Web.\u201D'
 	          ),
-	          _react2.default.createElement('img', { 'class': 'img-responsive', src: '../../img/publish_to_web_small-1.png' })
+	          _react2.default.createElement('img', { className: 'img-responsive', src: '../../img/publish_to_web_small-1.png' })
 	        ),
 	        _react2.default.createElement(
 	          _reactBootstrap.Col,
@@ -56029,7 +56033,7 @@
 	            null,
 	            'In the next window, click the blue "publish" button. When asked, "Are you sure\u2026?" click OK.'
 	          ),
-	          _react2.default.createElement('img', { 'class': 'img-responsive', src: '../../img/publish_to_web_button_small.png' })
+	          _react2.default.createElement('img', { className: 'img-responsive', src: '../../img/publish_to_web_button_small.png' })
 	        ),
 	        _react2.default.createElement(
 	          _reactBootstrap.Col,
@@ -56039,7 +56043,7 @@
 	            null,
 	            'Now, copy the URL that appears in the center of the window. You\'ll use this in the next step.'
 	          ),
-	          _react2.default.createElement('img', { 'class': 'img-responsive', src: '../../img/publish_to_web_url_small.png' })
+	          _react2.default.createElement('img', { className: 'img-responsive', src: '../../img/publish_to_web_url_small.png' })
 	        )
 	      );
 	    }
@@ -56240,54 +56244,49 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          { 'class': 'row' },
+	          _InstructionReact2.default,
+	          { number: '3', title: 'Paste Your Spreadsheet\'s Public Link' },
 	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 12 },
+	            _reactBootstrap.Row,
+	            { 'class': 'row' },
 	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Paste your spreadsheet\'s public link here:'
+	              _reactBootstrap.Col,
+	              { sm: 12 },
+	              _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                null,
+	                _react2.default.createElement(
+	                  _reactBootstrap.ControlLabel,
+	                  null,
+	                  'Paste your spreadsheet\'s public link here:'
+	                ),
+	                _react2.default.createElement(_reactBootstrap.FormControl, { onChange: this.onChange.bind(this), 'class': 'form-control', id: 'spreadsheet-key', label: 'Spreadsheet URL', placeholder: 'Spreadsheet URL', type: 'text' })
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            _reactBootstrap.Row,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Col,
+	              { sm: 12 },
+	              linkStatus
 	            )
 	          ),
 	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 12 },
-	            _react2.default.createElement(
-	              _reactBootstrap.InputGroup,
-	              { 'class': 'input-group' },
-	              _react2.default.createElement(
-	                _reactBootstrap.InputGroup.Addon,
-	                null,
-	                'Spreadsheet Link:'
-	              ),
-	              _react2.default.createElement(_reactBootstrap.FormControl, { onChange: this.onChange.bind(this), 'class': 'form-control', id: 'spreadsheet-key', label: 'Spreadsheet URL', placeholder: 'Spreadsheet URL', type: 'text' })
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
+	            _reactBootstrap.Button,
+	            { href: '#', onClick: this.createBook, bsSize: 'large', id: 'citybook-test', className: 'btn-blue', disabled: this.state.createButtonDisabled },
+	            'Create your CityBook'
+	          ),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 12 },
-	            linkStatus
+	            'p',
+	            null,
+	            'By creating a CityBook, you agree to our ',
+	            _react2.default.createElement(_TosModalReact2.default, null),
+	            '.'
 	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          { href: '#', onClick: this.createBook, bsSize: 'large', id: 'citybook-test', className: 'btn-blue', disabled: this.state.createButtonDisabled },
-	          'Create your CityBook'
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'By creating a CityBook, you agree to our ',
-	          _react2.default.createElement(_TosModalReact2.default, null),
-	          '.'
 	        ),
 	        _react2.default.createElement(
 	          _InstructionReact2.default,
@@ -66407,46 +66406,31 @@
 	          _reactBootstrap.Col,
 	          { md: 12 },
 	          _react2.default.createElement(
-	            _reactBootstrap.InputGroup,
+	            _reactBootstrap.FormGroup,
 	            null,
 	            _react2.default.createElement(
-	              _reactBootstrap.InputGroup.Button,
+	              _reactBootstrap.ControlLabel,
 	              null,
-	              _react2.default.createElement(
-	                _reactBootstrap.Button,
-	                { 'data-clipboard-target': '#embed-output', type: 'button' },
-	                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'copy', 'aria-hidden': 'true' }),
-	                ' Copy Embed:'
-	              )
+	              'Copy your CityBook embed here:'
 	            ),
 	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your embed will appear here...' })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Col,
-	          { md: 12 },
+	          ),
 	          _react2.default.createElement(
-	            _reactBootstrap.InputGroup,
+	            _reactBootstrap.FormGroup,
 	            null,
 	            _react2.default.createElement(
-	              _reactBootstrap.InputGroup.Button,
+	              _reactBootstrap.ControlLabel,
 	              null,
-	              _react2.default.createElement(
-	                _reactBootstrap.Button,
-	                { 'data-clipboard-target': '#link-output', type: 'button' },
-	                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'copy', 'aria-hidden': 'true' }),
-	                ' Copy Link:'
-	              )
+	              'Or use the direct link to your CityBook:'
 	            ),
-	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'link-output', type: 'text', value: this.props.link, placeholder: 'Your link will appear here...' })
+	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your embed will appear here...' })
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Button,
 	            { href: '/#/books/' + this.props.sskey, bsSize: 'large', id: 'citybook-test', target: '_blank', className: 'btn-blue' },
 	            'Test your CityBook'
 	          )
-	        ),
-	        _react2.default.createElement('br', null)
+	        )
 	      );
 	    }
 	  }]);

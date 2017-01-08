@@ -128,6 +128,8 @@ $medium-break: 42em;
   }
 }
 
+
+
 .instruction-step {
 
   margin-top: 8rem;
@@ -140,12 +142,14 @@ $medium-break: 42em;
     font-weight: normal;
     color: #4776E6;
 
-    .step-number {
+    &.step-number {
       color: white;
       background-color: #4776E6;
-      padding-left: 10px;
-      padding-right: 10px;
-      border-radius: 4px;
+      width: 75px;
+      height: 75px;
+      padding-top: 18px;
+      padding-left: 27px;
+      border-radius: 50%;
     }
 
   }

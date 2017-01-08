@@ -7,8 +7,7 @@ import Footer from './instructions/Footer.react.js';
 import Instruction from './instructions/Instruction.react.js';
 import Step1 from './instructions/steps/Step1.react.js';
 import Step2 from './instructions/steps/Step2.react.js';
-import Step3 from './instructions/steps/Step3.react.js';
-import Step4 from './instructions/steps/Step4.react.js';
+import Steps3and4 from './instructions/steps/Step3.react.js';
 
 export default class TopNav extends Component {
   render() {
@@ -23,9 +22,7 @@ export default class TopNav extends Component {
         <Instruction number='2' title='Publish to the Web'>
           <Step2 />
         </Instruction>
-        <Instruction number='3' title="Paste Your Spreadsheet's Public Link">
-          <Step3 />
-        </Instruction>
+        <Steps3and4 />
         <Footer />
       </Grid>
       </div>
