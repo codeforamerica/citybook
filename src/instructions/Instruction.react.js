@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
+
 
 export default class Instruction extends Component {
   render(){
     let stepNumber;
     if(this.props.number){
-      stepNumber = <span className='step-number'>Step: {this.props.number}</span>;
+      stepNumber = <h1 className='step-number'>{this.props.number}</h1>;
     } else {
       stepNumber = '';
     }
     return(
       <section className='instruction-step'>
-        <h1>
-          {stepNumber}
-          <span> {this.props.title}</span>
-        </h1>
-        <div>
-          {this.props.children}
-        </div>
+        <Row>
+        <Col sm={2}>
+          { stepNumber }
+        </Col>
+        <Col sm={10}>
+          <h1>
+            <span> {this.props.title}</span>
+          </h1>
+          <div>
+            {this.props.children}
+          </div>
+        </Col>
+        </Row>
       </section>
     )
   }

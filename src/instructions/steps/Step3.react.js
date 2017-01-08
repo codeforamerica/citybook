@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, InputGroup, FormControl, Alert } from 'react-bootstrap';
+import { Row, Col, Button, FormGroup, FormControl, ControlLabel, Alert } from 'react-bootstrap';
 import TosModal from '../TosModal.react.js';
 import '../../../styles/instructions.scss';
 import $ from 'jquery';
@@ -129,28 +129,29 @@ export default class Step3 extends Component {
     }
     return(
       <div>
-        <Row class="row">
-          <Col sm={12}>
-            <p>Paste your spreadsheet's public link here:</p>
-          </Col>
-          <Col sm={12}>
-            <InputGroup class="input-group">
-              <InputGroup.Addon>Spreadsheet Link:</InputGroup.Addon>
-              <FormControl onChange={this.onChange.bind(this)} class="form-control" id="spreadsheet-key" label="Spreadsheet URL" placeholder="Spreadsheet URL" type="text"></FormControl>
-            </InputGroup>
-          </Col>
-        </Row>
-        <br/>
-        <Row>
-          <Col sm={12}>
-            {linkStatus}
-          </Col>
-        </Row>
-        <Button href="#" onClick={this.createBook} bsSize="large" id="citybook-test" className="btn-blue" disabled={this.state.createButtonDisabled}>Create your CityBook</Button>
-        <br/>
-        <p>By creating a CityBook, you agree to our <TosModal />.</p>
+        <Instruction number='3' title="Paste Your Spreadsheet's Public Link">
+          <Row class="row">
+            <Col sm={12}>
+              <FormGroup>
+                <ControlLabel>Paste your spreadsheet's public link here:</ControlLabel>
+                <FormControl onChange={this.onChange.bind(this)} class="form-control" id="spreadsheet-key" label="Spreadsheet URL" placeholder="Spreadsheet URL" type="text"></FormControl>
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <br/>
+
+          <Row>
+            <Col sm={12}>
+              {linkStatus}
+            </Col>
+          </Row>
+          <Button href="#" onClick={this.createBook} bsSize="large" id="citybook-test" className="btn-blue" disabled={this.state.createButtonDisabled}>Create your CityBook</Button>
+          <br/>
+          <p>By creating a CityBook, you agree to our <TosModal />.</p>
+        </Instruction>
         <Instruction number='4' title="Grab the Embed Code">
-          <Step4 embed={citybookEmbed} link={citybookLink} sskey={this.state.uuid} />
+          <Step4 embed={citybookEmbed} link={citybookLink} sskey={this.state.uuid} disabled={this.state.createButtonDisabled} />
         </Instruction>
       </div>
     )
