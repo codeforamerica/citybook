@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "71fd9fe2f3acd08974fe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ee8745b70d6f57d32e3c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -35779,12 +35779,12 @@
 	          _react2.default.createElement(_HowItWorksReact2.default, null),
 	          _react2.default.createElement(
 	            _InstructionReact2.default,
-	            { id: 'instructions-start', number: '1', title: 'Get the Template' },
+	            { id: 'instructions-start', number: '1', title: 'Get the Spreadsheet Template' },
 	            _react2.default.createElement(_Step1React2.default, null)
 	          ),
 	          _react2.default.createElement(
 	            _InstructionReact2.default,
-	            { number: '2', title: 'Publish to the Web' },
+	            { number: '2', title: 'Publish Your Spreadsheet to the Web' },
 	            _react2.default.createElement(_Step2React2.default, null)
 	          ),
 	          _react2.default.createElement(_Step3React2.default, null),
@@ -55158,7 +55158,7 @@
 	            _react2.default.createElement('span', { className: 'demo-iframe-button red' }),
 	            _react2.default.createElement('span', { className: 'demo-iframe-button yellow' }),
 	            _react2.default.createElement('span', { className: 'demo-iframe-button green' }),
-	            _react2.default.createElement('iframe', { className: 'demo-iframe', src: 'http://www.citybook.io/#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', width: '100%', height: '500px', frameBorder: '0' }),
+	            _react2.default.createElement('iframe', { className: 'demo-iframe', src: 'https://www.citybook.io/#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', width: '100%', height: '500px', frameBorder: '0' }),
 	            _react2.default.createElement('span', { className: 'demo-iframe-bottom-line' })
 	          )
 	        )
@@ -55945,11 +55945,11 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactBootstrap.Col,
-	          { md: 12 },
+	          { md: 10 },
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Build a new Google Spreadsheet using the CityBook template. You\'ll need to copy the template to your own Google Drive account by clicking the "Use this template" button.'
+	            'Use CityBook\'s Google Spreadsheet template to store your information. Copy the template to your own Google Drive account by clicking the "Use this template" button.'
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Button,
@@ -56138,9 +56138,8 @@
 	        });
 	        return;
 	      }
-	
+	      // Test if link matches regex
 	      if (/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//.test(spreadSheetLink)) {
-	        console.log('link matches regex');
 	        spreadSheetKey = spreadSheetLink.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\//)[1];
 	
 	        this.connectionSuccess = function (data) {
@@ -56160,6 +56159,7 @@
 	          });
 	        }.bind(this);
 	
+	        // Test if we can get data from the spreadsheet
 	        _jquery2.default.get({
 	          url: 'https://spreadsheets.google.com/feeds/list/' + spreadSheetKey + '/1/public/full?alt=json',
 	          dataType: 'jsonp',
@@ -56200,8 +56200,12 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var citybookLink = 'http://www.citybook.io/#/books/' + this.state.uuid;
-	      var citybookEmbed = '<iframe src="' + citybookLink + '" width="100%" height="800px" frameboarder="0"></iframe>';
+	      if (this.state.createButtonDisabled == true) {
+	        var citybookLink, citybookEmbed;
+	      } else {
+	        var citybookLink = 'https://www.citybook.io/#/books/' + this.state.uuid,
+	            citybookEmbed = '<iframe src="' + citybookLink + '" width="100%" height="800px" frameboarder="0"></iframe>';
+	      }
 	      var linkStatus;
 	      if (this.state.linkStatus === 'empty') {
 	        linkStatus = '';
@@ -56291,7 +56295,7 @@
 	        _react2.default.createElement(
 	          _InstructionReact2.default,
 	          { number: '4', title: 'Grab the Embed Code' },
-	          _react2.default.createElement(_Step4React2.default, { embed: citybookEmbed, link: citybookLink, sskey: this.state.uuid })
+	          _react2.default.createElement(_Step4React2.default, { embed: citybookEmbed, link: citybookLink, sskey: this.state.uuid, disabled: this.state.createButtonDisabled })
 	        )
 	      );
 	    }
@@ -66413,7 +66417,7 @@
 	              null,
 	              'Copy your CityBook embed here:'
 	            ),
-	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your embed will appear here...' })
+	            _react2.default.createElement(_reactBootstrap.FormControl, { disabled: this.props.disabled, id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your embed will appear here...' })
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.FormGroup,
@@ -66423,12 +66427,13 @@
 	              null,
 	              'Or use the direct link to your CityBook:'
 	            ),
-	            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your embed will appear here...' })
+	            _react2.default.createElement(_reactBootstrap.FormControl, { disabled: this.props.disabled, id: 'embed-output', type: 'text', value: this.props.embed, placeholder: 'Your direct link will appear here...' })
 	          ),
 	          _react2.default.createElement(
 	            _reactBootstrap.Button,
 	            { href: '/#/books/' + this.props.sskey, bsSize: 'large', id: 'citybook-test', target: '_blank', className: 'btn-blue' },
-	            'Test your CityBook'
+	            'Test your CityBook ',
+	            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'new-window' })
 	          )
 	        )
 	      );
