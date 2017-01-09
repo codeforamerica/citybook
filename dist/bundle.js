@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f8570f04da53297fa86f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4e5dc7452dd6845cc972"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -55119,47 +55119,51 @@
 	        'section',
 	        { className: 'page-header' },
 	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
+	          'div',
+	          { className: 'container' },
 	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { xs: 12, sm: 3 },
+	            _reactBootstrap.Row,
+	            null,
 	            _react2.default.createElement(
-	              'object',
-	              { type: 'image/svg+xml', className: 'img-responsive main-logo', data: '../../img/CityBookLogo.svg' },
-	              _react2.default.createElement('img', { src: '../../img/CityBookLogo.png', alt: 'No SVG support' })
+	              _reactBootstrap.Col,
+	              { xs: 12, sm: 3 },
+	              _react2.default.createElement(
+	                'object',
+	                { type: 'image/svg+xml', className: 'img-responsive main-logo', data: '../../img/CityBookLogo.svg' },
+	                _react2.default.createElement('img', { src: '../../img/CityBookLogo.png', alt: 'No SVG support' })
+	              ),
+	              _react2.default.createElement(
+	                'h1',
+	                { className: 'project-name' },
+	                'CityBook'
+	              ),
+	              _react2.default.createElement(
+	                'h2',
+	                { className: 'project-tagline' },
+	                'Create a contact list from a Google Spreadsheet.'
+	              ),
+	              _react2.default.createElement(
+	                'a',
+	                { id: 'get-started-button', href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', target: '_blank', className: 'btn btn-header btn-lg btn-block', block: true },
+	                'Citybook Demo ',
+	                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'new-window' })
+	              ),
+	              _react2.default.createElement(
+	                'a',
+	                { id: 'get-started-button', href: '/#instructions-start', className: 'btn btn-header btn-lg btn-block', block: true },
+	                'Make a CityBook ',
+	                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'flash' })
+	              )
 	            ),
 	            _react2.default.createElement(
-	              'h1',
-	              { className: 'project-name' },
-	              'CityBook'
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              { className: 'project-tagline' },
-	              'Create a contact list from a Google Spreadsheet.'
-	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { id: 'get-started-button', href: '#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', target: '_blank', className: 'btn btn-header btn-lg btn-block', block: true },
-	              'Demo ',
-	              _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'new-window' })
-	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { id: 'get-started-button', href: '/#instructions-start', className: 'btn btn-header btn-lg btn-block', block: true },
-	              'Make a CityBook ',
-	              _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'flash' })
+	              _reactBootstrap.Col,
+	              { xsHidden: true, smHidden: true, xs: 12, sm: 8, smOffset: 1 },
+	              _react2.default.createElement('span', { className: 'demo-iframe-button red' }),
+	              _react2.default.createElement('span', { className: 'demo-iframe-button yellow' }),
+	              _react2.default.createElement('span', { className: 'demo-iframe-button green' }),
+	              _react2.default.createElement('iframe', { className: 'demo-iframe', src: 'https://www.citybook.io/#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', width: '100%', height: '500px', frameBorder: '0' }),
+	              _react2.default.createElement('span', { className: 'demo-iframe-bottom-line' })
 	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { xsHidden: true, smHidden: true, xs: 12, sm: 8, smOffset: 1 },
-	            _react2.default.createElement('span', { className: 'demo-iframe-button red' }),
-	            _react2.default.createElement('span', { className: 'demo-iframe-button yellow' }),
-	            _react2.default.createElement('span', { className: 'demo-iframe-button green' }),
-	            _react2.default.createElement('iframe', { className: 'demo-iframe', src: 'https://www.citybook.io/#/books/6e45a6e5-d6b5-4b71-a6d8-16138f9b4ad2', width: '100%', height: '500px', frameBorder: '0' }),
-	            _react2.default.createElement('span', { className: 'demo-iframe-bottom-line' })
 	          )
 	        )
 	      );
@@ -55209,7 +55213,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".btn-blue {\n  background-color: #4776E6;\n  color: white;\n  border-color: #4776E6;\n  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1); }\n  .btn-blue:hover {\n    background-color: rgba(21, 87, 153, 0.9);\n    color: white;\n    border-color: #155799; }\n\n.page-header {\n  color: #fff;\n  margin: 0;\n  background-color: #4776E6;\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  .page-header .main-logo {\n    max-width: 180px; }\n  @media screen and (min-width: 64em) {\n    .page-header {\n      padding: 8rem 6rem;\n      margin-bottom: 3rem; } }\n  @media screen and (min-width: 42em) and (max-width: 64em) {\n    .page-header {\n      padding: 7rem 4rem;\n      margin-bottom: 2rem; } }\n  @media screen and (max-width: 42em) {\n    .page-header {\n      padding: 2rem 1rem;\n      margin-bottom: 1rem; } }\n  .page-header .project-name {\n    font-weight: 600;\n    margin-top: 0;\n    margin-bottom: 0.1rem; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-name {\n        font-size: 4.25rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-name {\n        font-size: 3.25rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-name {\n        font-size: 4.5rem; } }\n  .page-header .project-tagline {\n    margin-bottom: 2rem;\n    font-weight: normal;\n    opacity: 0.7; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.75rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n  .page-header .btn.btn-header {\n    display: inline-block;\n    margin-bottom: 1rem;\n    color: rgba(255, 255, 255, 0.7);\n    background-color: rgba(255, 255, 255, 0.08);\n    border-color: rgba(255, 255, 255, 0.2);\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 0.3rem;\n    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }\n  .page-header .btn-header:hover {\n    color: rgba(255, 255, 255, 0.8);\n    text-decoration: none;\n    background-color: rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.3); }\n  .page-header .demo-iframe-button {\n    margin-right: 5px;\n    height: 15px;\n    width: 15px;\n    display: inline-block;\n    position: absolute;\n    top: 6px;\n    border-radius: 50%; }\n    .page-header .demo-iframe-button.red {\n      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);\n      left: 30px; }\n    .page-header .demo-iframe-button.yellow {\n      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);\n      left: 55px; }\n    .page-header .demo-iframe-button.green {\n      background-image: linear-gradient(120deg, #87FC70, #0BD318);\n      left: 80px; }\n  .page-header .demo-iframe {\n    border-top: 25px solid #eee;\n    border-radius: 5px; }\n\n.how-it-works h2, .how-it-works h3 {\n  margin-top: 2rem;\n  margin-bottom: 1rem;\n  font-weight: normal;\n  color: #4776E6; }\n\n.instruction-step {\n  margin-top: 8rem;\n  margin-bottom: 4rem;\n  padding-bottom: 4rem;\n  border-bottom: 1px solid #efefef; }\n  .instruction-step h1 {\n    margin-top: 2rem;\n    margin-bottom: 1rem;\n    font-weight: normal;\n    color: #4776E6; }\n    .instruction-step h1.step-number {\n      color: white;\n      background-color: #4776E6;\n      width: 75px;\n      height: 75px;\n      padding-top: 18px;\n      padding-left: 27px;\n      border-radius: 50%; }\n  .instruction-step p {\n    font-size: 2rem; }\n  .instruction-step .input-group {\n    margin-top: 2em;\n    margin-bottom: 2em; }\n", ""]);
+	exports.push([module.id, ".btn-blue {\n  background-color: #4776E6;\n  color: white;\n  border-color: #4776E6;\n  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1); }\n  .btn-blue:hover {\n    background-color: rgba(21, 87, 153, 0.9);\n    color: white;\n    border-color: #155799; }\n\n.page-header {\n  color: #fff;\n  margin: 0;\n  background-color: #4776E6;\n  background-image: linear-gradient(120deg, #4776E6, #8E54E9); }\n  .page-header .main-logo {\n    max-width: 180px; }\n  @media screen and (min-width: 64em) {\n    .page-header {\n      padding: 8rem 0rem;\n      margin-bottom: 3rem; } }\n  @media screen and (min-width: 42em) and (max-width: 64em) {\n    .page-header {\n      padding: 7rem 0rem;\n      margin-bottom: 2rem; } }\n  @media screen and (max-width: 42em) {\n    .page-header {\n      padding: 2rem 0rem;\n      margin-bottom: 1rem; } }\n  .page-header .project-name {\n    font-weight: 600;\n    margin-top: 0;\n    margin-bottom: 0.1rem; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-name {\n        font-size: 4.25rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-name {\n        font-size: 3.25rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-name {\n        font-size: 4.5rem; } }\n  .page-header .project-tagline {\n    margin-bottom: 2rem;\n    font-weight: normal;\n    opacity: 0.7; }\n    @media screen and (min-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.75rem; } }\n    @media screen and (min-width: 42em) and (max-width: 64em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n    @media screen and (max-width: 42em) {\n      .page-header .project-tagline {\n        font-size: 2.5rem; } }\n  .page-header .btn.btn-header {\n    display: inline-block;\n    margin-bottom: 1rem;\n    color: rgba(255, 255, 255, 0.7);\n    background-color: rgba(255, 255, 255, 0.08);\n    border-color: rgba(255, 255, 255, 0.2);\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 0.3rem;\n    transition: color 0.2s, background-color 0.2s, border-color 0.2s; }\n  .page-header .btn-header:hover {\n    color: rgba(255, 255, 255, 0.8);\n    text-decoration: none;\n    background-color: rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.3); }\n  .page-header .demo-iframe-button {\n    margin-right: 5px;\n    height: 15px;\n    width: 15px;\n    display: inline-block;\n    position: absolute;\n    top: 6px;\n    border-radius: 50%; }\n    .page-header .demo-iframe-button.red {\n      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);\n      left: 30px; }\n    .page-header .demo-iframe-button.yellow {\n      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);\n      left: 55px; }\n    .page-header .demo-iframe-button.green {\n      background-image: linear-gradient(120deg, #87FC70, #0BD318);\n      left: 80px; }\n  .page-header .demo-iframe {\n    border-top: 25px solid #eee;\n    border-radius: 5px;\n    -webkit-box-shadow: 0px 4px 20px 0px #6d21e8;\n    -moz-box-shadow: 0px 4px 20px 0px #6d21e8;\n    box-shadow: 0px 4px 20px 0px #6d21e8; }\n\n.how-it-works h2, .how-it-works h3 {\n  margin-top: 2rem;\n  margin-bottom: 1rem;\n  font-weight: normal;\n  color: #4776E6; }\n\n.instruction-step {\n  margin-top: 8rem;\n  margin-bottom: 4rem;\n  padding-bottom: 4rem;\n  border-bottom: 1px solid #efefef; }\n  .instruction-step h1 {\n    margin-top: 2rem;\n    margin-bottom: 1rem;\n    font-weight: normal;\n    color: #4776E6; }\n    .instruction-step h1.step-number {\n      color: white;\n      background-color: #4776E6;\n      width: 75px;\n      height: 75px;\n      padding-top: 18px;\n      padding-left: 27px;\n      border-radius: 50%; }\n  .instruction-step p {\n    font-size: 2rem; }\n  .instruction-step .input-group {\n    margin-top: 2em;\n    margin-bottom: 2em; }\n", ""]);
 	
 	// exports
 
