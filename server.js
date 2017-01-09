@@ -43,6 +43,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname+'/index.html'));
 });
 
+// Serve serviceworker from top-level directory
+app.get('/sw.js', function (req, res) {
+  res.sendFile(path.join(__dirname+'/sw.js'));
+});
+
 //Start Main Server
 app.listen(process.env.PORT || 8080, function () {
   if(process.env.PORT){
