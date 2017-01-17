@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, FormGroup, FormControl, ControlLabel, Alert } from 'react-bootstrap';
+
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Button from 'react-bootstrap/lib/Button';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Alert from 'react-bootstrap/lib/Alert';
+
+
 import TosModal from '../TosModal.react.js';
 import '../../../styles/instructions.scss';
 import $ from 'jquery';
@@ -137,11 +146,11 @@ export default class Step3 extends Component {
     return(
       <div>
         <Instruction number='3' title="Paste Your Spreadsheet's Public Link">
-          <Row class="row">
+          <Row>
             <Col sm={12}>
               <FormGroup>
                 <ControlLabel>Paste your spreadsheet's public link here:</ControlLabel>
-                <FormControl onChange={this.onChange.bind(this)} class="form-control" id="spreadsheet-key" label="Spreadsheet URL" placeholder="Spreadsheet URL" type="text"></FormControl>
+                <FormControl onChange={this.onChange.bind(this)} id="spreadsheet-key" label="Spreadsheet URL" placeholder="Spreadsheet URL" type="text"></FormControl>
               </FormGroup>
             </Col>
           </Row>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 import '../../styles/instructions.scss';
 
 export default class HowItWorks extends Component {

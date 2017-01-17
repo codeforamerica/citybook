@@ -58,6 +58,10 @@ app.get('/sw.js', function (req, res) {
   res.sendFile(path.join(__dirname+'/sw.js'));
 });
 
+app.get('/manifest.json', function (req, res) {
+  res.sendFile(path.join(__dirname+'/manifest.json'));
+});
+
 //Start Main Server
 app.listen(process.env.PORT || 8080, function () {
   if(process.env.PORT){

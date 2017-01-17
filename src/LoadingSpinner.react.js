@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Glyphicon } from 'react-bootstrap';
+import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import FontAwesome from 'react-fontawesome';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/loading-spinner.scss';
 
 

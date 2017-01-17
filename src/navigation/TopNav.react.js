@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem, form, FormGroup, FormControl, Glyphicon, Row } from 'react-bootstrap';
-import Dropdown from 'react-dropdown';
+import Nav from 'react-bootstrap/lib/Nav';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import Row from 'react-bootstrap/lib/Row';
+
 import '../../styles/styles.scss';
 
 export default class TopNav extends Component {
@@ -11,26 +18,7 @@ export default class TopNav extends Component {
     }
   }
 
-  _onSelect(){
-    console.log('New slection!')
-  }
-
   render() {
-    let
-      filterOptions,
-      searchFilter;
-    if(this.props.loaded){
-      searchFilter = (
-        <Dropdown
-          options={this.props.filterOptions}
-          onChange={this._onSelect}
-          placeholder="All Categories"
-        />
-      )
-
-    } else {
-      filterOptions = <NavItem eventKey={1} href="#">Loading...</NavItem>
-    }
     return (
       <div>
         <Navbar className="citybook-header affix">
@@ -49,7 +37,7 @@ export default class TopNav extends Component {
           <Navbar.Collapse>
 
             <Nav pullRight>
-              <NavItem eventKey={1} href={"https://docs.google.com/spreadsheets/d/" + this.props.spreadsheetId} target="_blank"><Glyphicon glyph='th-list'/> Data Source</NavItem>
+              <NavItem eventKey={1} href={"https://docs.google.com/spreadsheets/d/" + this.props.spreadsheetId} target="_blank" rel="noopener"><Glyphicon glyph='th-list'/> Data Source</NavItem>
               <NavItem eventKey={2} href="#" onClick={ ()=> window.print()}><Glyphicon glyph='print'/> Print</NavItem>
             </Nav>
           </Navbar.Collapse>

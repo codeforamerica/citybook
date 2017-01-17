@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+
+import Modal from 'react-bootstrap/lib/Modal';
+import Button from 'react-bootstrap/lib/Button';
 
 export default class TosModal extends Component {
   constructor(){
@@ -24,12 +26,8 @@ export default class TosModal extends Component {
     return (
       <span>
 
-      <a
-      bsStyle="primary"
-      bsSize="large"
-      onClick={this.open}
-      >
-      Terms of Service
+      <a onClick={this.open}>
+        Terms of Service
       </a>
 
       <Modal show={this.state.showModal} onHide={this.close}>

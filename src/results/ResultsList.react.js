@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/lib/Alert';
 import LoadingSpinner from '../LoadingSpinner.react.js';
 import Result from './Result.react.js';
 import '../../styles/loading-spinner.scss';
@@ -33,7 +33,7 @@ export default class ResultsList extends Component {
       list = <LoadingSpinner />
     }
     return(
-        <ul className='results-list'>
+        <ul className='results-list row'>
           {list}
         </ul>
     )

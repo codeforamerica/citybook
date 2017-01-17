@@ -6,6 +6,10 @@
   }
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 $breakpoints: (
   'mobile':  320px,
   'small':  767px,
@@ -65,15 +69,6 @@ $breakpoints: (
     display: inline;
   }
   .panel {
-    padding: 0px;
-    border-radius: 0px;
-    box-shadow: none;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 1px solid #ddd;
-    word-wrap: break-word;
-    margin-bottom: 10px;
 
     p {
       margin: 0;
@@ -84,36 +79,53 @@ $breakpoints: (
       font-size: 1.5em;
     }
 
-    .button-container {
-      text-align: left;
-      padding-top: 10px;
-      @include respond-to('small') {
-        text-align: right;
-      }
+    .panel-body {
+      padding-bottom: 0px;
     }
 
-    .result-button {
-      color: #4776E6;
-      border: 2px solid #4776E6;
-      padding-top: 20px;
-      padding-bottom: 20px;
-
-      .result-button-icon {
-        font-size: 2rem;
-        padding: 3px;
-      }
-
-      .result-button-label {
-        display: none;
-        @include respond-to('small') {
-          display: block;
+    @media(min-width: 992px) {
+      .button-container:last-child {
+        .card-button {
+          border-radius: 0px 0px 4px 0px;
         }
       }
+      .button-container:first-child {
+        .card-button {
+          border-right: 1px solid #ccc;
+          border-radius: 0px 0px 0px 4px;
+        }
+      }
+    }
+    @media(max-width: 992px) {
+      .button-container:last-child {
+        .card-button {
+          border-radius: 0px 0px 4px 4px;
+        }
+      }
+    }
+    .button-container {
+      padding-left: 0px;
+      padding-right: 0px;
 
+      .card-button {
+        border-radius: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-bottom: 0px;
+      }
     }
 
     .more-info {
       border: none;
+      margin-bottom: 0px;
+
+      .list-group {
+        margin-bottom: 0px;
+      }
+      .panel-body {
+
+        padding: 0px;
+      }
     }
   }
 }
@@ -183,7 +195,7 @@ $breakpoints: (
 }
 
 .citybook-header {
-  background-image: linear-gradient(120deg, #4776E6, rgb(130, 59, 243));
+  background-color: #4776E6;
   width: 100%;
   z-index: 1000;
   a {

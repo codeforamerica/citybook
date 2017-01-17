@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/lib/Alert';
 
 
 export default class TopNav extends Component {

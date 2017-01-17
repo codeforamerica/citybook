@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Button from 'react-bootstrap/lib/Button';
+import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+
+
 import '../../../styles/instructions.scss';
 
 export default class Step1 extends Component {
