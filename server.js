@@ -19,7 +19,6 @@ if(process.argv[2] === '--dev'){
   var WebpackDevServer = require('webpack-dev-server');
   var config = require('./webpack.config');
 
-  console.log('dev!');
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
@@ -38,6 +37,17 @@ if(process.argv[2] === '--dev'){
   });
 
 }
+
+// Redirect to HTTPS if not running in dev
+if(process.argv[2] !== '--dev'){
+  app.get('*',function(req,res,next){
+    if(req.headers['x-forwarded-proto']!='https')
+      res.redirect('https://www.citybook.io/' + req.url)
+    else
+      next()
+  })
+}
+
 //Serve static HTML in production
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname+'/index.html'));
