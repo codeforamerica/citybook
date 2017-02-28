@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bc9eb01a2005ec859da5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "180e21d114ea94aa67e3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -59804,7 +59804,7 @@
 	        filters = filterList.map(function (filter, i) {
 	          return _react2.default.createElement(
 	            'option',
-	            { vlaue: filter, key: i },
+	            { value: filter, key: i },
 	            filter
 	          );
 	        });

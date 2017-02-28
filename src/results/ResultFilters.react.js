@@ -17,7 +17,7 @@ export default class ResultFilters extends Component {
       let filterList = this.props.filterOptions;
       filters = filterList.map(function(filter, i){
           return (
-            <option vlaue={filter} key={i}>{filter}</option>
+            <option value={filter} key={i}>{filter}</option>
           )
       })
     }
