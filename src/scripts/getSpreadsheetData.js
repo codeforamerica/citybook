@@ -27,7 +27,9 @@ export default function(spreadSheetKey, updateState){
         contacts = sheet.elements;
       filterNames.push(sheet.name);
       for(var row in contacts){
-        contactList.push(contacts[row]);
+        let contactObject = contacts[row];
+        contactObject.category = sheet.name;
+        contactList.push(contactObject);
       }
     }
     output.filters = filterNames;
