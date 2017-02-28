@@ -38,10 +38,6 @@ $breakpoints: (
 }
 
 .results-list {
-  margin-top: 75px;
-  @media (max-width: 768px) {
-    margin-top: 150px;
-  }
   padding: 0;
 
   h1 {
@@ -194,12 +190,25 @@ $breakpoints: (
     -webkit-overflow-scrolling: touch;
 }
 
+.result-filters {
+  margin-top: 75px;
+  margin-bottom: 10px;
+  @media (max-width: 768px) {
+    margin-top: 150px;
+  }
+}
+
 .citybook-header {
+  .navbar-brand {
+    color: #fff;
+  }
+  .navbar-nav>li>a {
+    color: #fff;
+  }
   background-color: #4776E6;
   width: 100%;
   z-index: 1000;
   a {
-    color: white !important;
     font-weight: bold;
   }
 

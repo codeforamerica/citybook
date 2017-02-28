@@ -15,15 +15,18 @@ export default class App extends Component {
       initialLoadComplete: false,
       errors: '',
       filterOptions: '',
+      filterValue: '',
       results:'',
       filteredResults: '',
       searchInput: '',
     }
 
     this.updateState = this.updateState.bind(this);
+    this.setFilters = this.setFilters.bind(this);
     this.setSearchInput = this.setSearchInput.bind(this);
     this.componentWillMount = this.componentWillMount.bind(this);
   }
+
   updateState(loadState, filterOptions, results, error){
     this.setState({
       initialLoadComplete: loadState,
@@ -32,6 +35,18 @@ export default class App extends Component {
       filteredResults: results,
       errors: error
     })
+  }
+
+  setFilters(event){
+    let selectedValue = event.target.value;
+    let matchedResults = this.state.results.filter(function(result){
+      return selectedValue.length > 0 ? result['category'].trim() === selectedValue.trim() : result;
+    })
+    this.setState({
+      filterValue: event.target.value,
+      searchInput: '',
+      filteredResults: matchedResults
+    });
   }
 
   setSearchInput(event) {
@@ -71,7 +86,6 @@ export default class App extends Component {
         <TopNav
           loaded={this.state.initialLoadComplete}
           spreadsheetId={this.state.spreadsheetId}
-          filterOptions={this.state.filterOptions}
           results={this.state.filteredResults}
           setSearchInput={this.setSearchInput}/>
 
@@ -80,6 +94,8 @@ export default class App extends Component {
         <ResultListWrapper
           loaded={this.state.initialLoadComplete}
           errors={this.state.errors}
+          filterOptions={this.state.filterOptions}
+          setFilters={this.setFilters}
           results={this.state.filteredResults} />
       </div>
     );
