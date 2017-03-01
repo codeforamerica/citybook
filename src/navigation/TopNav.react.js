@@ -5,6 +5,7 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
+import InputGroup from 'react-bootstrap/lib/InputGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import Row from 'react-bootstrap/lib/Row';
@@ -24,7 +25,7 @@ export default class TopNav extends Component {
   render() {
     return (
       <Navbar className="citybook-header affix">
-        <Navbar.Header>
+        <Navbar.Header className="hidden-sm hidden-xs">
           <Navbar.Brand>
             <a href="/">CityBook</a>
           </Navbar.Brand>
@@ -33,7 +34,12 @@ export default class TopNav extends Component {
         <Row>
           <Navbar.Form className='main-search' pullLeft>
               <FormGroup style={{display: 'inline'}}>
-                <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Search..." />
+                <InputGroup>
+                  <InputGroup.Addon>
+                    <Glyphicon className='result-button-icon' glyph='search' />
+                  </InputGroup.Addon>
+                  <FormControl onChange={this.props.setSearchInput} type="text" placeholder="Search..." />
+                </InputGroup>
               </FormGroup>
           </Navbar.Form>
           <Navbar.Collapse>

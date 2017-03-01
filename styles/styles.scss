@@ -194,8 +194,12 @@ $breakpoints: (
   margin-top: 75px;
   margin-bottom: 10px;
   @media (max-width: 768px) {
-    margin-top: 150px;
+    margin-top: 65px;
   }
+}
+
+.form-control {
+  font-size: 16px;
 }
 
 .citybook-header {
@@ -218,6 +222,7 @@ $breakpoints: (
 .main-search {
   width: 50%;
   .form-group {
+    font-size: 16px;
     width: 100%;
     input {
       width: 100%;
@@ -226,5 +231,11 @@ $breakpoints: (
   @media(max-width: 768px) {
     width: inherit;
     padding: 10px 30px;
+
+    &.navbar-form {
+      border: 0px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
   }
 }
