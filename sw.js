@@ -1,4 +1,4 @@
-var CACHE_NAME = 'my-site-cache-v4';
+var CACHE_NAME = 'my-site-cache-v5';
 
 var cityBookUrls = [
   './',
@@ -12,6 +12,20 @@ self.addEventListener('install', function(event) {
         console.log('Opened cache');
         return cache.addAll(cityBookUrls);
       })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (CACHE_NAME !== cacheName) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
 
