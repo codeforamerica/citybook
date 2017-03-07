@@ -53,17 +53,15 @@
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
     "react": "^15.0.2",
-    "react-addons-css-transition-group": "^15.0.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.0.2",
     "react-dropdown": "^1.0.4",
     "react-fontawesome": "^1.1.0",
     "react-router": "^2.4.0",
-    "react-typeahead": "^2.0.0-alpha.2",
+    "react-scroll": "^1.4.7",
     "sequelize": "^3.23.3",
     "sequelize-cli": "^2.4.0",
     "tabletop": "^1.4.3",
-    "uuid": "^2.0.2",
-    "webpack": "^1.13.1"
+    "uuid": "^2.0.2"
   }
 }
