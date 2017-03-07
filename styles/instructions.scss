@@ -88,37 +88,53 @@ $medium-break: 42em;
     border-color: rgba(255, 255, 255, 0.3);
   }
 
-  .demo-iframe-button {
+  .demo-phone-speaker {
     margin-right: 5px;
-    height: 15px;
-    width: 15px;
+    height: 7px;
+    width: 65px;
     display: inline-block;
-    position: absolute;
-    top: 6px;
-    border-radius: 50%;
-
-    &.red {
-      background-image: linear-gradient(120deg, #FB2B69, #FF5B37);
-      left: 30px;
-    }
-
-    &.yellow {
-      background-image: linear-gradient(120deg, #FFDB4C, #FFCD02);
-      left: 55px;
-    }
-
-    &.green {
-      background-image: linear-gradient(120deg, #87FC70, #0BD318);
-      left: 80px;
-    }
+    position: relative;
+    top: 34px;
+    border-radius: 3px;
+    background-color: #555;
   }
-  .demo-iframe {
-    border-top: 25px solid #eee;
-    border-radius: 5px;
 
-    -webkit-box-shadow: 0px 4px 20px 0px rgba(109,33,232,1);
-    -moz-box-shadow: 0px 4px 20px 0px rgba(109,33,232,1);
-    box-shadow: 0px 4px 20px 0px rgba(109,33,232,1);
+  .demo-phone-camera {
+    margin-right: 5px;
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    position: relative;
+    top: 36px;
+    border-radius: 6px;
+    background-color: #555;
+  }
+
+  .demo-iframe {
+    border-top: 50px solid #eee;
+    border-left: solid 5px #eee;
+    border-right: solid 5px #eee;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+    -webkit-box-shadow: 0px 4px 20px 0px #451e85;
+    -moz-box-shadow: 0px 4px 20px 0px #451e85;
+    box-shadow: 0px 4px 20px 0px #451e85;
+  }
+
+  .demo-spreadsheet-image {
+    position: absolute;
+    overflow: hidden;
+    max-height: 600px;
+  }
+
+  .iframe-container {
+    background-image: url('../img/spreadsheet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
   }
 }
 

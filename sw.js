@@ -1,4 +1,4 @@
-var CACHE_NAME = 'citybookV2';
+var CACHE_NAME = 'citybookV3';
 
 var cityBookUrls = [
   './',

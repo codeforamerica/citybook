@@ -22,6 +22,7 @@ export default class Step3 extends Component {
     this.state = {
       spreadSheetLink: '',
       linkStatus: '',
+      citybookCreated: false,
       createButtonDisabled: true,
       uuid: '',
       citybookLink: '',
@@ -95,6 +96,7 @@ export default class Step3 extends Component {
       data: book_reference,
       success: function(data) {
         this.setState({
+          citybookCreated: true,
           uuid: data
         })
         console.log(data);
@@ -106,7 +108,7 @@ export default class Step3 extends Component {
   }
 
   render(){
-    if (this.state.createButtonDisabled == true){
+    if (this.state.citybookCreated == false){
       var
         citybookLink,
         citybookEmbed;

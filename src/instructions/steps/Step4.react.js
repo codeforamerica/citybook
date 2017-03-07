@@ -24,7 +24,7 @@ export default class Step4 extends Component {
           </FormGroup>
           <FormGroup>
             <ControlLabel>Or use the direct link to your CityBook:</ControlLabel>
-            <FormControl disabled={this.props.disabled} id="embed-output" type="text" value={this.props.embed} placeholder="Your direct link will appear here..."/>
+            <FormControl disabled={this.props.disabled} id="embed-output" type="text" value={this.props.link} placeholder="Your direct link will appear here..."/>
           </FormGroup>
           <Button href={'/#/books/' + this.props.sskey} bsSize="large" id="citybook-test" target="_blank" className="btn-blue">Test your CityBook <Glyphicon glyph='new-window' /></Button>
         </Col>
