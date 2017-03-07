@@ -18,7 +18,6 @@ export default class Result extends Component {
     let resultInfo = this.props.result,
     organizationName = resultInfo['Organization Name'],
     address = resultInfo['Address'],
-    shortAddress = address.substring(0, 14) + '...',
     telephone = resultInfo['Telephone'],
     typeOfProgram = resultInfo['Type of Program'];
 
@@ -37,35 +36,35 @@ export default class Result extends Component {
       <Panel>
         <Row>
           <Col xs={12} md={12}>
-            <h2 className='result-title'>{organizationName}
-              <small>
-                <Button className='btn-link' href="#" onClick={ ()=> this.setState({ panelOpen: !this.state.panelOpen })}>
-                  <Glyphicon className='result-button-icon' glyph={ panelOpenIcon + '-sign'} />
-                  <span className="result-button-label"> Details...</span>
-                </Button>
-              </small>
-            </h2>
+            <h3 className='result-title'>{organizationName}</h3>
           </Col>
-          <Col xs={12} md={12}>
+          <Col xs={12}>
             <Row>
-            <Col md={6} className="button-container">
-              <Button bsSize='large' className='btn-block card-button' target='_blank' rel="noopener" href={'https://maps.google.com/?q=' + address}>
-                <span className="result-button-label"><Glyphicon className='result-button-icon' glyph='map-marker' /> Map: { shortAddress }</span>
+            <Col xs={4} className="button-container">
+              <Button bsSize='large' className='btn-block card-button' href="#" onClick={ ()=> this.setState({ panelOpen: !this.state.panelOpen })}>
+                <span className="result-button-label"><Glyphicon className='result-button-icon' glyph={ panelOpenIcon + '-sign'} /> Info</span>
               </Button>
             </Col>
-            <Col md={6} className="button-container">
+            <Col xs={4} className="button-container">
+              <Button bsSize='large' target='_blank' rel="noopener" className='btn-block card-button' href={'https://maps.google.com/?q=' + address}>
+                <span className="result-button-label"><Glyphicon className='result-button-icon' glyph='map-marker' /> Map</span>
+              </Button>
+            </Col>
+            <Col xs={4} className="button-container">
               <Button bsSize='large' className='btn-block card-button' href={'tel:'+telephone}>
-                <span className="result-button-label"><Glyphicon className='result-button-icon' glyph='earphone' /> Call: { telephone }</span>
+                <span className="result-button-label"><Glyphicon className='result-button-icon' glyph='earphone' /> Call</span>
               </Button>
             </Col>
             </Row>
           </Col>
         </Row>
-        <Panel className='more-info' collapsible expanded={this.state.panelOpen}>
-          <ul className="list-group">
-            {moreInfo}
-          </ul>
-        </Panel>
+        <Row>
+          <Panel className='more-info' collapsible expanded={this.state.panelOpen}>
+            <ul className="list-group">
+              {moreInfo}
+            </ul>
+          </Panel>
+        </Row>
       </Panel>
       </Col>
     )

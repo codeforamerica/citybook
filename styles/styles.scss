@@ -71,32 +71,25 @@ $breakpoints: (
     }
 
     .result-title {
-      margin: 0px;
+      margin-top: 0.2em;
+      margin-bottom: 0.2em;
       font-size: 1.5em;
     }
 
     .panel-body {
+      padding-top: 0px;
       padding-bottom: 0px;
     }
 
-    @media(min-width: 992px) {
-      .button-container:last-child {
-        .card-button {
-          border-radius: 0px 0px 4px 0px;
-        }
-      }
-      .button-container:first-child {
-        .card-button {
-          border-right: 1px solid #ccc;
-          border-radius: 0px 0px 0px 4px;
-        }
+    .button-container:last-child {
+      .card-button {
+        border-right: 0px;
+        border-radius: 0px 0px 4px 0px;
       }
     }
-    @media(max-width: 992px) {
-      .button-container:last-child {
-        .card-button {
-          border-radius: 0px 0px 4px 4px;
-        }
+    .button-container:first-child {
+      .card-button {
+        border-radius: 0px 0px 0px 4px;
       }
     }
     .button-container {
@@ -104,9 +97,9 @@ $breakpoints: (
       padding-right: 0px;
 
       .card-button {
+        border-right: 1px solid #ccc;
         border-radius: 0px;
         border-left: 0px;
-        border-right: 0px;
         border-bottom: 0px;
       }
     }
@@ -117,6 +110,13 @@ $breakpoints: (
 
       .list-group {
         margin-bottom: 0px;
+
+        .list-group-item {
+          border-left: 0px;
+          border-right: 0px;
+          border-bottom: 0px;
+          border-top: 1px solid #ddd;
+        }
       }
       .panel-body {
 

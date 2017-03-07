@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f77de0ece2dea8ea1d76"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "46d7ffb4254050a1f289"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -59179,7 +59179,7 @@
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n@media (max-width: 768px) {\n  .container {\n    width: 100%; } }\n\nbody {\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"; }\n\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #fff; }\n\n.results-list {\n  padding: 0; }\n  .results-list h1 {\n    margin-top: 10px; }\n  .results-list h4 {\n    font-weight: normal;\n    margin-bottom: 20px; }\n  .results-list blockquote {\n    border-left: 5px solid #ccc;\n    padding: 0.5em 10px;\n    quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n  .results-list blockquote:before {\n    color: #ccc;\n    font-size: 4em;\n    line-height: 0.1em;\n    margin-right: 0.25em;\n    vertical-align: -0.4em; }\n  .results-list blockquote p {\n    display: inline; }\n  .results-list .panel p {\n    margin: 0; }\n  .results-list .panel .result-title {\n    margin: 0px;\n    font-size: 1.5em; }\n  .results-list .panel .panel-body {\n    padding-bottom: 0px; }\n  @media (min-width: 992px) {\n    .results-list .panel .button-container:last-child .card-button {\n      border-radius: 0px 0px 4px 0px; }\n    .results-list .panel .button-container:first-child .card-button {\n      border-right: 1px solid #ccc;\n      border-radius: 0px 0px 0px 4px; } }\n  @media (max-width: 992px) {\n    .results-list .panel .button-container:last-child .card-button {\n      border-radius: 0px 0px 4px 4px; } }\n  .results-list .panel .button-container {\n    padding-left: 0px;\n    padding-right: 0px; }\n    .results-list .panel .button-container .card-button {\n      border-radius: 0px;\n      border-left: 0px;\n      border-right: 0px;\n      border-bottom: 0px; }\n  .results-list .panel .more-info {\n    border: none;\n    margin-bottom: 0px; }\n    .results-list .panel .more-info .list-group {\n      margin-bottom: 0px; }\n    .results-list .panel .more-info .panel-body {\n      padding: 0px; }\n\n.typeahead-selector {\n  position: absolute;\n  opacity: 0.98;\n  z-index: 9000;\n  min-width: 300px;\n  width: 100%; }\n\n.typeahead {\n  position: relative; }\n\n.typeahead-selector .list-group-item.hover, .typeahead-selector .list-group-item:hover {\n  background-color: #bbb; }\n\n.Dropdown-root {\n  vertical-align: middle;\n  position: relative; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option:hover {\n    background-color: #f2f9fc;\n    color: #333; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.result-filters {\n  margin-top: 75px;\n  margin-bottom: 10px; }\n  @media (max-width: 768px) {\n    .result-filters {\n      margin-top: 65px; } }\n\n.form-control {\n  font-size: 16px; }\n\n.citybook-header {\n  background-color: #4776E6;\n  width: 100%;\n  z-index: 1000; }\n  .citybook-header .navbar-brand {\n    color: #fff; }\n  .citybook-header .navbar-nav > li > a {\n    color: #fff; }\n  .citybook-header a {\n    font-weight: bold; }\n\n.main-search {\n  width: 50%; }\n  .main-search .form-group {\n    font-size: 16px;\n    width: 100%; }\n    .main-search .form-group input {\n      width: 100%; }\n  @media (max-width: 768px) {\n    .main-search {\n      width: inherit;\n      padding: 10px 30px; }\n      .main-search.navbar-form {\n        border: 0px;\n        margin-top: 0px;\n        margin-bottom: 0px; } }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n@media (max-width: 768px) {\n  .container {\n    width: 100%; } }\n\nbody {\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"; }\n\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #fff; }\n\n.results-list {\n  padding: 0; }\n  .results-list h1 {\n    margin-top: 10px; }\n  .results-list h4 {\n    font-weight: normal;\n    margin-bottom: 20px; }\n  .results-list blockquote {\n    border-left: 5px solid #ccc;\n    padding: 0.5em 10px;\n    quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n  .results-list blockquote:before {\n    color: #ccc;\n    font-size: 4em;\n    line-height: 0.1em;\n    margin-right: 0.25em;\n    vertical-align: -0.4em; }\n  .results-list blockquote p {\n    display: inline; }\n  .results-list .panel p {\n    margin: 0; }\n  .results-list .panel .result-title {\n    margin-top: 0.2em;\n    margin-bottom: 0.2em;\n    font-size: 1.5em; }\n  .results-list .panel .panel-body {\n    padding-top: 0px;\n    padding-bottom: 0px; }\n  .results-list .panel .button-container:last-child .card-button {\n    border-right: 0px;\n    border-radius: 0px 0px 4px 0px; }\n  .results-list .panel .button-container:first-child .card-button {\n    border-radius: 0px 0px 0px 4px; }\n  .results-list .panel .button-container {\n    padding-left: 0px;\n    padding-right: 0px; }\n    .results-list .panel .button-container .card-button {\n      border-right: 1px solid #ccc;\n      border-radius: 0px;\n      border-left: 0px;\n      border-bottom: 0px; }\n  .results-list .panel .more-info {\n    border: none;\n    margin-bottom: 0px; }\n    .results-list .panel .more-info .list-group {\n      margin-bottom: 0px; }\n      .results-list .panel .more-info .list-group .list-group-item {\n        border-left: 0px;\n        border-right: 0px;\n        border-bottom: 0px;\n        border-top: 1px solid #ddd; }\n    .results-list .panel .more-info .panel-body {\n      padding: 0px; }\n\n.typeahead-selector {\n  position: absolute;\n  opacity: 0.98;\n  z-index: 9000;\n  min-width: 300px;\n  width: 100%; }\n\n.typeahead {\n  position: relative; }\n\n.typeahead-selector .list-group-item.hover, .typeahead-selector .list-group-item:hover {\n  background-color: #bbb; }\n\n.Dropdown-root {\n  vertical-align: middle;\n  position: relative; }\n\n.Dropdown-control {\n  position: relative;\n  overflow: hidden;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: #333;\n  cursor: default;\n  outline: none;\n  padding: 8px 52px 8px 10px;\n  transition: all 200ms ease; }\n\n.Dropdown-option {\n  box-sizing: border-box;\n  color: rgba(51, 51, 51, 0.8);\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n  .Dropdown-option:hover {\n    background-color: #f2f9fc;\n    color: #333; }\n\n.Dropdown-menu {\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  overflow-y: auto;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1000;\n  -webkit-overflow-scrolling: touch; }\n\n.result-filters {\n  margin-top: 75px;\n  margin-bottom: 10px; }\n  @media (max-width: 768px) {\n    .result-filters {\n      margin-top: 65px; } }\n\n.form-control {\n  font-size: 16px; }\n\n.citybook-header {\n  background-color: #4776E6;\n  width: 100%;\n  z-index: 1000; }\n  .citybook-header .navbar-brand {\n    color: #fff; }\n  .citybook-header .navbar-nav > li > a {\n    color: #fff; }\n  .citybook-header a {\n    font-weight: bold; }\n\n.main-search {\n  width: 50%; }\n  .main-search .form-group {\n    font-size: 16px;\n    width: 100%; }\n    .main-search .form-group input {\n      width: 100%; }\n  @media (max-width: 768px) {\n    .main-search {\n      width: inherit;\n      padding: 10px 30px; }\n      .main-search.navbar-form {\n        border: 0px;\n        margin-top: 0px;\n        margin-bottom: 0px; } }\n", ""]);
 	
 	// exports
 
@@ -60440,7 +60440,6 @@
 	      var resultInfo = this.props.result,
 	          organizationName = resultInfo['Organization Name'],
 	          address = resultInfo['Address'],
-	          shortAddress = address.substring(0, 14) + '...',
 	          telephone = resultInfo['Telephone'],
 	          typeOfProgram = resultInfo['Type of Program'];
 	
@@ -60474,51 +60473,50 @@
 	              _Col2.default,
 	              { xs: 12, md: 12 },
 	              _react2.default.createElement(
-	                'h2',
+	                'h3',
 	                { className: 'result-title' },
-	                organizationName,
-	                _react2.default.createElement(
-	                  'small',
-	                  null,
-	                  _react2.default.createElement(
-	                    _Button2.default,
-	                    { className: 'btn-link', href: '#', onClick: function onClick() {
-	                        return _this2.setState({ panelOpen: !_this2.state.panelOpen });
-	                      } },
-	                    _react2.default.createElement(_Glyphicon2.default, { className: 'result-button-icon', glyph: panelOpenIcon + '-sign' }),
-	                    _react2.default.createElement(
-	                      'span',
-	                      { className: 'result-button-label' },
-	                      ' Details...'
-	                    )
-	                  )
-	                )
+	                organizationName
 	              )
 	            ),
 	            _react2.default.createElement(
 	              _Col2.default,
-	              { xs: 12, md: 12 },
+	              { xs: 12 },
 	              _react2.default.createElement(
 	                _Row2.default,
 	                null,
 	                _react2.default.createElement(
 	                  _Col2.default,
-	                  { md: 6, className: 'button-container' },
+	                  { xs: 4, className: 'button-container' },
 	                  _react2.default.createElement(
 	                    _Button2.default,
-	                    { bsSize: 'large', className: 'btn-block card-button', target: '_blank', rel: 'noopener', href: 'https://maps.google.com/?q=' + address },
+	                    { bsSize: 'large', className: 'btn-block card-button', href: '#', onClick: function onClick() {
+	                        return _this2.setState({ panelOpen: !_this2.state.panelOpen });
+	                      } },
 	                    _react2.default.createElement(
 	                      'span',
 	                      { className: 'result-button-label' },
-	                      _react2.default.createElement(_Glyphicon2.default, { className: 'result-button-icon', glyph: 'map-marker' }),
-	                      ' Map: ',
-	                      shortAddress
+	                      _react2.default.createElement(_Glyphicon2.default, { className: 'result-button-icon', glyph: panelOpenIcon + '-sign' }),
+	                      ' Info'
 	                    )
 	                  )
 	                ),
 	                _react2.default.createElement(
 	                  _Col2.default,
-	                  { md: 6, className: 'button-container' },
+	                  { xs: 4, className: 'button-container' },
+	                  _react2.default.createElement(
+	                    _Button2.default,
+	                    { bsSize: 'large', target: '_blank', rel: 'noopener', className: 'btn-block card-button', href: 'https://maps.google.com/?q=' + address },
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'result-button-label' },
+	                      _react2.default.createElement(_Glyphicon2.default, { className: 'result-button-icon', glyph: 'map-marker' }),
+	                      ' Map'
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  _Col2.default,
+	                  { xs: 4, className: 'button-container' },
 	                  _react2.default.createElement(
 	                    _Button2.default,
 	                    { bsSize: 'large', className: 'btn-block card-button', href: 'tel:' + telephone },
@@ -60526,8 +60524,7 @@
 	                      'span',
 	                      { className: 'result-button-label' },
 	                      _react2.default.createElement(_Glyphicon2.default, { className: 'result-button-icon', glyph: 'earphone' }),
-	                      ' Call: ',
-	                      telephone
+	                      ' Call'
 	                    )
 	                  )
 	                )
@@ -60535,12 +60532,16 @@
 	            )
 	          ),
 	          _react2.default.createElement(
-	            _Panel2.default,
-	            { className: 'more-info', collapsible: true, expanded: this.state.panelOpen },
+	            _Row2.default,
+	            null,
 	            _react2.default.createElement(
-	              'ul',
-	              { className: 'list-group' },
-	              moreInfo
+	              _Panel2.default,
+	              { className: 'more-info', collapsible: true, expanded: this.state.panelOpen },
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'list-group' },
+	                moreInfo
+	              )
 	            )
 	          )
 	        )
