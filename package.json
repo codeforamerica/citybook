@@ -62,7 +62,7 @@
     "react-scroll": "^1.4.7",
     "sequelize": "^3.23.3",
     "sequelize-cli": "^2.4.0",
-    "tabletop": "^1.4.3",
+    "tabletop": "https://github.com/cweems/tabletop/tarball/master",
     "uuid": "^2.0.2"
   }
 }

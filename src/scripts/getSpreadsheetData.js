@@ -13,8 +13,9 @@ export default function(spreadSheetKey, updateState){
   }
 
   function success(data) {
+    console.log(data.googleSheetName);
     formatData(data);
-    updateState(true, output.filters, output.contactList);
+    updateState(true, data.googleSheetName, output.filters, output.contactList);
   }
 
   function formatData(data){

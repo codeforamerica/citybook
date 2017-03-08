@@ -15,6 +15,7 @@ export default class App extends Component {
       initialLoadComplete: false,
       errors: '',
       filterOptions: '',
+      sheetName: '',
       filterValue: '',
       results:'',
       filteredResults: '',
@@ -27,10 +28,11 @@ export default class App extends Component {
     this.componentWillMount = this.componentWillMount.bind(this);
   }
 
-  updateState(loadState, filterOptions, results, error){
+  updateState(loadState, sheetName, filterOptions, results, error){
     this.setState({
       initialLoadComplete: loadState,
       filterOptions: filterOptions,
+      sheetName: sheetName,
       results: results,
       filteredResults: results,
       errors: error
@@ -63,7 +65,10 @@ export default class App extends Component {
     for (var i = 0; i < arrayLength; i++) {
       filteredResults.push(this.state.results[matches[i]])
     }
-    this.setState({filteredResults: filteredResults, searchInput: event.target.value});
+    this.setState({
+      filteredResults: filteredResults,
+      searchInput: event.target.value
+    });
   }
 
   componentWillMount(){
@@ -74,6 +79,12 @@ export default class App extends Component {
         spreadsheetId: spreadsheetLink
       });
     }.bind(this))
+  }
+
+  componentDidUpdate(){
+    if(this.state.sheetName){
+      localStorage.setItem(this.state.sheetName, this.props.params.bookId);
+    }
   }
 
   render() {
