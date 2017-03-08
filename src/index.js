@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router'
+import { Router, Route, hashHistory } from 'react-router'
 
 import Home from './Home.react.js';
+import BookList from './BookList.react.js';
 import App from './App';
 
 import ReactGA from 'react-ga';
@@ -19,7 +20,7 @@ function logPageView() {
 ReactDOM.render((
   <Router history={hashHistory} onUpdate={logPageView}>
     <Route path="/" component={Home} />
-    <Route path="/books" component={App} />
+    <Route path="/books" component={BookList} />
     <Route path="/books/:bookId" component={App} />
   </Router>
 ), document.getElementById('root'));
