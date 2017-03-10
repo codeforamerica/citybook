@@ -4,7 +4,6 @@ import TopNav from './navigation/topNav.react.js';
 import ErrorBar from './ErrorBar.react.js';
 import getSpreadsheetData from './scripts/getSpreadsheetData.js';
 import ResultListWrapper from './results/ResultListWrapper.react.js';
-import $ from 'jquery';
 import fuzzy from 'fuzzy';
 
 
@@ -72,13 +71,22 @@ export default class App extends Component {
   }
 
   componentWillMount(){
-    $.get('/api/books/' + this.props.params.bookId, function(book_reference){
-      var spreadsheetLink = book_reference.google_spreadsheet_link;
-      getSpreadsheetData(spreadsheetLink, this.updateState);
-      this.setState({
-        spreadsheetId: spreadsheetLink
-      });
-    }.bind(this))
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/books/' + this.props.params.bookId);
+    xhr.onload = (function(data){
+      if (xhr.status === 200){
+        let
+          parsed = JSON.parse(data.srcElement.response),
+          spreadsheetLink = parsed.google_spreadsheet_link;
+        getSpreadsheetData(spreadsheetLink, this.updateState);
+        this.setState({
+          spreadsheetId: spreadsheetLink
+        });
+      } else {
+        console.error('Could not fetch spreadsheet');
+      }
+    }).bind(this);
+    xhr.send();
   }
 
   componentDidUpdate(){
