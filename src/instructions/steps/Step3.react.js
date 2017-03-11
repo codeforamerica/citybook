@@ -8,10 +8,9 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Alert from 'react-bootstrap/lib/Alert';
 
-
+import $ from 'jquery';
 import TosModal from '../TosModal.react.js';
 import '../../../styles/instructions.scss';
-import $ from 'jquery';
 import Instruction from '../Instruction.react.js';
 import Step4 from './Step4.react.js';
 

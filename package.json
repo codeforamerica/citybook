@@ -60,6 +60,7 @@
     "react-fontawesome": "^1.1.0",
     "react-router": "^2.4.0",
     "react-scroll": "^1.4.7",
+    "react-sidebar": "^2.3.0",
     "sequelize": "^3.23.3",
     "sequelize-cli": "^2.4.0",
     "tabletop": "https://github.com/cweems/tabletop/tarball/master",
