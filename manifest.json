@@ -1,6 +1,9 @@
 {
+  "manifest_version": 2,
   "short_name": "CityBook",
   "name": "CityBook",
+  "default_locale": "en",
+  "theme_color": "#4776E6",
   "icons": [
     {
       "src": "img/launcher-icon-2x.png",
@@ -18,7 +21,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/books",
+  "start_url": "/#/books",
   "display": "standalone",
   "orientation": "portrait"
 }

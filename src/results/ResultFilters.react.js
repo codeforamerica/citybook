@@ -24,7 +24,6 @@ export default class ResultFilters extends Component {
     return(
       <div className="result-filters">
           <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Category: </ControlLabel>
             <FormControl onChange={this.props.setFilters} componentClass="select" placeholder="select">
               <option value="" selected>All Categories</option>
               {filters}

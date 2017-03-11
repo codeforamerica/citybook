@@ -1,4 +1,4 @@
-var CACHE_NAME = 'citybookV4';
+var CACHE_NAME = 'citybookV5';
 
 var cityBookUrls = [
   './',
@@ -27,6 +27,7 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
+  return self.clients.claim();
 });
 
 // Add an event listener for when the browser fetches
