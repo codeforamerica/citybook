@@ -21,6 +21,7 @@ ReactDOM.render((
   <Router history={hashHistory} onUpdate={logPageView}>
     <Route path="/" component={Home} />
     <Route path="/books" component={BookList} />
-    <Route path="/books/:bookId" component={App} />
+    <Route path="/books/:bookId" component={App}>
+    </Route>
   </Router>
 ), document.getElementById('root'));

@@ -22,7 +22,7 @@ export default class Result extends Component {
     typeOfProgram = resultInfo['Type of Program'];
 
     let moreInfo = Object.keys(resultInfo).map(function(result, i){
-      if(resultInfo.hasOwnProperty(result)){
+      if(resultInfo.hasOwnProperty(result) && result !=='Lattitude' && result !== 'Longitude'){
         return (
           <li key={i} className="list-group-item"><strong>{result + ': '}</strong>{resultInfo[result]}</li>
         )
