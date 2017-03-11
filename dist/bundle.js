@@ -63,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2779fad3aa9ca80328fc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d52a9f2b59c521268ede"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -61457,11 +61457,6 @@
 	        _react2.default.createElement(
 	          _FormGroup2.default,
 	          { controlId: 'formControlsSelect' },
-	          _react2.default.createElement(
-	            _ControlLabel2.default,
-	            null,
-	            'Category: '
-	          ),
 	          _react2.default.createElement(
 	            _FormControl2.default,
 	            { onChange: this.props.setFilters, componentClass: 'select', placeholder: 'select' },
