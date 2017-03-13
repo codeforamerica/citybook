@@ -1,4 +1,5 @@
-var CACHE_NAME = 'citybookV5';
+var CITYBOOK_CACHE = 'citybookV9';
+var SPREADSHEET_CACHE = 'spreadsheetV1';
 
 var cityBookUrls = [
   './',
@@ -7,7 +8,7 @@ var cityBookUrls = [
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches.open(CITYBOOK_CACHE)
       .then(function(cache) {
         console.log('Opened cache');
         return cache.addAll(cityBookUrls);
@@ -20,7 +21,7 @@ self.addEventListener('activate', function(event) {
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.map(function(cacheName) {
-          if (CACHE_NAME !== cacheName) {
+          if (CITYBOOK_CACHE !== cacheName && SPREADSHEET_CACHE !== cacheName) {
             return caches.delete(cacheName);
           }
         })
@@ -32,10 +33,24 @@ self.addEventListener('activate', function(event) {
 
 // Add an event listener for when the browser fetches
 self.addEventListener('fetch', function(event) {
-  // Respond to the event with a promise
-  event.respondWith(
-    // Check if we have the file in our cache
-    caches.match(event.request)
+  console.log('fetch event happened');
+  var dataUrl = 'https://spreadsheets.google.com';
+
+  if(event.request.url.indexOf(dataUrl) > -1){
+    console.log('fetching from google');
+    event.respondWith(
+      caches.open(SPREADSHEET_CACHE).then(function(cache) {
+        return fetch(event.request).then(function(response){
+          cache.put(event.request.url, response.clone());
+          return response;
+        });
+      })
+    );
+  } else {
+    // Respond to the event with a promise
+    event.respondWith(
+      // Check if we have the file in our cache
+      caches.match(event.request)
       .then(function(response) {
         // If we find it, return it
         if (response) {
@@ -57,14 +72,15 @@ self.addEventListener('fetch', function(event) {
             var responseToCache = response.clone();
 
             // Add the cloned resource to our cache
-            caches.open(CACHE_NAME)
-              .then(function(cache) {
-                cache.put(event.request, responseToCache);
-              });
+            caches.open(CITYBOOK_CACHE)
+            .then(function(cache) {
+              cache.put(event.request, responseToCache);
+            });
 
             return response;
           }
         );
       })
     );
+  }
 });
