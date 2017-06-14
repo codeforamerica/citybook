@@ -38,11 +38,12 @@
     "css-loader": "^0.23.1",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",
+    "file-loader": "^0.11.2",
     "image-webpack-loader": "^3.2.0",
-    "node-sass": "^3.7.0",
+    "node-sass": "^3.13.1",
     "react-ga": "^2.1.0",
     "react-hot-loader": "^1.3.0",
-    "sass-loader": "^3.2.0",
+    "sass-loader": "^3.2.3",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.12.1"
@@ -50,6 +51,7 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "fuzzy": "^0.1.3",
     "jquery": "^2.2.4",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",

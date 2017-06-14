@@ -52,6 +52,7 @@ Running in development mode enables WebpackDevServer hot-module-reloading on por
 Bundles everything into bundle.js.
 
 ```
+npm install -g webpack
 webpack
 npm start
 git remote add production https://git.heroku.com/citybook.git
